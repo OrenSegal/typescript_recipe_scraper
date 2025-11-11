@@ -1,7 +1,12 @@
 /**
- * NLP-based Recipe Parser
+ * NLP-based Recipe Parser with AI Fallback
  * Extracts recipe information from natural language text
- * Uses: Compromise NLP + regex patterns + heuristics
+ *
+ * Strategy:
+ * 1. Fast local parsing (Compromise NLP + regex) - FREE & INSTANT
+ * 2. AI fallback (Google Gemini/OpenAI) - ACCURATE but costs money
+ *
+ * Uses local-first approach to minimize costs while ensuring high accuracy
  */
 
 import nlp from 'compromise';
@@ -17,13 +22,75 @@ export interface ParsedRecipe {
   description: string | null;
 }
 
+export interface ParsingOptions {
+  forceAI?: boolean; // Force AI parsing even if local confidence is high
+  aiProvider?: 'gemini' | 'openai' | 'anthropic'; // AI provider to use
+  confidenceThreshold?: number; // Minimum confidence to skip AI (default: 75)
+}
+
 /**
  * Parse recipe from natural language text
  * Handles plain text, social media captions, OCR output, transcripts
+ *
+ * Uses smart two-tier approach:
+ * - Try local parsing first (fast, free)
+ * - Fall back to AI if confidence is low (accurate, costs ~$0.001 per recipe)
  */
-export async function parseRecipeFromNaturalLanguage(text: string): Promise<ParsedRecipe> {
+export async function parseRecipeFromNaturalLanguage(
+  text: string,
+  options: ParsingOptions = {}
+): Promise<ParsedRecipe> {
   const cleaned = cleanText(text);
 
+  const {
+    forceAI = false,
+    aiProvider = 'gemini',
+    confidenceThreshold = 75
+  } = options;
+
+  // Step 1: Try fast local parsing first (unless forceAI is set)
+  if (!forceAI) {
+    const localParsed = parseWithLocalNLP(cleaned);
+    const confidence = calculateParsingConfidence(localParsed);
+
+    console.log(`🧠 Local parsing confidence: ${confidence}%`);
+
+    // If confidence is high enough, return local result
+    if (confidence >= confidenceThreshold) {
+      console.log(`✅ Using local parsing (confidence: ${confidence}%)`);
+      return localParsed;
+    }
+
+    // If AI is disabled or no API keys configured, return local result
+    if (!isAIAvailable(aiProvider)) {
+      console.log(`⚠️ AI parsing unavailable, using local result (confidence: ${confidence}%)`);
+      return localParsed;
+    }
+
+    console.log(`🤖 Local confidence low (${confidence}%), falling back to AI...`);
+  } else {
+    console.log(`🤖 Force AI mode enabled, skipping local parsing`);
+  }
+
+  // Step 2: Use AI for difficult cases
+  try {
+    const aiParsed = await parseWithAI(cleaned, aiProvider);
+    console.log(`✅ AI parsing complete`);
+    return aiParsed;
+  } catch (error: any) {
+    console.warn(`⚠️ AI parsing failed: ${error.message}`);
+
+    // Fallback to local parsing if AI fails
+    const localParsed = parseWithLocalNLP(cleaned);
+    console.log(`⚠️ Using local parsing as fallback`);
+    return localParsed;
+  }
+}
+
+/**
+ * Local NLP parsing (fast, free, works offline)
+ */
+function parseWithLocalNLP(cleaned: string): ParsedRecipe {
   return {
     title: extractTitle(cleaned),
     ingredients: extractIngredients(cleaned),
@@ -34,6 +101,192 @@ export async function parseRecipeFromNaturalLanguage(text: string): Promise<Pars
     total_time: extractTime(cleaned, 'total'),
     description: extractDescription(cleaned)
   };
+}
+
+/**
+ * AI-powered parsing (accurate, costs ~$0.001 per recipe)
+ */
+async function parseWithAI(
+  text: string,
+  provider: 'gemini' | 'openai' | 'anthropic'
+): Promise<ParsedRecipe> {
+  const prompt = `You are a professional recipe parser. Extract the recipe from the following text and return ONLY a valid JSON object with this exact structure:
+
+{
+  "title": "Recipe Name",
+  "description": "Brief description",
+  "ingredients": ["ingredient 1", "ingredient 2", ...],
+  "instructions": ["step 1", "step 2", ...],
+  "servings": 4,
+  "prep_time": "15 minutes",
+  "cook_time": "30 minutes",
+  "total_time": "45 minutes"
+}
+
+Guidelines:
+- Extract ALL ingredients with quantities (e.g., "2 cups flour", "1 tsp salt")
+- Extract ALL cooking steps as separate array items
+- Infer reasonable values for missing fields (e.g., servings: 4 if not specified)
+- Use null for fields that cannot be determined
+- Ensure JSON is valid and properly formatted
+
+Text to parse:
+"""
+${text}
+"""
+
+Return ONLY the JSON object, no markdown formatting, no explanations.`;
+
+  let result: string;
+
+  switch (provider) {
+    case 'gemini':
+      result = await callGeminiAPI(prompt);
+      break;
+    case 'openai':
+      result = await callOpenAIAPI(prompt);
+      break;
+    case 'anthropic':
+      result = await callAnthropicAPI(prompt);
+      break;
+    default:
+      throw new Error(`Unknown AI provider: ${provider}`);
+  }
+
+  // Parse JSON response
+  try {
+    // Clean up response (remove markdown code blocks if present)
+    const cleaned = result
+      .replace(/```json\n?/g, '')
+      .replace(/```\n?/g, '')
+      .trim();
+
+    const parsed = JSON.parse(cleaned);
+
+    return {
+      title: parsed.title || null,
+      ingredients: Array.isArray(parsed.ingredients) ? parsed.ingredients : [],
+      instructions: Array.isArray(parsed.instructions) ? parsed.instructions : [],
+      servings: parsed.servings || null,
+      prep_time: parsed.prep_time || null,
+      cook_time: parsed.cook_time || null,
+      total_time: parsed.total_time || null,
+      description: parsed.description || null
+    };
+  } catch (error: any) {
+    throw new Error(`Failed to parse AI response: ${error.message}`);
+  }
+}
+
+/**
+ * Call Google Gemini API
+ */
+async function callGeminiAPI(prompt: string): Promise<string> {
+  const apiKey = process.env.GOOGLE_API_KEY;
+  if (!apiKey) {
+    throw new Error('GOOGLE_API_KEY not configured');
+  }
+
+  const model = process.env.LITE_MODEL || 'gemini-1.5-flash-latest';
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: {
+        temperature: 0.1, // Low temperature for consistent parsing
+        maxOutputTokens: 2048
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Gemini API error: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+}
+
+/**
+ * Call OpenAI API
+ */
+async function callOpenAIAPI(prompt: string): Promise<string> {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY not configured');
+  }
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini', // Cheap and fast
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.1,
+      max_tokens: 2048
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`OpenAI API error: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || '';
+}
+
+/**
+ * Call Anthropic Claude API
+ */
+async function callAnthropicAPI(prompt: string): Promise<string> {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    throw new Error('ANTHROPIC_API_KEY not configured');
+  }
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      model: 'claude-3-haiku-20240307', // Fastest and cheapest
+      max_tokens: 2048,
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.1
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Anthropic API error: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.content?.[0]?.text || '';
+}
+
+/**
+ * Check if AI is available
+ */
+function isAIAvailable(provider: 'gemini' | 'openai' | 'anthropic'): boolean {
+  switch (provider) {
+    case 'gemini':
+      return !!process.env.GOOGLE_API_KEY;
+    case 'openai':
+      return !!process.env.OPENAI_API_KEY;
+    case 'anthropic':
+      return !!process.env.ANTHROPIC_API_KEY;
+    default:
+      return false;
+  }
 }
 
 /**

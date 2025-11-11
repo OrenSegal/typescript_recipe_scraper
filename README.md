@@ -7,12 +7,38 @@
 
 **A production-ready, enterprise-grade TypeScript service for intelligent recipe scraping, OCR processing, ingredient linking, and comprehensive enrichment with robust validation and quality assurance.**
 
+## 🎉 **LATEST UPDATES (November 2025)**
+
+### ✅ **NEW: Multi-Modal Social Media Scraping**
+- **Production-Ready Video Scraping**: Full TikTok, Instagram, YouTube support using yt-dlp
+- **Parallel Processing**: OCR + Audio Transcription running simultaneously
+- **AI-Powered Parsing**: Smart two-tier NLP with Gemini/GPT-4/Claude fallback
+- **Cost-Optimized**: ~$0.005 per difficult recipe, free for most content
+
+### 🚀 **Key Improvements**
+1. **Media Downloader** (`src/utils/mediaDownloader.ts`)
+   - Downloads from 1000+ platforms via yt-dlp
+   - Automatic audio extraction & thumbnail capture
+   - Built-in cleanup and resource management
+
+2. **Enhanced NLP Parser** (`src/enrichment/nlpRecipeParser.ts`)
+   - Local-first parsing (free, instant)
+   - AI fallback for complex text (accurate, ~$0.001/recipe)
+   - Supports Gemini, OpenAI, and Anthropic
+
+3. **Fully-Wired Social Media Scrapers**
+   - `UniversalRecipeScraper` now calls all processors
+   - Frame-by-frame video OCR
+   - Speech-to-text audio transcription
+   - Intelligent text combination & parsing
+
 ## 🚀 **PRODUCTION-READY FEATURES**
 
 ### **🔍 Multi-Platform Recipe Scraping**
 - **Website Scraping**: Universal recipe extraction from 1000+ recipe sites
-- **Social Media Integration**: TikTok, Instagram Reels, YouTube videos
+- **Social Media Integration**: ✅ **FULLY IMPLEMENTED** - TikTok, Instagram, YouTube with multi-modal processing
 - **OCR Processing**: Video text extraction with Google Vision API + Tesseract.js fallback
+- **Audio Transcription**: Whisper/Google Speech API for voice recipe extraction
 - **Robust Error Handling**: Comprehensive retry logic and graceful degradation
 
 ### **🧠 Intelligent Processing Pipeline** 
@@ -98,6 +124,19 @@ IMGUR_CLIENT_ID=your_imgur_client_id
 NO_FILE_CACHE=true
 LITE_MODEL=gemini-1.5-flash-latest  # Optional: AI model selection
 MAX_RETRIES=3
+
+# NEW: AI Parsing (Optional - for enhanced accuracy on difficult text)
+GOOGLE_API_KEY=your_google_gemini_key  # Recommended (cheapest)
+OPENAI_API_KEY=your_openai_key         # Alternative
+ANTHROPIC_API_KEY=your_anthropic_key   # Alternative
+
+# NEW: Audio Transcription (Optional - for video recipes)
+ENABLE_AUDIO_TRANSCRIPTION=true        # Set to true to enable
+GOOGLE_CLOUD_SPEECH_API_KEY=your_key  # For Google Speech-to-Text
+# OR use OPENAI_API_KEY for Whisper API
+
+# NEW: Advanced OCR (Optional - for better video text extraction)
+GOOGLE_VISION_API_KEY=your_vision_key  # Fallback to Tesseract if not set
 TIMEOUT_MS=30000
 CACHE_ENABLED=true
 ```
@@ -126,7 +165,44 @@ CACHE_ENABLED=true
 # 3. Add to environment variables
 ```
 
-#### **4. Imgur API (Optional)**
+#### **4. NEW: System Dependencies (Required for Social Media Scraping)**
+
+**Install yt-dlp (video downloader):**
+```bash
+# macOS
+brew install yt-dlp
+
+# Linux (Ubuntu/Debian)
+sudo apt update && sudo apt install yt-dlp
+
+# Linux (alternative - via pip)
+pip install yt-dlp
+
+# Windows
+pip install yt-dlp
+# OR download from: https://github.com/yt-dlp/yt-dlp/releases
+```
+
+**Install ffmpeg (audio/video processing):**
+```bash
+# macOS
+brew install ffmpeg
+
+# Linux (Ubuntu/Debian)
+sudo apt update && sudo apt install ffmpeg
+
+# Windows
+# Download from: https://ffmpeg.org/download.html
+# OR use Chocolatey: choco install ffmpeg
+```
+
+**Verify installation:**
+```bash
+yt-dlp --version  # Should show version number
+ffmpeg -version   # Should show version number
+```
+
+#### **5. Imgur API (Optional)**
 ```bash
 # 1. Create account at https://imgur.com
 # 2. Register application at https://api.imgur.com/oauth2/addclient

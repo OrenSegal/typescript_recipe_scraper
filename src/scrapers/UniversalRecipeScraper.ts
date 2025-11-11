@@ -173,6 +173,7 @@ export class UniversalRecipeScraper {
 
   /**
    * Scrape TikTok video
+   * Uses multi-modal approach: download video -> OCR + transcription -> NLP parsing
    */
   private static async scrapeTikTok(url: string): Promise<UniversalScraperResult> {
     const startTime = Date.now();
@@ -180,61 +181,109 @@ export class UniversalRecipeScraper {
 
     console.log('🎵 Scraping TikTok video...');
 
+    const { downloadMedia } = await import('../utils/mediaDownloader.js');
+    const { VideoOCRProcessor } = await import('../enrichment/videoOCRProcessor.js');
+    const { audioTranscriptionProcessor } = await import('../enrichment/audioTranscriptionProcessor.js');
+
+    let downloadResult: any = null;
+
     try {
-      // Method 1: Try to get video metadata from TikTok embed/API
-      const metadata = await this.fetchTikTokMetadata(url);
-      extractionMethods.push('tiktok-api');
+      // Step 1: Download video and extract metadata
+      downloadResult = await downloadMedia(url, {
+        extractAudio: true,
+        extractThumbnail: true,
+        maxDuration: 300, // 5 min max
+        preferredQuality: '720'
+      });
 
-      // Method 2: Extract video and perform OCR on frames
+      extractionMethods.push('tiktok-download');
+
+      const metadata = downloadResult.metadata;
+
+      // Step 2: Extract text from video using OCR (parallel processing)
       let ocrText = '';
-      try {
-        ocrText = await this.extractTextFromVideo(url);
-        extractionMethods.push('video-ocr');
-      } catch (error) {
-        console.warn('⚠️ Video OCR failed:', error);
-      }
+      const ocrPromise = (async () => {
+        try {
+          const ocrProcessor = new VideoOCRProcessor();
+          const ocrResult = await ocrProcessor.processVideo(downloadResult.videoPath);
+          await ocrProcessor.destroy();
 
-      // Method 3: Use audio transcription if available
+          ocrText = ocrResult.extractedText;
+          if (ocrResult.extractedText.length > 0) {
+            extractionMethods.push('video-ocr');
+          }
+        } catch (error) {
+          console.warn('⚠️ Video OCR failed:', error);
+        }
+      })();
+
+      // Step 3: Transcribe audio (parallel processing)
       let transcript = '';
-      try {
-        transcript = await this.extractAudioTranscript(url);
-        extractionMethods.push('audio-transcript');
-      } catch (error) {
-        console.warn('⚠️ Audio transcription failed:', error);
-      }
+      const transcriptPromise = (async () => {
+        try {
+          if (downloadResult.audioPath) {
+            transcript = await audioTranscriptionProcessor.transcribe(
+              downloadResult.audioPath,
+              { maxDuration: 300 }
+            );
 
-      // Combine all text sources
+            if (transcript.length > 0) {
+              extractionMethods.push('audio-transcript');
+            }
+          }
+        } catch (error) {
+          console.warn('⚠️ Audio transcription failed:', error);
+        }
+      })();
+
+      // Wait for both OCR and transcription to complete
+      await Promise.all([ocrPromise, transcriptPromise]);
+
+      // Step 4: Combine all text sources
       const combinedText = [
         metadata.description,
-        ocrText,
-        transcript
+        transcript,
+        ocrText
       ].filter(Boolean).join('\n\n');
 
-      // Parse recipe from combined text
+      console.log(`📝 Combined text length: ${combinedText.length} characters`);
+
+      // Step 5: Parse recipe using NLP (with AI fallback)
       const recipe = await this.parseRecipeFromText(combinedText, url);
-      recipe.image_url = metadata.thumbnail;
+      recipe.image_url = downloadResult.thumbnailPath || metadata.thumbnailUrl;
       recipe.author = metadata.author;
 
       return {
         recipe,
-        method: 'tiktok-multi',
+        method: 'tiktok-multi-modal',
         confidence: this.calculateConfidence(recipe, extractionMethods),
         processingTime: Date.now() - startTime,
         contentType: 'tiktok',
         extractionMethods,
         mediaUrls: {
           video: url,
-          images: [metadata.thumbnail]
+          images: [recipe.image_url]
         }
       };
 
     } catch (error: any) {
       throw new Error(`TikTok scraping failed: ${error.message}`);
+    } finally {
+      // Cleanup downloaded files
+      if (downloadResult) {
+        try {
+          const { MediaDownloader } = await import('../utils/mediaDownloader.js');
+          await MediaDownloader.cleanup(downloadResult);
+        } catch (error) {
+          console.warn('⚠️ Cleanup failed:', error);
+        }
+      }
     }
   }
 
   /**
    * Scrape Instagram post/reel
+   * Uses multi-modal approach for videos, OCR for images
    */
   private static async scrapeInstagram(url: string): Promise<UniversalScraperResult> {
     const startTime = Date.now();
@@ -242,49 +291,107 @@ export class UniversalRecipeScraper {
 
     console.log('📸 Scraping Instagram post...');
 
+    const { downloadMedia } = await import('../utils/mediaDownloader.js');
+    const { VideoOCRProcessor } = await import('../enrichment/videoOCRProcessor.js');
+    const { audioTranscriptionProcessor } = await import('../enrichment/audioTranscriptionProcessor.js');
+
+    let downloadResult: any = null;
+
     try {
-      // Method 1: Get post metadata
-      const metadata = await this.fetchInstagramMetadata(url);
-      extractionMethods.push('instagram-api');
+      // Step 1: Download media
+      downloadResult = await downloadMedia(url, {
+        extractAudio: true,
+        extractThumbnail: true,
+        maxDuration: 300,
+        preferredQuality: '720'
+      });
 
-      // Method 2: OCR on images/video frames
+      extractionMethods.push('instagram-download');
+
+      const metadata = downloadResult.metadata;
+
+      // Step 2: Process video with OCR and transcription (parallel)
       let ocrText = '';
-      if (metadata.isVideo) {
-        ocrText = await this.extractTextFromVideo(url);
-        extractionMethods.push('video-ocr');
-      } else if (metadata.images.length > 0) {
-        ocrText = await this.extractTextFromImages(metadata.images);
-        extractionMethods.push('image-ocr');
-      }
+      let transcript = '';
 
-      // Combine caption and OCR text
-      const combinedText = [metadata.caption, ocrText].filter(Boolean).join('\n\n');
+      const ocrPromise = (async () => {
+        try {
+          const ocrProcessor = new VideoOCRProcessor();
+          const ocrResult = await ocrProcessor.processVideo(downloadResult.videoPath);
+          await ocrProcessor.destroy();
 
-      // Parse recipe
+          ocrText = ocrResult.extractedText;
+          if (ocrText.length > 0) {
+            extractionMethods.push('video-ocr');
+          }
+        } catch (error) {
+          console.warn('⚠️ Video OCR failed:', error);
+        }
+      })();
+
+      const transcriptPromise = (async () => {
+        try {
+          if (downloadResult.audioPath) {
+            transcript = await audioTranscriptionProcessor.transcribe(
+              downloadResult.audioPath,
+              { maxDuration: 300 }
+            );
+
+            if (transcript.length > 0) {
+              extractionMethods.push('audio-transcript');
+            }
+          }
+        } catch (error) {
+          console.warn('⚠️ Audio transcription failed:', error);
+        }
+      })();
+
+      await Promise.all([ocrPromise, transcriptPromise]);
+
+      // Step 3: Combine all text sources
+      const combinedText = [
+        metadata.description,
+        transcript,
+        ocrText
+      ].filter(Boolean).join('\n\n');
+
+      console.log(`📝 Combined text length: ${combinedText.length} characters`);
+
+      // Step 4: Parse recipe
       const recipe = await this.parseRecipeFromText(combinedText, url);
-      recipe.image_url = metadata.images[0];
+      recipe.image_url = downloadResult.thumbnailPath || metadata.thumbnailUrl;
       recipe.author = metadata.author;
 
       return {
         recipe,
-        method: 'instagram-multi',
+        method: 'instagram-multi-modal',
         confidence: this.calculateConfidence(recipe, extractionMethods),
         processingTime: Date.now() - startTime,
         contentType: 'instagram',
         extractionMethods,
         mediaUrls: {
-          video: metadata.isVideo ? url : undefined,
-          images: metadata.images
+          video: url,
+          images: [recipe.image_url]
         }
       };
 
     } catch (error: any) {
       throw new Error(`Instagram scraping failed: ${error.message}`);
+    } finally {
+      if (downloadResult) {
+        try {
+          const { MediaDownloader } = await import('../utils/mediaDownloader.js');
+          await MediaDownloader.cleanup(downloadResult);
+        } catch (error) {
+          console.warn('⚠️ Cleanup failed:', error);
+        }
+      }
     }
   }
 
   /**
    * Scrape YouTube video
+   * Prioritizes transcript (free), uses video OCR as fallback
    */
   private static async scrapeYouTube(url: string): Promise<UniversalScraperResult> {
     const startTime = Date.now();
@@ -292,49 +399,94 @@ export class UniversalRecipeScraper {
 
     console.log('🎬 Scraping YouTube video...');
 
-    try {
-      // Method 1: Get video metadata
-      const videoId = this.extractYouTubeVideoId(url);
-      const metadata = await this.fetchYouTubeMetadata(videoId);
-      extractionMethods.push('youtube-api');
+    const { downloadMedia, getMediaMetadata } = await import('../utils/mediaDownloader.js');
+    const { VideoOCRProcessor } = await import('../enrichment/videoOCRProcessor.js');
 
-      // Method 2: Get transcript/captions
+    let downloadResult: any = null;
+
+    try {
+      // Step 1: Get metadata without downloading (fast)
+      const videoId = this.extractYouTubeVideoId(url);
+      const metadata = await getMediaMetadata(url);
+      extractionMethods.push('youtube-metadata');
+
+      // Step 2: Try to get transcript first (free and fast!)
       let transcript = '';
       try {
         transcript = await this.fetchYouTubeTranscript(videoId);
-        extractionMethods.push('youtube-transcript');
+        if (transcript.length > 0) {
+          extractionMethods.push('youtube-transcript');
+        }
       } catch (error) {
-        console.warn('⚠️ Transcript extraction failed, trying description');
+        console.warn('⚠️ No transcript available, will use video download');
       }
 
-      // Method 3: Parse description
-      const descriptionText = metadata.description;
-      extractionMethods.push('description-parsing');
+      // Step 3: If no transcript, download video and use OCR
+      let ocrText = '';
+      if (transcript.length < 100) {
+        // Transcript is too short or missing, use video OCR
+        console.log('📥 Downloading video for OCR analysis...');
 
-      // Combine all text sources
-      const combinedText = [transcript, descriptionText].filter(Boolean).join('\n\n');
+        downloadResult = await downloadMedia(url, {
+          extractAudio: false, // YouTube transcript is better than audio transcription
+          extractThumbnail: true,
+          maxDuration: 600, // 10 min max for YouTube
+          preferredQuality: '480' // Lower quality for faster processing
+        });
 
-      // Parse recipe
+        try {
+          const ocrProcessor = new VideoOCRProcessor();
+          const ocrResult = await ocrProcessor.processVideo(downloadResult.videoPath);
+          await ocrProcessor.destroy();
+
+          ocrText = ocrResult.extractedText;
+          if (ocrText.length > 0) {
+            extractionMethods.push('video-ocr');
+          }
+        } catch (error) {
+          console.warn('⚠️ Video OCR failed:', error);
+        }
+      }
+
+      // Step 4: Combine all text sources
+      const combinedText = [
+        metadata.description,
+        transcript,
+        ocrText
+      ].filter(Boolean).join('\n\n');
+
+      console.log(`📝 Combined text length: ${combinedText.length} characters`);
+
+      // Step 5: Parse recipe
       const recipe = await this.parseRecipeFromText(combinedText, url);
-      recipe.image_url = metadata.thumbnail;
-      recipe.author = metadata.channelName;
+      recipe.image_url = metadata.thumbnailUrl;
+      recipe.author = metadata.author;
       recipe.title = recipe.title || metadata.title;
 
       return {
         recipe,
-        method: 'youtube-multi',
+        method: 'youtube-multi-modal',
         confidence: this.calculateConfidence(recipe, extractionMethods),
         processingTime: Date.now() - startTime,
         contentType: 'youtube',
         extractionMethods,
         mediaUrls: {
           video: url,
-          images: [metadata.thumbnail]
+          images: [recipe.image_url]
         }
       };
 
     } catch (error: any) {
       throw new Error(`YouTube scraping failed: ${error.message}`);
+    } finally {
+      if (downloadResult) {
+        try {
+          const { MediaDownloader } = await import('../utils/mediaDownloader.js');
+          await MediaDownloader.cleanup(downloadResult);
+        } catch (error) {
+          console.warn('⚠️ Cleanup failed:', error);
+        }
+      }
     }
   }
 
@@ -772,16 +924,22 @@ export class UniversalRecipeScraper {
   }
 
   /**
-   * Parse recipe from combined text using NLP
+   * Parse recipe from combined text using NLP with AI fallback
+   * Uses local-first approach to minimize costs
    */
   private static async parseRecipeFromText(text: string, sourceUrl: string): Promise<RawScrapedRecipe> {
     console.log('🧠 Parsing recipe from text using NLP...');
 
-    // Use NLP to extract recipe components
+    // Use enhanced NLP parser with AI fallback
     const { parseRecipeFromNaturalLanguage } = await import('../enrichment/nlpRecipeParser.js');
 
     try {
-      const parsed = await parseRecipeFromNaturalLanguage(text);
+      // Parse with smart two-tier approach (local first, AI fallback)
+      const parsed = await parseRecipeFromNaturalLanguage(text, {
+        confidenceThreshold: 75, // Use AI if local confidence < 75%
+        aiProvider: 'gemini', // Default to Gemini (cheapest)
+        forceAI: false // Try local first
+      });
 
       return {
         title: parsed.title || 'Untitled Recipe',
@@ -793,7 +951,9 @@ export class UniversalRecipeScraper {
         cook_time_minutes: this.parseTimeStringToMinutes(parsed.cook_time),
         servings: parsed.servings || 4
       };
-    } catch (error) {
+    } catch (error: any) {
+      console.warn(`⚠️ NLP parsing failed: ${error.message}`);
+
       // Fallback: basic extraction
       return this.basicTextParsing(text, sourceUrl);
     }
