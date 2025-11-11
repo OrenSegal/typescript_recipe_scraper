@@ -1,0 +1,103 @@
+{
+  "www.allrecipes.com": {
+    "domain": "www.allrecipes.com",
+    "url": "https://www.allrecipes.com/recipe/12151/banana-banana-bread/",
+    "reason": "All scraping methods failed. Last error: browserType.launch: Executable doesn't exist at /Users/orensegal/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
+    "firstFailedAt": "2025-10-13T06:01:04.317Z",
+    "lastAttemptAt": "2025-10-13T17:58:44.667Z",
+    "attemptCount": 6,
+    "errorType": "other",
+    "isTemporary": true,
+    "cooldownUntil": "2025-10-13T18:58:44.667Z"
+  },
+  "www.epicurious.com": {
+    "domain": "www.epicurious.com",
+    "url": "https://www.epicurious.com/recipes/food/views/perfect-chocolate-cake",
+    "reason": "Website is blocked due to repeated failures",
+    "firstFailedAt": "2025-10-13T06:36:00.157Z",
+    "lastAttemptAt": "2025-10-13T22:11:27.204Z",
+    "attemptCount": 3,
+    "errorType": "other",
+    "isTemporary": true
+  },
+  "www.seriouseats.com": {
+    "domain": "www.seriouseats.com",
+    "url": "https://www.seriouseats.com/the-burger-lab-how-to-make-perfect-burgers",
+    "reason": "All scraping methods failed. Last error: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('h1') to be visible\u001b[22m\n",
+    "firstFailedAt": "2025-10-13T22:11:00.882Z",
+    "lastAttemptAt": "2025-10-13T22:11:00.885Z",
+    "attemptCount": 2,
+    "errorType": "timeout",
+    "isTemporary": true
+  },
+  "www.bonappetit.com": {
+    "domain": "www.bonappetit.com",
+    "url": "https://www.bonappetit.com/recipe/pasta-aglio-e-olio",
+    "reason": "All scraping methods failed. Last error: Domain www.bonappetit.com is blocked due to excessive errors. Skipping.",
+    "firstFailedAt": "2025-10-13T22:11:27.060Z",
+    "lastAttemptAt": "2025-10-13T22:11:27.061Z",
+    "attemptCount": 2,
+    "errorType": "other",
+    "isTemporary": true
+  },
+  "food52.com": {
+    "domain": "food52.com",
+    "url": "https://food52.com/recipes/52720-julia-turshen-s-one-pan-roast-chicken",
+    "reason": "All scraping methods failed. Last error: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://food52.com/recipes/52720-julia-turshen-s-one-pan-roast-chicken\", waiting until \"networkidle\"\u001b[22m\n",
+    "firstFailedAt": "2025-10-13T22:12:29.228Z",
+    "lastAttemptAt": "2025-10-13T22:12:29.229Z",
+    "attemptCount": 2,
+    "errorType": "timeout",
+    "isTemporary": true
+  },
+  "www.thekitchn.com": {
+    "domain": "www.thekitchn.com",
+    "url": "https://www.thekitchn.com/how-to-make-scrambled-eggs-cooking-lessons-from-the-kitchn-107999",
+    "reason": "All scraping methods failed. Last error: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.thekitchn.com/how-to-make-scrambled-eggs-cooking-lessons-from-the-kitchn-107999\", waiting until \"networkidle\"\u001b[22m\n",
+    "firstFailedAt": "2025-10-13T22:13:17.846Z",
+    "lastAttemptAt": "2025-10-13T22:13:17.848Z",
+    "attemptCount": 2,
+    "errorType": "timeout",
+    "isTemporary": true
+  },
+  "www.budgetbytes.com": {
+    "domain": "www.budgetbytes.com",
+    "url": "https://www.budgetbytes.com/basic-beans-and-rice/",
+    "reason": "All scraping methods failed. Last error: Domain www.budgetbytes.com is blocked due to excessive errors. Skipping.",
+    "firstFailedAt": "2025-10-13T22:13:51.562Z",
+    "lastAttemptAt": "2025-10-13T22:13:51.562Z",
+    "attemptCount": 2,
+    "errorType": "other",
+    "isTemporary": true
+  },
+  "www.delish.com": {
+    "domain": "www.delish.com",
+    "url": "https://www.delish.com/cooking/recipe-ideas/a19660089/easy-pancake-recipe/",
+    "reason": "All scraping methods failed. Last error: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('h1') to be visible\u001b[22m\n",
+    "firstFailedAt": "2025-10-13T22:14:24.087Z",
+    "lastAttemptAt": "2025-10-13T22:14:24.087Z",
+    "attemptCount": 2,
+    "errorType": "timeout",
+    "isTemporary": true
+  },
+  "www.marthastewart.com": {
+    "domain": "www.marthastewart.com",
+    "url": "https://www.marthastewart.com/338186/marthas-apple-pie",
+    "reason": "All scraping methods failed. Last error: page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('h1') to be visible\u001b[22m\n",
+    "firstFailedAt": "2025-10-13T22:14:54.664Z",
+    "lastAttemptAt": "2025-10-13T22:14:54.665Z",
+    "attemptCount": 2,
+    "errorType": "timeout",
+    "isTemporary": true
+  },
+  "www.youtube.com": {
+    "domain": "www.youtube.com",
+    "url": "https://www.youtube.com/watch?v=PUP7U5vTMM0",
+    "reason": "YouTube scraping failed: Failed to fetch YouTube metadata",
+    "firstFailedAt": "2025-10-13T22:14:56.025Z",
+    "lastAttemptAt": "2025-10-13T22:14:56.025Z",
+    "attemptCount": 1,
+    "errorType": "other",
+    "isTemporary": true
+  }
+}

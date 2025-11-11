@@ -1,0 +1,417 @@
+
+> supabase-recipe-scraper@1.0.0 test:universal /Users/orensegal/Documents/GitHub/typescript_scraper_service
+> npx tsx test-universal-scraper.ts
+
+🔗 Initializing master ingredients table...
+✅ Master ingredients table initialized with 32 ingredients
+🧪 TESTING UNIVERSAL RECIPE SCRAPER
+
+================================================================================
+
+TEST 1: Regular Recipe Websites
+--------------------------------------------------------------------------------
+
+🔍 Testing [WEBSITE]: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+🔍 Detected content type: website
+ℹ️ Redis disabled - using memory cache only
+❌ Cache MISS: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+
+🎯 MULTI-SOURCE AGGREGATION for: "12151"
+   URL: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "12151"
+   Trying 1 variations: [12151]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=12151
+⚠️  No recipes found in TheMealDB
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: 12151
+⚠️  No recipes found in RecipePuppy
+🌐 Wikidata SPARQL query: 12151
+⚠️  No recipes found in Wikidata
+🔌 Connected to HowToCook MCP server
+🔌 Connected to MCP-Cook server
+🌐 DummyJSON API request: fetching all recipes
+✅ Found 50 recipes from DummyJSON
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+🔍 Starting robust scraping for: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+  🔄 Attempting method: json-ld
+📋 Loaded 3 blocked sites from registry
+🔄 Retrying in 972ms...
+  ⏳ Retry 1/3 after error: Failed to fetch URL (404): Not Found
+🔄 Retrying in 999ms...
+  ⏳ Retry 2/3 after error: Failed to fetch URL (404): Not Found
+🔄 Retrying in 843ms...
+  ❌ json-ld failed: Failed to fetch URL (404): Not Found
+  🔄 Attempting method: microdata
+⏳ Rate limiting for www.allrecipes.com: waiting 830ms
+🔄 Retrying in 976ms...
+  ⏳ Retry 1/3 after error: Failed to fetch URL (404): Not Found
+🔄 Retrying in 981ms...
+  ⏳ Retry 2/3 after error: Failed to fetch URL (404): Not Found
+  ❌ microdata failed: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  🔄 Attempting method: site-specific
+  ⏳ Retry 1/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ⏳ Retry 2/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ❌ site-specific failed: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  🔄 Attempting method: generic
+  ⏳ Retry 1/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ⏳ Retry 2/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ❌ generic failed: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  🔄 Attempting method: playwright
+  🎭 Launching Playwright browser with stealth mode...
+  ⏳ Retry 1/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ⏳ Retry 2/3 after error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+  ❌ playwright failed: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+   ❌ Web Scraping failed: All scraping methods failed. Last error: Domain www.allrecipes.com is blocked due to excessive errors. Skipping.
+
+🔍 DEDUPLICATION CHECK (0 results)
+   ✅ No duplicates found - all 0 sources are unique
+🌐 Final fallback: direct web scraping...
+🚫 Website is blocked due to repeated failures: https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+
+🔍 Testing [WEBSITE]: https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-rec...
+🔍 Detected content type: website
+❌ Cache MISS: https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524
+
+🎯 MULTI-SOURCE AGGREGATION for: "alton brown"
+   URL: https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "alton brown"
+   Trying 1 variations: [alton brown]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=alton%20brown
+⚠️  No recipes found in TheMealDB
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: alton brown
+⚠️  No recipes found in RecipePuppy
+🌐 Wikidata SPARQL query: alton brown
+⚠️  No recipes found in Wikidata
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524
+🔍 Starting robust scraping for: https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524
+  🔄 Attempting method: json-ld
+✅ Successfully fetched https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524 (attempt 1)
+  ✅ Success with json-ld (confidence: 96%)
+   ✅ Web Scraping: 75% complete (json-ld)
+
+🔍 DEDUPLICATION CHECK (1 results)
+   ✅ No duplicates found - all 1 sources are unique
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 75% complete, 96% confidence
+   📚 Sources used: web-scraping
+✅ SUCCESS (1524ms)
+   Content Type: website
+   Method: multi-source-web-scraping
+   Confidence: 96%
+   Extraction Methods: [web-scraping]
+   Title: Baked Macaroni and Cheese
+   Ingredients: 14
+   Instructions: 6
+
+
+TEST 2: TikTok Videos
+--------------------------------------------------------------------------------
+⚠️  Note: TikTok scraping requires valid video URLs
+
+🔍 Testing [TIKTOK]: https://www.tiktok.com/@cooking/video/7123456789012345678
+🔍 Detected content type: tiktok
+❌ Cache MISS: https://www.tiktok.com/@cooking/video/7123456789012345678
+🎵 Scraping TikTok video with enhanced scraper...
+
+🎥 Scraping video recipe: https://www.tiktok.com/@cooking/video/7123456789012345678
+📍 Platform: tiktok
+
+
+TEST 3: Instagram Posts
+--------------------------------------------------------------------------------
+⚠️  Note: Instagram scraping requires valid post URLs
+
+🔍 Testing [INSTAGRAM]: https://www.instagram.com/p/ABC123XYZ/
+🔍 Detected content type: instagram
+❌ Cache MISS: https://www.instagram.com/p/ABC123XYZ/
+📸 Scraping Instagram post with enhanced scraper...
+
+🎥 Scraping video recipe: https://www.instagram.com/p/ABC123XYZ/
+📍 Platform: instagram
+📋 Video: Instagram Recipe by Unknown
+📝 Extracting content from instagram video...
+🎤 Extracting audio transcript...
+🎤 Transcribing audio...
+   Provider: whisper
+   Language: en-US
+   Downloading media...
+   Extracting audio...
+👁️  Extracting text from video frames (OCR)...
+🧠 Parsing recipe from extracted content...
+📄 Combined text: 16 characters
+
+🍽️  Enriching recipe with nutrition: Instagram
+✅ Successfully scraped recipe: Instagram
+✅ SUCCESS (2468ms)
+   Content Type: instagram
+   Method: enhanced-video-nlp
+   Confidence: 65%
+   Extraction Methods: [nlp-parsing, image-ocr, video-ocr, nutrition-enrichment]
+   Title: Instagram
+   Ingredients: 0
+   Instructions: 0
+   Images: 0
+
+
+TEST 4: YouTube Videos
+--------------------------------------------------------------------------------
+
+🔍 Testing [YOUTUBE]: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+🔍 Detected content type: youtube
+❌ Cache MISS: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+🎬 Scraping YouTube video with enhanced scraper...
+
+🎥 Scraping video recipe: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+📍 Platform: youtube
+📋 Video: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster) by Rick Astley
+📝 Extracting content from youtube video...
+🎤 Extracting audio transcript...
+ℹ️  YouTube caption extraction not implemented, using audio transcription
+🎤 Transcribing audio...
+   Provider: whisper
+   Language: en-US
+   Downloading media...
+   Extracting audio...
+👁️  Extracting text from video frames (OCR)...
+🧠 Parsing recipe from extracted content...
+📄 Combined text: 68 characters
+
+🍽️  Enriching recipe with nutrition: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+📋 Processing 1 ingredients...
+🔍 Processing ingredient: "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)"
+📊 Parse-ingredient result: [
+  {
+    "quantity": null,
+    "quantity2": null,
+    "unitOfMeasureID": null,
+    "unitOfMeasure": null,
+    "description": "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)",
+    "isGroupHeader": false
+  }
+]
+🆕 Created fallback master ingredient: "rick astley -" (ID: c08357707b96)
+🔗 Successfully linked "Rick Astley -" to master ingredient (fallback, confidence: 0.30)
+✅ Parsed ingredient with robust linking: {
+  name: 'Rick Astley -',
+  linked: true,
+  master_id: 'c08357707b96',
+  method: 'fallback'
+}
+✅ Processed 0/1 ingredients
+✅ Found nutrition data for 0/0 ingredients
+📊 Per serving (1 servings): { calories: 0, protein: 0, fat: 0, carbs: 0 }
+✅ Successfully scraped recipe: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+✅ SUCCESS (2688ms)
+   Content Type: youtube
+   Method: enhanced-video-nlp
+   Confidence: 65%
+   Extraction Methods: [nlp-parsing, youtube-captions, audio-transcript, nutrition-enrichment]
+   Title: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+   Ingredients: 1
+   Instructions: 0
+   Video URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+   Images: 1
+
+🔍 Testing [YOUTUBE]: https://youtu.be/dQw4w9WgXcQ
+🔍 Detected content type: youtube
+❌ Cache MISS: https://youtu.be/dQw4w9WgXcQ
+🎬 Scraping YouTube video with enhanced scraper...
+
+🎥 Scraping video recipe: https://youtu.be/dQw4w9WgXcQ
+📍 Platform: youtube
+📋 Video: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster) by Rick Astley
+📝 Extracting content from youtube video...
+🎤 Extracting audio transcript...
+ℹ️  YouTube caption extraction not implemented, using audio transcription
+🎤 Transcribing audio...
+   Provider: whisper
+   Language: en-US
+   Downloading media...
+   Extracting audio...
+👁️  Extracting text from video frames (OCR)...
+🧠 Parsing recipe from extracted content...
+📄 Combined text: 68 characters
+
+🍽️  Enriching recipe with nutrition: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+📋 Processing 1 ingredients...
+🔍 Processing ingredient: "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)"
+📊 Parse-ingredient result: [
+  {
+    "quantity": null,
+    "quantity2": null,
+    "unitOfMeasureID": null,
+    "unitOfMeasure": null,
+    "description": "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)",
+    "isGroupHeader": false
+  }
+]
+🔗 Successfully linked "Rick Astley -" to master ingredient (fallback, confidence: 0.30)
+✅ Parsed ingredient with robust linking: {
+  name: 'Rick Astley -',
+  linked: true,
+  master_id: 'c08357707b96',
+  method: 'fallback'
+}
+✅ Processed 0/1 ingredients
+✅ Found nutrition data for 0/0 ingredients
+📊 Per serving (1 servings): { calories: 0, protein: 0, fat: 0, carbs: 0 }
+✅ Successfully scraped recipe: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+✅ SUCCESS (2659ms)
+   Content Type: youtube
+   Method: enhanced-video-nlp
+   Confidence: 65%
+   Extraction Methods: [nlp-parsing, youtube-captions, audio-transcript, nutrition-enrichment]
+   Title: Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)
+   Ingredients: 1
+   Instructions: 0
+   Video URL: https://youtu.be/dQw4w9WgXcQ
+   Images: 1
+
+
+TEST 5: Plain Text Parsing
+--------------------------------------------------------------------------------
+
+🔍 Testing [TEXT]: Chocolate Chip Cookies Recipe
+
+A classic homemade cookie recipe perfect for a...
+🔍 Detected content type: text
+❌ Cache MISS: Chocolate Chip Cookies Recipe
+
+A classic homemade cookie recipe perfect for any occasion.
+
+Ingredients:
+- 2 cups all-purpose flour
+- 1 cup butter, softened
+- 3/4 cup sugar
+- 2 eggs
+- 1 tsp vanilla extract
+- 1 tsp baking soda
+- 2 cups chocolate chips
+
+Instructions:
+1. Preheat oven to 375°F
+2. Mix butter and sugar until creamy
+3. Add eggs and vanilla, beat well
+4. Combine dry ingredients in separate bowl
+5. Mix wet and dry ingredients
+6. Fold in chocolate chips
+7. Drop spoonfuls onto baking sheet
+8. Bake for 10-12 minutes until golden
+
+Serves: 24 cookies
+Prep time: 15 minutes
+Cook time: 12 minutes
+📝 Parsing recipe from text...
+🧠 Parsing recipe from text using NLP...
+✅ SUCCESS (3ms)
+   Content Type: text
+   Method: text-parsing
+   Confidence: 65%
+   Extraction Methods: [nlp-parsing]
+   Title: Chocolate Chip Cookies
+   Ingredients: 15
+   Instructions: 8
+
+
+================================================================================
+📊 TEST SUMMARY
+
+Total Tests: 7
+✅ Success: 5
+❌ Failed: 2
+⏭️  Skipped: 0
+
+Success Rate: 71.4%
+================================================================================
+
+
+================================================================================
+🔬 TESTING SPECIFIC FEATURES
+
+================================================================================
+
+TEST: Content Type Detection
+--------------------------------------------------------------------------------
+  https://allrecipes.com/recipe/123... → expecting: website
+  https://www.tiktok.com/@user/video/123... → expecting: tiktok
+  https://instagram.com/p/ABC/... → expecting: instagram
+  https://youtube.com/watch?v=ABC... → expecting: youtube
+  https://example.com/image.jpg... → expecting: image
+  https://example.com/recipe.pdf... → expecting: pdf
+  Just plain text here... → expecting: text
+
+
+TEST: NLP Recipe Parsing Quality
+--------------------------------------------------------------------------------
+🔍 Detected content type: text
+❌ Cache MISS: 
+Easy Pancakes
+
+These fluffy pancakes are perfect for breakfast!
+
+You'll need:
+- 2 cups flour
+- 2 tablespoons sugar
+- 2 teaspoons baking powder
+- 1 cup milk
+- 2 eggs
+- 2 tablespoons melted butter
+
+Steps:
+1. Mix dry ingredients in a bowl
+2. In another bowl, whisk milk, eggs, and butter
+3. Combine wet and dry ingredients
+4. Heat griddle to 350°F
+5. Pour 1/4 cup batter for each pancake
+6. Cook until bubbles form, then flip
+7. Cook until golden brown
+
+Makes 12 pancakes. Takes about 20 minutes.
+  
+📝 Parsing recipe from text...
+🧠 Parsing recipe from text using NLP...
+✅ NLP Parsing Results:
+   Title: Easy Pancakes
+   Description: These fluffy pancakes are perfect for breakfast!
+   Ingredients Found: 13
+   Instructions Found: 7
+   Servings: 12
+   Confidence: 70%
+
+   Sample Ingredients:
+     1. 2 cups flour
+     2. 2 tablespoons sugar
+     3. 2 teaspoons baking powder
+
+   Sample Instructions:
+     1. Mix dry ingredients in a bowl
+     2. In another bowl, whisk milk, eggs, and butter
+     3. Combine wet and dry ingredients
+
+================================================================================
+
+
+🎉 ALL TESTS COMPLETE!
+
+The Universal Recipe Scraper is ready to handle:
+  ✅ Regular recipe websites (JSON-LD, Microdata, HTML)
+  ✅ TikTok videos (metadata + OCR + transcription)
+  ✅ Instagram posts/reels (metadata + OCR)
+  ✅ YouTube videos (metadata + transcript + description)
+  ✅ Images (OCR with Google Vision + Tesseract fallback)
+  ✅ Plain text (NLP parsing)
+  ✅ PDFs (text extraction)
+  ✅ Twitter/Facebook posts
+
+================================================================================
+ ELIFECYCLE  Command failed with exit code 1.

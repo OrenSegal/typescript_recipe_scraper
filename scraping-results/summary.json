@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-10-13T06:36:00.205Z",
+  "mode": "sample",
+  "results": [
+    {
+      "url": "https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524",
+      "contentType": "website",
+      "success": true,
+      "processingTime": 1467,
+      "confidence": 96
+    },
+    {
+      "url": "https://www.seriouseats.com/the-food-lab-best-chocolate-chip-cookie-recipe",
+      "contentType": "website",
+      "success": true,
+      "processingTime": 1467,
+      "confidence": 100
+    },
+    {
+      "url": "https://www.bonappetit.com/recipe/chocolate-chip-cookies",
+      "contentType": "website",
+      "success": true,
+      "processingTime": 1634,
+      "confidence": 95
+    },
+    {
+      "url": "https://www.epicurious.com/recipes/food/views/perfect-chocolate-cake",
+      "contentType": "unknown",
+      "success": false,
+      "error": "All scraping methods failed. Last error: browserType.launch: Executable doesn't exist at /Users/orensegal/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
+      "processingTime": 21572
+    },
+    {
+      "url": "https://www.allrecipes.com/recipe/12151/banana-banana-bread/",
+      "contentType": "unknown",
+      "success": false,
+      "error": "All scraping methods failed. Last error: browserType.launch: Executable doesn't exist at /Users/orensegal/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
+      "processingTime": 21577
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "supabase-functions-workspace",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.42.0",
+    "cheerio": "^1.0.0-rc.12",
+    "play-dl": "^1.9.7",
+    "youtube-transcript": "^1.2.1"
+  }
+}

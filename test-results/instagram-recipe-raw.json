@@ -1,0 +1,25 @@
+{
+  "title": "Creamy Garlic Parmesan Pasta",
+  "description": "Quick and delicious creamy pasta with garlic and parmesan cheese. Perfect for weeknight dinners!",
+  "ingredients": [
+    "8 oz fettuccine pasta",
+    "2 tablespoons butter",
+    "4 cloves garlic, minced",
+    "1 cup heavy cream",
+    "1 cup grated parmesan cheese",
+    "Salt and pepper to taste",
+    "Fresh parsley for garnish"
+  ],
+  "instructions": [
+    "Boil pasta according to package directions until al dente.",
+    "While pasta cooks, melt butter in a large skillet over medium heat.",
+    "Add minced garlic and cook until fragrant, about 30 seconds.",
+    "Pour in heavy cream and bring to a simmer.",
+    "Reduce heat and stir in parmesan cheese until melted and sauce is smooth.",
+    "Season with salt and pepper to taste.",
+    "Drain pasta and add to the sauce, tossing to coat.",
+    "Serve garnished with fresh parsley and additional parmesan if desired."
+  ],
+  "image_url": "https://example.com/pasta-image.jpg",
+  "source_url": "https://www.instagram.com/reel/sample-id/"
+}

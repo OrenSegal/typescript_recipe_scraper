@@ -1,0 +1,3210 @@
+{
+  "totalFiles": 267,
+  "safeToRemove": [
+    {
+      "path": "src/test/test-data.ts",
+      "size": 13492,
+      "lastModified": "2025-08-06T16:30:41.850Z",
+      "type": "test",
+      "redundancyRisk": "safe",
+      "reason": "Matches safe removal pattern",
+      "dependencies": []
+    },
+    {
+      "path": "src/tests/test-social-recipes.ts",
+      "size": 5561,
+      "lastModified": "2025-08-06T16:30:41.846Z",
+      "type": "test",
+      "redundancyRisk": "safe",
+      "reason": "Matches safe removal pattern",
+      "dependencies": [
+        "../scrapers/SocialMediaScraper.js",
+        "../core/StreamlinedWorkflow.js",
+        "../core/RecipeProcessor.js",
+        "../core/RecipeProcessor.js",
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "test-ocr-integration.ts",
+      "size": 11075,
+      "lastModified": "2025-08-07T06:00:30.739Z",
+      "type": "test",
+      "redundancyRisk": "safe",
+      "reason": "Matches safe removal pattern",
+      "dependencies": [
+        "./src/enrichment/videoOCRProcessor.js",
+        "./src/scrapers/SocialMediaScraper.js",
+        "fs",
+        "path"
+      ]
+    }
+  ],
+  "requiresReview": [
+    {
+      "path": ".gitignore",
+      "size": 2055,
+      "lastModified": "2025-07-10T21:59:29.000Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": ".npmrc",
+      "size": 41,
+      "lastModified": "2025-08-06T03:58:22.425Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "CONSOLIDATION_PLAN.md",
+      "size": 4851,
+      "lastModified": "2025-08-06T15:49:19.899Z",
+      "type": "documentation",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "cleanup-codebase.ts",
+      "size": 10194,
+      "lastModified": "2025-08-06T16:30:41.666Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "deep-research-spec.md",
+      "size": 24334,
+      "lastModified": "2025-07-28T23:17:30.424Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod",
+        "playwright",
+        "./recipe.types.js",
+        "playwright",
+        "../types/scraping.types.js",
+        "node-html-parser",
+        "../types/recipe.types.js",
+        "parse-ingredient",
+        "recipes-parser",
+        "../types/recipe.types.js",
+        "openai",
+        "../types/recipe.types.js",
+        "../types/recipe.types.js",
+        "../types/scraping.types.js",
+        "./page-controller.js",
+        "../parsing/structured-data-extractor.js",
+        "../parsing/ingredient-parser.js",
+        "../enhancement/llm-enhancer.js",
+        "../types/recipe.types.js",
+        "vitest/config",
+        "vitest",
+        "../src/scraping/recipe-scraper.js",
+        "../src/types/scraping.types.js",
+        "./scraping/recipe-scraper.js",
+        "./types/scraping.types.js",
+        "fs",
+        "path",
+        "recipes-parser/lib/nlp/en/units.json",
+        "recipes-parser/lib/nlp/en/global_unit.json"
+      ]
+    },
+    {
+      "path": "demonstrate-85-percent-success.ts",
+      "size": 5263,
+      "lastModified": "2025-08-06T22:32:29.992Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./src/optimizations/SuccessRateOptimizer.js"
+      ]
+    },
+    {
+      "path": "digest.txt",
+      "size": 368303,
+      "lastModified": "2025-07-25T20:08:32.407Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./models.js",
+        "./models.js",
+        "@supabase/supabase-js",
+        "../uuid.js",
+        "../models.js",
+        "../types.js",
+        "../supabaseClient.js",
+        "../utils/nutritionService.js",
+        "../utils/gemmaService.js",
+        "../services/healthGradeService.js",
+        "../utils/miscUtils.js",
+        "../utils/timeUtils.ts",
+        "../services/scrapers/websiteScraper.ts",
+        "../services/scrapers/youtubeScraper.ts",
+        "../services/scrapers/socialScraper.ts",
+        "../utils/networkUtils.ts",
+        "../supabaseClient.ts",
+        "../models.ts",
+        "../models.ts",
+        "./Ingredient.js",
+        "./Instruction.js",
+        "./Nutrition.js",
+        "child_process",
+        "util",
+        "../utils/nlpUtils.js",
+        "./websiteScraper.js",
+        "../../types.ts",
+        "./websiteScraper.ts",
+        "child_process",
+        "util",
+        "../utils/nlpUtils.js",
+        "./websiteScraper.js",
+        "cheerio",
+        "../../types.ts",
+        "../../types.ts",
+        "play-dl",
+        "youtube-transcript",
+        "../utils/nlpUtils.js",
+        "./websiteScraper.js",
+        "../supabaseClient.ts",
+        "../models.ts",
+        "@google/generative-ai",
+        "../utils/timeUtils",
+        "../models",
+        "../supabaseClient.ts",
+        "../types.ts",
+        "axios",
+        "../config/index.js",
+        "../models/Nutrition.js",
+        "../models/Ingredient.js",
+        "https://deno.land/std@0.192.0/http/server.ts",
+        "../_shared/supabaseClient",
+        "https://deno.land/std@0.192.0/http/server.ts",
+        "@shared/...",
+        "../_shared/core/processor.js",
+        "../_shared/services/databaseService.js",
+        "../_shared/types.js",
+        "../src/utils/networkUtils.js",
+        "../src/config/index.js",
+        "dotenv",
+        "path"
+      ]
+    },
+    {
+      "path": "docker-compose.yml",
+      "size": 867,
+      "lastModified": "2025-08-07T17:48:42.589Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "docs/CLI_API_REFERENCE.md",
+      "size": 14261,
+      "lastModified": "2025-08-07T18:34:44.739Z",
+      "type": "documentation",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "gemini-embedding.md",
+      "size": 9745,
+      "lastModified": "2025-07-28T22:56:39.760Z",
+      "type": "documentation",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "@google/genai",
+        "@google/genai",
+        "@google/genai",
+        "compute-cosine-similarity",
+        "@google/genai"
+      ]
+    },
+    {
+      "path": "mark-for-deletion.ts",
+      "size": 5679,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "package-lock.json",
+      "size": 399240,
+      "lastModified": "2025-08-07T17:28:42.660Z",
+      "type": "config",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "node:util"
+      ]
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "size": 230280,
+      "lastModified": "2025-08-07T18:45:49.805Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "node:util"
+      ]
+    },
+    {
+      "path": "recipe-parsing-specification.js",
+      "size": 4432,
+      "lastModified": "2025-08-06T23:15:15.535Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod"
+      ]
+    },
+    {
+      "path": "recipe-parsing-specification.ts",
+      "size": 6155,
+      "lastModified": "2025-08-06T16:30:41.666Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod"
+      ]
+    },
+    {
+      "path": "recipe_schema_documentation.md",
+      "size": 20947,
+      "lastModified": "2025-07-28T04:07:03.961Z",
+      "type": "documentation",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod"
+      ]
+    },
+    {
+      "path": "reports/comprehensive-failure-analysis-2025-08-06.md",
+      "size": 7010,
+      "lastModified": "2025-08-06T22:08:47.812Z",
+      "type": "documentation",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "results/enhanced_qa_log.json",
+      "size": 8272818,
+      "lastModified": "2025-08-07T04:45:45.699Z",
+      "type": "config",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "run-comprehensive-optimization.ts",
+      "size": 6355,
+      "lastModified": "2025-08-06T22:38:01.687Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./src/optimizations/SuccessRateOptimizer.js",
+        "./src/enhanced-csv-scraper.js"
+      ]
+    },
+    {
+      "path": "scrape-batch-websites.ts",
+      "size": 14978,
+      "lastModified": "2025-08-07T03:40:30.483Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./src/enhanced-csv-scraper.js",
+        "fs/promises",
+        "fs"
+      ]
+    },
+    {
+      "path": "scrape-media-account.ts",
+      "size": 15653,
+      "lastModified": "2025-08-07T03:16:35.339Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "child_process",
+        "util",
+        "./scrape-single-media.js",
+        "fs/promises"
+      ]
+    },
+    {
+      "path": "scrape-single-media.ts",
+      "size": 18445,
+      "lastModified": "2025-08-07T17:51:53.053Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "child_process",
+        "util",
+        "./src/enrichment/comprehensiveEnrichment.js",
+        "./src/database.js",
+        "./src/scrapers/websiteScraper.js",
+        "./src/core/RecipeProcessor.js"
+      ]
+    },
+    {
+      "path": "scrape-single-recipe.ts",
+      "size": 5264,
+      "lastModified": "2025-08-07T03:05:44.661Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./src/scrapers/websiteScraper.js",
+        "./src/enrichment/comprehensiveEnrichment.js",
+        "./src/database.js"
+      ]
+    },
+    {
+      "path": "scrape-single-website.ts",
+      "size": 8032,
+      "lastModified": "2025-08-07T03:08:41.082Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./src/crawler/SitemapCrawler.js",
+        "./src/processor/BatchRecipeProcessor.js",
+        "./src/optimizations/SuccessRateOptimizer.js",
+        "fs/promises",
+        "./src/manager/WebsiteManager.js"
+      ]
+    },
+    {
+      "path": "specifcation.md",
+      "size": 34127,
+      "lastModified": "2025-07-28T19:41:55.988Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod",
+        "@supabase/supabase-js",
+        "./config",
+        "./types",
+        "cheerio",
+        "node-fetch",
+        "../types",
+        "https://deno.land/std@0.168.0/http/server.ts",
+        "../src/scrapers/websiteScraper.ts",
+        "../src/database.ts",
+        "../src/types.ts"
+      ]
+    },
+    {
+      "path": "src/crawler/SitemapCrawler.js",
+      "size": 24674,
+      "lastModified": "2025-08-06T23:15:15.610Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "node-fetch",
+        "fast-xml-parser",
+        "p-limit",
+        "node-abort-controller",
+        "zlib"
+      ]
+    },
+    {
+      "path": "src/enhanced-csv-scraper.js",
+      "size": 24293,
+      "lastModified": "2025-08-06T23:15:15.615Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "fs/promises",
+        "path",
+        "url",
+        "./manager/WebsiteManager.js",
+        "./processor/BatchRecipeProcessor.js",
+        "./crawler/SitemapCrawler.js",
+        "./analyzer/QAAnalyzer.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/atomicInstructionParser.js",
+      "size": 15811,
+      "lastModified": "2025-08-06T23:15:15.579Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "compromise",
+        "../../recipe-parsing-specification.js",
+        "./comprehensiveEquipmentDatabase.js",
+        "./comprehensiveIngredientDatabase.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/comprehensiveDietAnalyzer.js",
+      "size": 13117,
+      "lastModified": "2025-08-06T23:15:15.581Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/comprehensiveEnrichment.js",
+      "size": 29044,
+      "lastModified": "2025-08-06T23:15:15.594Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./atomicInstructionParser.js",
+        "./comprehensiveDietAnalyzer.js",
+        "./ingredientParser.js",
+        "./cookingMethodExtractor.js",
+        "./smartCategorization.js",
+        "./nutritionEnrichment.js",
+        "./alternativeEmbeddingGenerator.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/comprehensiveEquipmentDatabase.js",
+      "size": 18387,
+      "lastModified": "2025-08-06T23:15:15.565Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/comprehensiveIngredientDatabase.js",
+      "size": 15731,
+      "lastModified": "2025-08-06T23:15:15.542Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/cookingMethodExtractor.js",
+      "size": 6809,
+      "lastModified": "2025-08-06T23:15:15.583Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/ingredientParser.js",
+      "size": 47143,
+      "lastModified": "2025-08-06T23:15:15.556Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "parse-ingredient",
+        "js-quantities",
+        "./comprehensiveIngredientDatabase.js",
+        "compromise"
+      ]
+    },
+    {
+      "path": "src/enrichment/instructionParser.js",
+      "size": 15978,
+      "lastModified": "2025-08-06T23:15:15.568Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "../utils/dataQualityLogger.js",
+        "../utils/robustExtractor.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/nutritionEnrichment.js",
+      "size": 3753,
+      "lastModified": "2025-08-06T23:15:15.586Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./ingredientParser.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/productionNERParser.js",
+      "size": 11513,
+      "lastModified": "2025-08-06T23:15:15.545Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "./ingredientParser.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/smartCategorization.js",
+      "size": 11987,
+      "lastModified": "2025-08-06T23:15:15.585Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/logs/scraping-failures-2025-08-05T04-03-34-246Z.json",
+      "size": 21933,
+      "lastModified": "2025-08-05T04:04:07.941Z",
+      "type": "config",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/logs/scraping-failures-2025-08-05T04-06-57-221Z.json",
+      "size": 8600,
+      "lastModified": "2025-08-05T04:07:04.775Z",
+      "type": "config",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "src/manager/WebsiteManager.js",
+      "size": 5124,
+      "lastModified": "2025-08-06T23:15:15.532Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "fs",
+        "path",
+        "csv-parse/sync",
+        "zod"
+      ]
+    },
+    {
+      "path": "src/scrapers/websiteScraper.js",
+      "size": 39670,
+      "lastModified": "2025-08-06T23:15:15.602Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "cheerio",
+        "../enrichment/ingredientParser.js",
+        "../enrichment/instructionParser.js",
+        "../validation/recipeValidator.js",
+        "../enrichment/comprehensiveEnrichment.js",
+        "../enrichment/nutritionEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/types.js",
+      "size": 7006,
+      "lastModified": "2025-08-06T23:15:15.538Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod",
+        "../recipe-parsing-specification.js"
+      ]
+    },
+    {
+      "path": "src/utils/robustExtractor.js",
+      "size": 9769,
+      "lastModified": "2025-08-06T23:15:15.560Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "compromise",
+        "./dataQualityLogger.js"
+      ]
+    },
+    {
+      "path": "src/validation/recipeValidator.js",
+      "size": 22311,
+      "lastModified": "2025-08-06T23:15:15.576Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "zod",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "supabase/.branches/_current_branch",
+      "size": 4,
+      "lastModified": "2025-08-04T22:54:21.630Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/cli-latest",
+      "size": 7,
+      "lastModified": "2025-08-04T21:27:29.499Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/gotrue-version",
+      "size": 8,
+      "lastModified": "2025-07-20T01:26:05.140Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/postgres-version",
+      "size": 10,
+      "lastModified": "2025-07-20T01:26:04.803Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/project-ref",
+      "size": 20,
+      "lastModified": "2025-07-20T01:26:06.510Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/rest-version",
+      "size": 7,
+      "lastModified": "2025-07-20T01:26:05.178Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/databaseService.ts",
+      "size": 4098,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "../supabaseClient.ts",
+        "../models.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/models/Instruction.ts",
+      "size": 637,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/scrapers/instagramScraper.ts",
+      "size": 6387,
+      "lastModified": "2025-08-07T02:51:27.101Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "child_process",
+        "util",
+        "../../types.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/scrapers/tiktokScraper.ts",
+      "size": 5044,
+      "lastModified": "2025-08-07T02:32:34.663Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "child_process",
+        "util",
+        "../../types.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/scrapers/youtubeScraper.ts",
+      "size": 8252,
+      "lastModified": "2025-08-07T02:53:39.518Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "child_process",
+        "util",
+        "../../types.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/utils/nutritionService.ts",
+      "size": 18006,
+      "lastModified": "2025-08-07T17:01:04.680Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "axios",
+        "../services/models/Nutrition",
+        "../services/models/Ingredient",
+        "process"
+      ]
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/index.ts",
+      "size": 24765,
+      "lastModified": "2025-08-05T02:36:39.947Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": [
+        "https://deno.land/std@0.192.0/http/server.ts",
+        "https://deno.land/x/deno_dom@v0.1.43/deno-dom-wasm.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/supabase/.branches/_current_branch",
+      "size": 4,
+      "lastModified": "2025-07-20T19:47:56.472Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/supabase/.temp/cli-latest",
+      "size": 7,
+      "lastModified": "2025-07-20T19:49:04.363Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/supabase/.branches/_current_branch",
+      "size": 4,
+      "lastModified": "2025-07-20T20:02:04.528Z",
+      "type": "source",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/supabase/.temp/cli-latest",
+      "size": 7,
+      "lastModified": "2025-07-20T20:02:25.794Z",
+      "type": "test",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/supabase/config.toml",
+      "size": 25,
+      "lastModified": "2025-07-20T23:56:25.952Z",
+      "type": "config",
+      "redundancyRisk": "review",
+      "reason": "File may be redundant or incomplete",
+      "dependencies": []
+    }
+  ],
+  "mustKeep": [
+    {
+      "path": ".dockerignore",
+      "size": 155,
+      "lastModified": "2025-08-07T17:48:31.574Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": ".env",
+      "size": 1124,
+      "lastModified": "2025-07-28T23:21:29.682Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": ".eslintrc.js",
+      "size": 289,
+      "lastModified": "2025-07-10T21:59:29.000Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": ".github/workflows/ci-cd.yml",
+      "size": 1626,
+      "lastModified": "2025-07-28T00:48:35.874Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": ".prettierrc.js",
+      "size": 115,
+      "lastModified": "2025-07-10T21:59:29.000Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": ".vscode/settings.json",
+      "size": 428,
+      "lastModified": "2025-07-27T23:09:41.597Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "Dockerfile",
+      "size": 1130,
+      "lastModified": "2025-08-07T17:47:49.130Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "README.md",
+      "size": 10236,
+      "lastModified": "2025-08-07T17:48:54.612Z",
+      "type": "documentation",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "api/recipes.ts",
+      "size": 2968,
+      "lastModified": "2025-08-07T17:54:56.578Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "http",
+        "@supabase/supabase-js",
+        "dotenv"
+      ]
+    },
+    {
+      "path": "api/scrape.ts",
+      "size": 1892,
+      "lastModified": "2025-08-05T02:38:49.426Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "express",
+        "../src/scrapers/websiteScraper.js",
+        "../src/database.js"
+      ]
+    },
+    {
+      "path": "batch-final-report-1754536320684.json",
+      "size": 464,
+      "lastModified": "2025-08-07T03:12:00.687Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-final-report-1754536349934.json",
+      "size": 469,
+      "lastModified": "2025-08-07T03:12:29.938Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-final-report-1754536831030.json",
+      "size": 461,
+      "lastModified": "2025-08-07T03:20:31.033Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-final-report-1754542170688.json",
+      "size": 730,
+      "lastModified": "2025-08-07T04:49:30.692Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-progress-1754537122374.json",
+      "size": 408,
+      "lastModified": "2025-08-07T03:26:02.948Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-progress-1754537961646.json",
+      "size": 436,
+      "lastModified": "2025-08-07T03:39:57.409Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "batch-progress-1754538145353.json",
+      "size": 470,
+      "lastModified": "2025-08-07T04:49:30.680Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "build-functions.sh",
+      "size": 170,
+      "lastModified": "2025-07-25T20:06:56.060Z",
+      "type": "build",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "data/Data File.csv",
+      "size": 24706,
+      "lastModified": "2025-08-06T22:15:54.291Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "data/Data.csv",
+      "size": 25057,
+      "lastModified": "2025-08-07T02:18:50.199Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "data/comprehensive-recipe-websites.csv",
+      "size": 8685,
+      "lastModified": "2025-08-06T05:26:37.563Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "deno.lock",
+      "size": 6681,
+      "lastModified": "2025-07-28T02:09:25.066Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "deploy-to-supabase.js",
+      "size": 7728,
+      "lastModified": "2025-08-06T23:15:15.617Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./src/enhanced-csv-scraper.js",
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "deploy-to-supabase.ts",
+      "size": 7939,
+      "lastModified": "2025-08-06T23:00:09.804Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./src/enhanced-csv-scraper.js",
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "execute-deletion.ts",
+      "size": 2861,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "fs",
+        "path",
+        "glob"
+      ]
+    },
+    {
+      "path": "final-validation.ts",
+      "size": 3884,
+      "lastModified": "2025-08-07T17:58:55.709Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./src/enhanced-csv-scraper.js",
+        "./src/scrapers/websiteScraper.js"
+      ]
+    },
+    {
+      "path": "logs/data-quality-log.json",
+      "size": 41690,
+      "lastModified": "2025-08-05T18:38:17.265Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "package.json",
+      "size": 2759,
+      "lastModified": "2025-08-07T18:45:50.345Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "size": 109,
+      "lastModified": "2025-07-28T00:38:36.175Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "qa_log.json",
+      "size": 5370,
+      "lastModified": "2025-08-06T22:56:06.559Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "reports/FINAL-PROJECT-DOCUMENTATION.md",
+      "size": 11866,
+      "lastModified": "2025-08-06T22:25:18.514Z",
+      "type": "documentation",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "results/final_scraping_report.json",
+      "size": 35706,
+      "lastModified": "2025-08-07T02:19:02.221Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "simple-deploy.js",
+      "size": 4998,
+      "lastModified": "2025-08-06T22:54:13.534Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./src/manager/WebsiteManager.js",
+        "./src/processor/BatchRecipeProcessor.js",
+        "./src/crawler/SitemapCrawler.js",
+        "path",
+        "url"
+      ]
+    },
+    {
+      "path": "simple-deploy.ts",
+      "size": 5151,
+      "lastModified": "2025-08-06T22:52:02.235Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./src/manager/WebsiteManager.js",
+        "./src/processor/BatchRecipeProcessor.js",
+        "./src/crawler/SitemapCrawler.js",
+        "path",
+        "url"
+      ]
+    },
+    {
+      "path": "src/Data File 77625c59.csv",
+      "size": 39838,
+      "lastModified": "2025-08-05T03:46:07.840Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "src/analyzer/QAAnalyzer.js",
+      "size": 3858,
+      "lastModified": "2025-08-06T23:15:15.611Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/analyzer/QAAnalyzer.ts",
+      "size": 3989,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/api/routes/RecipeApiRoutes.ts",
+      "size": 6831,
+      "lastModified": "2025-08-07T19:15:47.470Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "express",
+        "../../scrapers/UnifiedScraper.js",
+        "../../services/DatabaseService.js",
+        "../../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/api/routes/SocialMediaApiRoutes.ts",
+      "size": 11020,
+      "lastModified": "2025-08-07T20:03:14.499Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "express",
+        "../../scrapers/SocialMediaScraper.js",
+        "../../services/DatabaseService.js",
+        "../../enrichment/comprehensiveEnrichment.js",
+        "@/types.js"
+      ]
+    },
+    {
+      "path": "src/api/routes/WebsiteApiRoutes.ts",
+      "size": 15617,
+      "lastModified": "2025-08-07T20:45:29.624Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "express",
+        "../../websiteManager.js",
+        "../../scrapers/UnifiedScraper.js",
+        "../../batchRecipeProcessor.js",
+        "../../services/DatabaseService.js",
+        "../../crawler/SitemapCrawler.js",
+        "../../enrichment/comprehensiveEnrichment.js",
+        "p-limit"
+      ]
+    },
+    {
+      "path": "src/api/server.ts",
+      "size": 6728,
+      "lastModified": "2025-08-07T18:49:15.436Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "express",
+        "cors",
+        "express-rate-limit",
+        "./routes/RecipeApiRoutes.js",
+        "./routes/WebsiteApiRoutes.js",
+        "./routes/SocialMediaApiRoutes.js",
+        "../services/DatabaseService.js"
+      ]
+    },
+    {
+      "path": "src/batchRecipeProcessor.ts",
+      "size": 2279,
+      "lastModified": "2025-08-07T18:03:48.958Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./utils/dataQualityLogger.js",
+        "./websiteManager.js",
+        "./processor/BatchRecipeProcessor.js"
+      ]
+    },
+    {
+      "path": "src/cli/RecipeCliCommands.ts",
+      "size": 8182,
+      "lastModified": "2025-08-07T18:41:22.210Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "../scrapers/UnifiedScraper.js",
+        "../services/DatabaseService.js",
+        "../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/cli/SocialMediaCliCommands.ts",
+      "size": 9710,
+      "lastModified": "2025-08-07T20:07:09.422Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "../scrapers/SocialMediaScraper.js",
+        "../services/DatabaseService.js",
+        "../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/cli/WebsiteCliCommands.ts",
+      "size": 9568,
+      "lastModified": "2025-08-07T20:18:37.856Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "../websiteManager.js",
+        "../batchRecipeProcessor.js",
+        "../scrapers/UnifiedScraper.js",
+        "../services/DatabaseService.js"
+      ]
+    },
+    {
+      "path": "src/cli/index.ts",
+      "size": 5145,
+      "lastModified": "2025-08-07T18:36:45.830Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "commander",
+        "./RecipeCliCommands.js",
+        "./SocialMediaCliCommands.js",
+        "./WebsiteCliCommands.js"
+      ]
+    },
+    {
+      "path": "src/cli/recipe-cli.ts",
+      "size": 5579,
+      "lastModified": "2025-08-07T05:14:09.651Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../services/CLIService.js",
+        "../shared/utils.js",
+        "../shared/constants.js"
+      ]
+    },
+    {
+      "path": "src/config.ts",
+      "size": 659,
+      "lastModified": "2025-07-28T00:25:06.845Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/constants/ocrConstants.ts",
+      "size": 2734,
+      "lastModified": "2025-08-07T04:43:34.923Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/core/DatabaseService.ts",
+      "size": 5917,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@supabase/supabase-js",
+        "../types.js",
+        "./RecipeProcessor.js"
+      ]
+    },
+    {
+      "path": "src/core/RecipeProcessor.js",
+      "size": 7488,
+      "lastModified": "2025-08-06T23:15:15.604Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/core/RecipeProcessor.ts",
+      "size": 7464,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../scrapers/websiteScraper.js",
+        "../types.js",
+        "../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/core/RecipeService.ts",
+      "size": 7454,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../scrapers/websiteScraper.js",
+        "../types.js",
+        "./RecipeProcessor.js",
+        "./DatabaseService.js"
+      ]
+    },
+    {
+      "path": "src/core/StreamlinedWorkflow.ts",
+      "size": 10893,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./RecipeProcessor.js",
+        "./DatabaseService.js",
+        "./RecipeService.js",
+        "../utils/embeddingGenerator.js",
+        "../scrapers/websiteScraper.js",
+        "../types.js",
+        "../utils/dataQualityLogger.js"
+      ]
+    },
+    {
+      "path": "src/core/constants.ts",
+      "size": 7272,
+      "lastModified": "2025-08-07T06:49:56.159Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@/services/BatchScrapingService.js",
+        "@/services/MediaScrapingService.js",
+        "./types.js"
+      ]
+    },
+    {
+      "path": "src/core/migration-script.ts",
+      "size": 5843,
+      "lastModified": "2025-08-07T06:28:13.836Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/core/types.ts",
+      "size": 17898,
+      "lastModified": "2025-08-07T18:56:09.821Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "zod",
+        "./constants.js"
+      ]
+    },
+    {
+      "path": "src/core/utils.ts",
+      "size": 11241,
+      "lastModified": "2025-08-07T06:27:05.243Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./types.js",
+        "./constants.js"
+      ]
+    },
+    {
+      "path": "src/crawler/SitemapCrawler.ts",
+      "size": 27251,
+      "lastModified": "2025-08-07T06:14:47.459Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "node-fetch",
+        "fast-xml-parser",
+        "p-limit",
+        "node-abort-controller",
+        "zlib",
+        "../manager/WebsiteManager.js"
+      ]
+    },
+    {
+      "path": "src/database-imports.test.ts",
+      "size": 580,
+      "lastModified": "2025-07-29T20:34:53.626Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest",
+        "./database.js",
+        "./enrichment/comprehensiveEnrichment.js",
+        "@supabase/supabase-js",
+        "./scrapers/websiteScraper.js"
+      ]
+    },
+    {
+      "path": "src/database-upserting.test.ts",
+      "size": 0,
+      "lastModified": "2025-08-04T22:44:21.327Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/database.test.ts",
+      "size": 3459,
+      "lastModified": "2025-08-07T17:58:45.313Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest",
+        "./database.js",
+        "./enrichment/aiEnrichment.js",
+        "./enrichment/nutritionEnrichment.js",
+        "./enrichment/dietaryRestrictionRules.js",
+        "@supabase/supabase-js"
+      ]
+    },
+    {
+      "path": "src/database.ts",
+      "size": 19858,
+      "lastModified": "2025-08-07T07:13:12.577Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@supabase/supabase-js",
+        "./config.js",
+        "./types.js",
+        "./scrapers/websiteScraper.js",
+        "./shared/types.js",
+        "./storage/imageHandler.js",
+        "./enrichment/alternativeEmbeddingGenerator.js",
+        "./enrichment/aiEnrichment.js",
+        "./enrichment/advancedMetadataEnrichment.js",
+        "./enrichment/dietaryRestrictionRules.js",
+        "./enrichment/robustAuthorExtraction.js",
+        "./enrichment/nutritionEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/enhanced-csv-scraper.ts",
+      "size": 23789,
+      "lastModified": "2025-08-07T18:56:29.455Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs/promises",
+        "path",
+        "url",
+        "./manager/WebsiteManager.js",
+        "./processor/BatchRecipeProcessor.js",
+        "./crawler/SitemapCrawler.js",
+        "./analyzer/QAAnalyzer.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/advancedMetadataEnrichment.ts",
+      "size": 11118,
+      "lastModified": "2025-08-06T16:30:41.714Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "cheerio",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/aiEnrichment.ts",
+      "size": 3197,
+      "lastModified": "2025-07-30T20:04:08.214Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@google/generative-ai",
+        "zod",
+        "../types.js",
+        "../config.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/alternativeEmbeddingGenerator.js",
+      "size": 6832,
+      "lastModified": "2025-08-06T23:15:15.588Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/alternativeEmbeddingGenerator.ts",
+      "size": 6745,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/atomicInstructionParser.ts",
+      "size": 14952,
+      "lastModified": "2025-08-06T16:30:41.708Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "compromise",
+        "../types.js",
+        "../../recipe-parsing-specification.js",
+        "./comprehensiveEquipmentDatabase.js",
+        "./comprehensiveIngredientDatabase.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/comprehensiveDietAnalyzer.ts",
+      "size": 12938,
+      "lastModified": "2025-08-07T05:43:39.497Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/comprehensiveEnrichment.ts",
+      "size": 29949,
+      "lastModified": "2025-08-07T19:50:27.537Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js",
+        "../scrapers/websiteScraper.js",
+        "./productionNERParser.js",
+        "./atomicInstructionParser.js",
+        "./comprehensiveDietAnalyzer.js",
+        "./ingredientParser.js",
+        "./cookingMethodExtractor.js",
+        "./smartCategorization.js",
+        "./nutritionEnrichment.js",
+        "./alternativeEmbeddingGenerator.js",
+        "./validationNotesService.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/comprehensiveEquipmentDatabase.ts",
+      "size": 17047,
+      "lastModified": "2025-08-06T16:30:41.722Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/comprehensiveIngredientDatabase.ts",
+      "size": 14578,
+      "lastModified": "2025-08-06T16:30:41.724Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/cookingMethodExtractor.ts",
+      "size": 6537,
+      "lastModified": "2025-08-06T19:43:24.209Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/dietaryRestrictionRules.ts",
+      "size": 15582,
+      "lastModified": "2025-08-06T16:30:41.722Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/embeddingGenerator.ts",
+      "size": 3086,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/enhancedDietSuitability.ts",
+      "size": 13680,
+      "lastModified": "2025-08-07T07:21:13.287Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/ingredientLinkingService.ts",
+      "size": 17273,
+      "lastModified": "2025-08-07T14:59:01.409Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../shared/types.js",
+        "./comprehensiveIngredientDatabase.js",
+        "crypto"
+      ]
+    },
+    {
+      "path": "src/enrichment/ingredientParser.ts",
+      "size": 47764,
+      "lastModified": "2025-08-07T15:01:00.507Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "parse-ingredient",
+        "../../recipe-parsing-specification.js",
+        "js-quantities",
+        "../types.js",
+        "../shared/constants.js",
+        "./comprehensiveIngredientDatabase.js",
+        "./productionNERParser.js",
+        "./ingredientLinkingService.js",
+        "compromise"
+      ]
+    },
+    {
+      "path": "src/enrichment/instructionParser.ts",
+      "size": 16058,
+      "lastModified": "2025-08-07T06:21:37.719Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../utils/dataQualityLogger.js",
+        "../types.js",
+        "../../recipe-parsing-specification.js",
+        "../utils/robustExtractor.js",
+        "./comprehensiveEquipmentDatabase.js",
+        "./comprehensiveIngredientDatabase.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/multimediaRecipeEnrichment.ts",
+      "size": 15468,
+      "lastModified": "2025-08-07T07:23:42.494Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../scrapers/websiteScraper.js",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/nutritionEnrichment.ts",
+      "size": 4519,
+      "lastModified": "2025-08-07T05:52:20.826Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js",
+        "./ingredientParser.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/nutritionNormalizer.ts",
+      "size": 7874,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/productionNERParser.ts",
+      "size": 11154,
+      "lastModified": "2025-08-07T07:20:45.808Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js",
+        "./ingredientParser.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/robustAuthorExtraction.ts",
+      "size": 7349,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "cheerio"
+      ]
+    },
+    {
+      "path": "src/enrichment/robustEmbeddingGenerator.ts",
+      "size": 9824,
+      "lastModified": "2025-08-07T05:43:39.505Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@google/generative-ai",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/smartCategorization.ts",
+      "size": 11885,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/textSanitizer.ts",
+      "size": 7070,
+      "lastModified": "2025-08-06T16:30:41.722Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/usdaNutritionIntegration.ts",
+      "size": 9193,
+      "lastModified": "2025-08-06T16:30:41.725Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/enrichment/validationNotesService.ts",
+      "size": 17238,
+      "lastModified": "2025-08-07T15:29:30.833Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/enrichment/videoOCRProcessor.ts",
+      "size": 14485,
+      "lastModified": "2025-08-07T05:50:38.950Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "tesseract.js",
+        "@google-cloud/vision",
+        "sharp",
+        "child_process"
+      ]
+    },
+    {
+      "path": "src/examples/comprehensive-schema-integration.ts",
+      "size": 10282,
+      "lastModified": "2025-08-07T07:25:16.002Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../enrichment/nutritionNormalizer.js",
+        "../enrichment/cookingMethodExtractor.js",
+        "../enrichment/atomicInstructionParser.js",
+        "../enrichment/textSanitizer.js",
+        "../enrichment/robustEmbeddingGenerator.js",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/examples/diet-suitability-validation.ts",
+      "size": 9802,
+      "lastModified": "2025-08-06T16:30:41.817Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../enrichment/comprehensiveDietAnalyzer.js",
+        "./diet-suitability-validation.js"
+      ]
+    },
+    {
+      "path": "src/failureLogger.ts",
+      "size": 8097,
+      "lastModified": "2025-08-06T16:30:41.684Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "url",
+        "path"
+      ]
+    },
+    {
+      "path": "src/final-verification.test.ts",
+      "size": 2023,
+      "lastModified": "2025-07-29T01:34:46.440Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "src/global.d.ts",
+      "size": 66,
+      "lastModified": "2025-07-27T22:10:10.909Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/individual-imports.test.ts",
+      "size": 762,
+      "lastModified": "2025-07-29T01:13:02.530Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "src/ingredient-parser.test.ts",
+      "size": 1174,
+      "lastModified": "2025-08-07T05:43:39.495Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "src/instruction-parser.test.ts",
+      "size": 2173,
+      "lastModified": "2025-07-29T01:18:58.595Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest"
+      ]
+    },
+    {
+      "path": "src/manager/WebsiteManager.ts",
+      "size": 4949,
+      "lastModified": "2025-08-06T16:30:41.782Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "csv-parse/sync",
+        "zod"
+      ]
+    },
+    {
+      "path": "src/mocks/sharp.ts",
+      "size": 556,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/optimizations/SuccessRateOptimizer.ts",
+      "size": 10217,
+      "lastModified": "2025-08-06T22:31:09.796Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../crawler/SitemapCrawler.js",
+        "../scrapers/websiteScraper.js",
+        "node-fetch"
+      ]
+    },
+    {
+      "path": "src/processor/BatchRecipeProcessor.js",
+      "size": 5650,
+      "lastModified": "2025-08-06T23:15:15.606Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../scrapers/websiteScraper.js",
+        "p-limit",
+        "util",
+        "fs",
+        "path",
+        "../core/RecipeProcessor.js"
+      ]
+    },
+    {
+      "path": "src/processor/BatchRecipeProcessor.ts",
+      "size": 5718,
+      "lastModified": "2025-08-07T07:24:05.263Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../scrapers/websiteScraper.js",
+        "../types.js",
+        "p-limit",
+        "util",
+        "fs",
+        "path",
+        "../core/RecipeProcessor.js"
+      ]
+    },
+    {
+      "path": "src/run-final-verification.test.ts",
+      "size": 842,
+      "lastModified": "2025-07-28T23:47:03.145Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "vitest",
+        "./verification/finalVerification.js"
+      ]
+    },
+    {
+      "path": "src/run-mass-scraper.ts",
+      "size": 2938,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./manager/WebsiteManager.js",
+        "./processor/BatchRecipeProcessor.js",
+        "./analyzer/QAAnalyzer.js",
+        "path",
+        "url",
+        "./crawler/SitemapCrawler.js"
+      ]
+    },
+    {
+      "path": "src/scrapers/SocialMediaScraper.ts",
+      "size": 27484,
+      "lastModified": "2025-08-07T20:15:32.776Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "../shared/types.js",
+        "../enrichment/videoOCRProcessor.js"
+      ]
+    },
+    {
+      "path": "src/scrapers/UnifiedScraper.ts",
+      "size": 8445,
+      "lastModified": "2025-08-07T20:14:28.566Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./websiteScraper.js",
+        "../shared/types.js",
+        "./SocialMediaScraper.js"
+      ]
+    },
+    {
+      "path": "src/scrapers/multimediaSocialMediaScraper.ts",
+      "size": 7801,
+      "lastModified": "2025-08-06T16:30:41.772Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../enrichment/multimediaRecipeEnrichment.js",
+        "./websiteScraper.js"
+      ]
+    },
+    {
+      "path": "src/scrapers/websiteScraper.ts",
+      "size": 41861,
+      "lastModified": "2025-08-07T20:14:46.120Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "cheerio",
+        "../enrichment/ingredientParser.js",
+        "../enrichment/instructionParser.js",
+        "../types.js",
+        "../validation/recipeValidator.js",
+        "../enrichment/comprehensiveEnrichment.js",
+        "../enrichment/nutritionEnrichment.js",
+        "../types.js",
+        "@/shared/types.js"
+      ]
+    },
+    {
+      "path": "src/services/BatchScrapingService.ts",
+      "size": 14148,
+      "lastModified": "2025-08-07T07:04:27.234Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "../shared/constants.js",
+        "../shared/utils.js",
+        "../shared/types.js",
+        "../core/RecipeService.js",
+        "../scrapers/websiteScraper.js",
+        "../crawler/SitemapCrawler.js"
+      ]
+    },
+    {
+      "path": "src/services/CLIService.ts",
+      "size": 18892,
+      "lastModified": "2025-08-07T05:42:33.873Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "../shared/constants.js",
+        "../shared/utils.js",
+        "./BatchScrapingService.js",
+        "./MediaScrapingService.js",
+        "./DeploymentService.js",
+        "../core/RecipeService.js",
+        "../scrapers/websiteScraper.js"
+      ]
+    },
+    {
+      "path": "src/services/DatabaseService.ts",
+      "size": 9319,
+      "lastModified": "2025-08-07T19:59:47.964Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@supabase/supabase-js",
+        "../config.js",
+        "../types.js",
+        "../shared/types.js",
+        "../database.js",
+        "../enrichment/dietaryRestrictionRules.js"
+      ]
+    },
+    {
+      "path": "src/services/DeploymentService.ts",
+      "size": 12780,
+      "lastModified": "2025-08-07T06:20:47.429Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "../shared/constants.js",
+        "../shared/utils.js",
+        "fs",
+        "path",
+        "../core/DatabaseService.js",
+        "./BatchScrapingService.js",
+        "@/types.js"
+      ]
+    },
+    {
+      "path": "src/services/MediaScrapingService.ts",
+      "size": 15684,
+      "lastModified": "2025-08-07T15:33:42.459Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../shared/constants.js",
+        "../shared/utils.js",
+        "../shared/types.js",
+        "../core/RecipeService.js",
+        "../scrapers/SocialMediaScraper.js",
+        "../enrichment/videoOCRProcessor.js"
+      ]
+    },
+    {
+      "path": "src/services/TestingService.ts",
+      "size": 21327,
+      "lastModified": "2025-08-07T06:22:33.735Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "../shared/constants.js",
+        "../shared/utils.js",
+        "../core/RecipeService.js",
+        "../enrichment/videoOCRProcessor.js",
+        "../core/DatabaseService.js",
+        "../scrapers/websiteScraper.js"
+      ]
+    },
+    {
+      "path": "src/shared/constants.ts",
+      "size": 27660,
+      "lastModified": "2025-08-07T06:57:23.650Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@/core/types.js",
+        "@/services/BatchScrapingService.js",
+        "@/services/MediaScrapingService.js"
+      ]
+    },
+    {
+      "path": "src/shared/types.ts",
+      "size": 11694,
+      "lastModified": "2025-08-07T20:14:36.652Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "./constants.js"
+      ]
+    },
+    {
+      "path": "src/shared/utils.ts",
+      "size": 14170,
+      "lastModified": "2025-08-07T06:09:06.901Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "./constants.js"
+      ]
+    },
+    {
+      "path": "src/storage/imageHandler.ts",
+      "size": 5558,
+      "lastModified": "2025-08-06T16:30:41.791Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@supabase/supabase-js",
+        "../config.js"
+      ]
+    },
+    {
+      "path": "src/tests/social-media-recipe-test.js",
+      "size": 5658,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../scrapers/SocialMediaScraper.js",
+        "../core/StreamlinedWorkflow.js",
+        "../core/RecipeProcessor.js",
+        "../services/DatabaseService.js",
+        "fs",
+        "path",
+        "url"
+      ]
+    },
+    {
+      "path": "src/tests/social-media-scraper-test.cjs",
+      "size": 5654,
+      "lastModified": "2025-08-06T16:30:41.850Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../scrapers/SocialMediaScraper",
+        "../scrapers/UnifiedScraper",
+        "../core/RecipeProcessor",
+        "../core/StreamlinedWorkflow",
+        "../services/DatabaseService",
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/tests/social-media-scraper-test.ts",
+      "size": 5646,
+      "lastModified": "2025-08-06T16:30:41.846Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../scrapers/SocialMediaScraper",
+        "../scrapers/UnifiedScraper",
+        "../core/RecipeProcessor",
+        "../core/StreamlinedWorkflow",
+        "../services/DatabaseService",
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/tests/social-media-test.cjs",
+      "size": 6891,
+      "lastModified": "2025-08-06T16:30:41.852Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "path",
+        "fs"
+      ]
+    },
+    {
+      "path": "src/tests/social-media-test.js",
+      "size": 7466,
+      "lastModified": "2025-08-06T16:30:41.850Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../core/RecipeProcessor.js",
+        "../core/StreamlinedWorkflow.js",
+        "fs",
+        "path",
+        "url",
+        "../enrichment/comprehensiveEnrichment.js"
+      ]
+    },
+    {
+      "path": "src/types/node-nlp.d.ts",
+      "size": 500,
+      "lastModified": "2025-07-28T14:19:58.606Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/types/sitemap-stream-parser.d.ts",
+      "size": 40,
+      "lastModified": "2025-08-05T17:23:45.221Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/types.ts",
+      "size": 7425,
+      "lastModified": "2025-08-07T06:18:48.427Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "zod"
+      ]
+    },
+    {
+      "path": "src/utils/codebaseConsolidator.ts",
+      "size": 11585,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/utils/dataQualityLogger.js",
+      "size": 2341,
+      "lastModified": "2025-08-06T23:15:15.557Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/utils/dataQualityLogger.ts",
+      "size": 2465,
+      "lastModified": "2025-08-05T17:52:03.699Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "src/utils/embeddingGenerator.ts",
+      "size": 2050,
+      "lastModified": "2025-08-07T06:46:51.899Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "@google/generative-ai"
+      ]
+    },
+    {
+      "path": "src/utils/ocrHelpers.ts",
+      "size": 6490,
+      "lastModified": "2025-08-07T07:31:59.307Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs/promises",
+        "path",
+        "child_process",
+        "util",
+        "@google-cloud/vision"
+      ]
+    },
+    {
+      "path": "src/utils/ocrUtils.ts",
+      "size": 8525,
+      "lastModified": "2025-08-07T04:44:12.385Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path",
+        "../constants/ocrConstants.js"
+      ]
+    },
+    {
+      "path": "src/utils/robustExtractor.ts",
+      "size": 9335,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "compromise",
+        "./dataQualityLogger.js"
+      ]
+    },
+    {
+      "path": "src/utils/run-codebaseConsolidator.ts",
+      "size": 3127,
+      "lastModified": "2025-08-07T20:56:53.811Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "path",
+        "fs",
+        "./codebaseConsolidator.js"
+      ]
+    },
+    {
+      "path": "src/utils/sharpLoader.ts",
+      "size": 514,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "src/validation/dataIntegrityValidator.ts",
+      "size": 17366,
+      "lastModified": "2025-08-07T05:43:39.536Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "zod",
+        "../types.js"
+      ]
+    },
+    {
+      "path": "src/validation/recipeValidator.ts",
+      "size": 20402,
+      "lastModified": "2025-08-06T16:30:41.689Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "zod",
+        "../types.js",
+        "../scrapers/websiteScraper.js"
+      ]
+    },
+    {
+      "path": "src/verification/finalVerification.ts",
+      "size": 15958,
+      "lastModified": "2025-08-06T16:30:41.782Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "../enrichment/comprehensiveEnrichment.js",
+        "../validation/dataIntegrityValidator.js",
+        "../enrichment/productionNERParser.js"
+      ]
+    },
+    {
+      "path": "src/websiteManager.ts",
+      "size": 6668,
+      "lastModified": "2025-08-07T18:03:12.505Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": [
+        "fs",
+        "path"
+      ]
+    },
+    {
+      "path": "supabase/.env",
+      "size": 465,
+      "lastModified": "2025-07-20T13:35:08.743Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/.temp/pooler-url",
+      "size": 108,
+      "lastModified": "2025-07-20T01:26:05.842Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/deno.json",
+      "size": 144,
+      "lastModified": "2025-07-20T22:30:29.300Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/README.md",
+      "size": 1587,
+      "lastModified": "2025-07-20T01:17:58.928Z",
+      "type": "documentation",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/core/processor.ts",
+      "size": 8203,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../uuid.js",
+        "../models.js",
+        "../types.js",
+        "../supabaseClient.js",
+        "../utils/nutritionService.js",
+        "../utils/gemmaService.js",
+        "../services/healthGradeService.js",
+        "../utils/miscUtils.js",
+        "../utils/timeUtils.ts",
+        "../services/scrapers/websiteScraper.ts",
+        "../services/scrapers/youtubeScraper.ts",
+        "../services/scrapers/socialScraper.ts",
+        "../utils/networkUtils.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/core/worker.ts",
+      "size": 1119,
+      "lastModified": "2025-07-25T19:46:05.753Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../utils/jobQueue",
+        "./processor",
+        "../services/databaseService"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/mappers.ts",
+      "size": 987,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./models.js",
+        "./models.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/models.ts",
+      "size": 2237,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/healthGradeService.ts",
+      "size": 3351,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../models.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/models/Ingredient.ts",
+      "size": 574,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/models/Nutrition.ts",
+      "size": 549,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/models/Recipe.ts",
+      "size": 2714,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "./Ingredient.js",
+        "./Instruction.js",
+        "./Nutrition.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/models/index.ts",
+      "size": 172,
+      "lastModified": "2025-07-20T17:02:06.964Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/services/scrapers/socialScraper.ts",
+      "size": 2185,
+      "lastModified": "2025-07-20T22:42:00.812Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../../types.ts",
+        "./websiteScraper.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/services/scrapers/websiteScraper.ts",
+      "size": 3044,
+      "lastModified": "2025-08-07T02:31:16.015Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "cheerio",
+        "../../types.ts",
+        "../../types.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/supabaseClient.ts",
+      "size": 1198,
+      "lastModified": "2025-07-20T17:16:55.998Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "@supabase/supabase-js"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/types.ts",
+      "size": 971,
+      "lastModified": "2025-07-21T00:01:43.298Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/utils/databaseService.ts",
+      "size": 3564,
+      "lastModified": "2025-08-07T17:01:23.754Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../supabaseClient.ts",
+        "../models.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/utils/gemmaService.ts",
+      "size": 3134,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "@google/generative-ai",
+        "../utils/timeUtils",
+        "../models"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/utils/jobQueue.ts",
+      "size": 389,
+      "lastModified": "2025-07-25T19:45:53.371Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../types"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/utils/miscUtils.ts",
+      "size": 1352,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/utils/networkUtils.ts",
+      "size": 2570,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../supabaseClient.ts",
+        "../types.ts"
+      ]
+    },
+    {
+      "path": "supabase/functions/_shared/utils/timeUtils.ts",
+      "size": 1972,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/_shared/uuid.ts",
+      "size": 457,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/.env",
+      "size": 324,
+      "lastModified": "2025-07-20T13:35:07.687Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/deno.d.ts",
+      "size": 718,
+      "lastModified": "2025-07-20T01:19:14.411Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/deno.json",
+      "size": 135,
+      "lastModified": "2025-07-20T01:17:02.254Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/import_map.json",
+      "size": 144,
+      "lastModified": "2025-08-04T21:52:19.055Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/index.ts",
+      "size": 3344,
+      "lastModified": "2025-08-06T16:30:41.851Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "https://deno.land/std@0.192.0/http/server.ts",
+        "https://esm.sh/@google/generative-ai@0.24.1"
+      ]
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/package.json",
+      "size": 367,
+      "lastModified": "2025-07-20T01:16:14.911Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/generate-embeddings/tsconfig.json",
+      "size": 579,
+      "lastModified": "2025-07-20T01:19:25.167Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/import_map.json",
+      "size": 455,
+      "lastModified": "2025-07-20T22:44:53.829Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/package.json",
+      "size": 279,
+      "lastModified": "2025-07-21T00:00:43.514Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/.env.example",
+      "size": 233,
+      "lastModified": "2025-07-20T00:14:34.149Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/deno.d.ts",
+      "size": 718,
+      "lastModified": "2025-07-20T01:20:18.243Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/deno.json",
+      "size": 201,
+      "lastModified": "2025-07-20T16:48:12.370Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/functions/import_map.json",
+      "size": 143,
+      "lastModified": "2025-07-25T20:06:29.756Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/import_map.json",
+      "size": 143,
+      "lastModified": "2025-07-20T16:48:21.218Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/package.json",
+      "size": 367,
+      "lastModified": "2025-07-20T23:09:17.190Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/scrape-recipe/tsconfig.json",
+      "size": 579,
+      "lastModified": "2025-07-20T23:05:49.883Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/supabase/import_map.json",
+      "size": 143,
+      "lastModified": "2025-07-20T22:30:53.915Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/functions/tsconfig.json",
+      "size": 445,
+      "lastModified": "2025-07-21T00:04:51.437Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "supabase/supabase/functions/_shared/core/worker.ts",
+      "size": 751,
+      "lastModified": "2025-07-25T19:48:06.937Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../../../../functions/_shared/core/processor",
+        "../../../../functions/_shared/services/databaseService",
+        "../utils/jobQueue"
+      ]
+    },
+    {
+      "path": "supabase/supabase/functions/_shared/utils/jobQueue.ts",
+      "size": 402,
+      "lastModified": "2025-07-25T19:48:11.874Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "../../../../functions/_shared/types"
+      ]
+    },
+    {
+      "path": "supabase/utils/embeddingGenerator.ts",
+      "size": 2637,
+      "lastModified": "2025-08-07T05:43:39.537Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "supabase_scheme.md",
+      "size": 1221,
+      "lastModified": "2025-07-26T01:05:02.312Z",
+      "type": "documentation",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test/tsconfig.json",
+      "size": 655,
+      "lastModified": "2025-07-19T23:50:42.528Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/instagram-recipe-enhanced.json",
+      "size": 1290,
+      "lastModified": "2025-08-05T20:51:35.959Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/instagram-recipe-raw.json",
+      "size": 1059,
+      "lastModified": "2025-08-04T19:05:10.843Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/tiktok-recipe-enhanced.json",
+      "size": 948,
+      "lastModified": "2025-08-05T20:51:35.959Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/tiktok-recipe-raw.json",
+      "size": 717,
+      "lastModified": "2025-08-04T19:05:10.843Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/youtube-recipe-enhanced.json",
+      "size": 1268,
+      "lastModified": "2025-08-05T20:51:35.959Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "test-results/youtube-recipe-raw.json",
+      "size": 1037,
+      "lastModified": "2025-08-04T19:05:10.843Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "tsconfig.build.json",
+      "size": 1101,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 573,
+      "lastModified": "2025-08-07T17:50:47.536Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "Essential file",
+      "dependencies": []
+    },
+    {
+      "path": "tsconfig.node.json",
+      "size": 403,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "config",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "types/declarations.d.ts",
+      "size": 348,
+      "lastModified": "2025-07-27T21:16:18.850Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "validate-optimization.js",
+      "size": 3800,
+      "lastModified": "2025-08-06T22:40:05.246Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "validate-optimization.ts",
+      "size": 3819,
+      "lastModified": "2025-08-06T22:39:05.204Z",
+      "type": "source",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": []
+    },
+    {
+      "path": "vitest.config.ts",
+      "size": 173,
+      "lastModified": "2025-08-06T16:30:41.667Z",
+      "type": "test",
+      "redundancyRisk": "keep",
+      "reason": "File appears to be actively used",
+      "dependencies": [
+        "vitest/config"
+      ]
+    }
+  ],
+  "estimatedSpaceSaved": 30128,
+  "recommendations": [
+    "Remove 3 build artifacts and temporary files",
+    "Review 63 potentially redundant files",
+    "Consolidate 3 duplicate test files"
+  ]
+}

@@ -1,0 +1,86 @@
+Category,Name,URL,Sitemap,Priority,Status
+Popular,Allrecipes,https://www.allrecipes.com,https://www.allrecipes.com/sitemap.xml,10,active
+Popular,Food Network,https://www.foodnetwork.com,https://www.foodnetwork.com/sitemap.xml,10,active
+Popular,Tasty,https://tasty.co,https://tasty.co/sitemap.xml,9,active
+Popular,Bon Appétit,https://www.bonappetit.com,https://www.bonappetit.com/sitemap.xml,9,active
+Popular,Food & Wine,https://www.foodandwine.com,https://www.foodandwine.com/sitemap.xml,9,active
+Popular,Serious Eats,https://www.seriouseats.com,https://www.seriouseats.com/sitemap.xml,9,active
+Popular,NYT Cooking,https://cooking.nytimes.com,https://cooking.nytimes.com/sitemap.xml,9,active
+Popular,Epicurious,https://www.epicurious.com,https://www.epicurious.com/sitemap.xml,8,active
+Popular,BBC Good Food,https://www.bbc.co.uk/food,https://www.bbc.co.uk/food/sitemap.xml,8,active
+Popular,Simply Recipes,https://www.simplyrecipes.com,https://www.simplyrecipes.com/sitemap.xml,8,active
+Popular,Delish,https://www.delish.com,https://www.delish.com/sitemap.xml,8,active
+Popular,Martha Stewart,https://www.marthastewart.com,https://www.marthastewart.com/sitemap.xml,8,active
+Popular,Better Homes & Gardens,https://www.bhg.com,https://www.bhg.com/sitemap.xml,8,active
+Blogs,Sally's Baking Addiction,https://sallysbakingaddiction.com,https://sallysbakingaddiction.com/sitemap.xml,7,active
+Blogs,The Pioneer Woman,https://www.thepioneerwoman.com,https://www.thepioneerwoman.com/sitemap.xml,7,active
+Blogs,Minimalist Baker,https://minimalistbaker.com,https://minimalistbaker.com/sitemap.xml,7,active
+Blogs,Cookie and Kate,https://cookieandkate.com,https://cookieandkate.com/sitemap.xml,7,active
+Blogs,Smitten Kitchen,https://smittenkitchen.com,https://smittenkitchen.com/sitemap.xml,7,active
+Blogs,Budget Bytes,https://www.budgetbytes.com,https://www.budgetbytes.com/sitemap.xml,7,active
+Blogs,Damn Delicious,https://damndelicious.net,https://damndelicious.net/sitemap.xml,7,active
+Blogs,Half Baked Harvest,https://www.halfbakedharvest.com,https://www.halfbakedharvest.com/sitemap.xml,6,active
+Blogs,Joy the Baker,https://joythebaker.com,https://joythebaker.com/sitemap.xml,6,active
+Blogs,Once Upon a Chef,https://www.onceuponachef.com,https://www.onceuponachef.com/sitemap.xml,7,active
+Blogs,Two Peas & Their Pod,https://www.twopeasandtheirpod.com,https://www.twopeasandtheirpod.com/sitemap.xml,6,active
+Blogs,Love and Lemons,https://www.loveandlemons.com,https://www.loveandlemons.com/sitemap.xml,6,active
+Blogs,The Food Charlatan,https://thefoodcharlatan.com,https://thefoodcharlatan.com/sitemap.xml,6,active
+Blogs,Cafe Delites,https://cafedelites.com,https://cafedelites.com/sitemap.xml,6,active
+Blogs,Gimme Some Oven,https://www.gimmesomeoven.com,https://www.gimmesomeoven.com/sitemap.xml,6,active
+Blogs,Pinch of Yum,https://pinchofyum.com,https://pinchofyum.com/sitemap.xml,6,active
+Blogs,The Recipe Critic,https://therecipecritic.com,https://therecipecritic.com/sitemap.xml,6,active
+Blogs,Love and Lemons,https://www.loveandlemons.com,https://www.loveandlemons.com/sitemap.xml,6,active
+International,Just One Cookbook,https://www.justonecookbook.com,https://www.justonecookbook.com/sitemap.xml,7,active
+International,My Korean Kitchen,https://mykoreankitchen.com,https://mykoreankitchen.com/sitemap.xml,6,active
+International,Cafe Delites,https://cafedelites.com,https://cafedelites.com/sitemap.xml,6,active
+International,Mexican Please,https://www.mexicanplease.com,https://www.mexicanplease.com/sitemap.xml,5,active
+International,Indian Healthy Recipes,https://www.indianhealthyrecipes.com,https://www.indianhealthyrecipes.com/sitemap.xml,6,active
+Baking,King Arthur Baking,https://www.kingarthurbaking.com,https://www.kingarthurbaking.com/sitemap.xml,8,active
+Baking,Handle the Heat,https://handletheheat.com,https://handletheheat.com/sitemap.xml,6,active
+Baking,Preppy Kitchen,https://preppykitchen.com,https://preppykitchen.com/sitemap.xml,6,active
+Baking,Chelsweets,https://chelsweets.com,https://chelsweets.com/sitemap.xml,5,active
+Baking,Liv for Cake,https://livforcake.com,https://livforcake.com/sitemap.xml,5,active
+Healthy,Fit Foodie Finds,https://fitfoodiefinds.com,https://fitfoodiefinds.com/sitemap.xml,6,active
+Healthy,Eating Bird Food,https://www.eatingbirdfood.com,https://www.eatingbirdfood.com/sitemap.xml,6,active
+Healthy,Well Plated,https://www.wellplated.com,https://www.wellplated.com/sitemap.xml,6,active
+Healthy,Ambitious Kitchen,https://www.ambitiouskitchen.com,https://www.ambitiouskitchen.com/sitemap.xml,6,active
+Healthy,Gimme Some Oven,https://www.gimmesomeoven.com,https://www.gimmesomeoven.com/sitemap.xml,7,active
+Specialty,Serious Eats Pizza,https://slice.seriouseats.com,https://slice.seriouseats.com/sitemap.xml,5,active
+Specialty,The Kitchn,https://www.thekitchn.com,https://www.thekitchn.com/sitemap.xml,7,active
+Specialty,America's Test Kitchen,https://www.americastestkitchen.com,https://www.americastestkitchen.com/sitemap.xml,8,active
+Specialty,Cook's Illustrated,https://www.cooksillustrated.com,https://www.cooksillustrated.com/sitemap.xml,7,active
+Specialty,Martha Stewart,https://www.marthastewart.com,https://www.marthastewart.com/sitemap.xml,7,active
+Corporate,Betty Crocker,https://www.bettycrocker.com,https://www.bettycrocker.com/sitemap.xml,6,active
+Corporate,Pillsbury,https://www.pillsbury.com,https://www.pillsbury.com/sitemap.xml,6,active
+Corporate,Campbell's Kitchen,https://www.campbells.com,https://www.campbells.com/sitemap.xml,5,active
+Corporate,Kraft Recipes,https://www.kraftrecipes.com,https://www.kraftrecipes.com/sitemap.xml,5,active
+Corporate,General Mills,https://www.generalmills.com,https://www.generalmills.com/sitemap.xml,5,active
+Chef,Gordon Ramsay,https://www.gordonramsay.com,https://www.gordonramsay.com/sitemap.xml,7,active
+Chef,Jamie Oliver,https://www.jamieoliver.com,https://www.jamieoliver.com/sitemap.xml,7,active
+Chef,Ina Garten,https://barefootcontessa.com,https://barefootcontessa.com/sitemap.xml,6,active
+Chef,Rachael Ray,https://www.rachaelray.com,https://www.rachaelray.com/sitemap.xml,6,active
+Chef,Wolfgang Puck,https://wolfgangpuck.com,https://wolfgangpuck.com/sitemap.xml,5,active
+Regional,Southern Living,https://www.southernliving.com,https://www.southernliving.com/sitemap.xml,7,active
+Regional,Taste of Home,https://www.tasteofhome.com,https://www.tasteofhome.com/sitemap.xml,7,active
+Regional,Country Living,https://www.countryliving.com,https://www.countryliving.com/sitemap.xml,6,active
+Baking,King Arthur Baking,https://www.kingarthurbaking.com,https://www.kingarthurbaking.com/sitemap.xml,8,active
+Baking,Williams Sonoma,https://www.williams-sonoma.com,https://www.williams-sonoma.com/sitemap.xml,7,active
+Baking,Preppy Kitchen,https://preppykitchen.com,https://preppykitchen.com/sitemap.xml,6,active
+Baking,Handle the Heat,https://handletheheat.com,https://handletheheat.com/sitemap.xml,6,active
+Healthy,EatingWell,https://www.eatingwell.com,https://www.eatingwell.com/sitemap.xml,7,active
+Healthy,Clean Eating,https://www.cleaneatingmag.com,https://www.cleaneatingmag.com/sitemap.xml,6,active
+Healthy,Forks Over Knives,https://www.forksoverknives.com,https://www.forksoverknives.com/sitemap.xml,6,active
+Healthy,Oh She Glows,https://ohsheglows.com,https://ohsheglows.com/sitemap.xml,6,active
+Healthy,Green Kitchen Stories,https://greenkitchenstories.com,https://greenkitchenstories.com/sitemap.xml,6,active
+International,Just One Cookbook,https://www.justonecookbook.com,https://www.justonecookbook.com/sitemap.xml,7,active
+International,Woks of Life,https://thewoksoflife.com,https://thewoksoflife.com/sitemap.xml,7,active
+International,My Korean Kitchen,https://mykoreankitchen.com,https://mykoreankitchen.com/sitemap.xml,6,active
+International,Mexican Please,https://www.mexicanplease.com,https://www.mexicanplease.com/sitemap.xml,6,active
+International,Indian Healthy Recipes,https://www.indianhealthyrecipes.com,https://www.indianhealthyrecipes.com/sitemap.xml,6,active
+International,RecipeTin Eats,https://www.recipetineats.com,https://www.recipetineats.com/sitemap.xml,7,active
+International,Cafe Delites,https://cafedelites.com,https://cafedelites.com/sitemap.xml,6,active
+Specialty,Chocolate Covered Katie,https://chocolatecoveredkatie.com,https://chocolatecoveredkatie.com/sitemap.xml,6,active
+Specialty,Detoxinista,https://detoxinista.com,https://detoxinista.com/sitemap.xml,6,active
+Specialty,Ambitious Kitchen,https://www.ambitiouskitchen.com,https://www.ambitiouskitchen.com/sitemap.xml,6,active
+Specialty,The Kitchn,https://www.thekitchn.com,https://www.thekitchn.com/sitemap.xml,6,active
+Specialty,Food52,https://food52.com,https://food52.com/sitemap.xml,6,active

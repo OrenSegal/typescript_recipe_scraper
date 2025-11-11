@@ -1,0 +1,466 @@
+/**
+ * MCP-Cook Scraper
+ *
+ * Uses the mcp-cook npm package to fetch recipes from the HowToCook repository.
+ * This is an alternative to HowToCookMCP with a simpler interface.
+ *
+ * Features:
+ * - 100% FREE, unlimited access
+ * - 200+ food and cocktail recipes
+ * - Dish name browsing
+ * - Detailed cooking instructions
+ *
+ * MCP Package: mcp-cook (v0.0.6+)
+ * Data Source: https://github.com/Anduin2017/HowToCook
+ */
+
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import type { Recipe, RecipeIngredient as Ingredient, InstructionStep as Instruction } from '../shared/types.js';
+
+interface MCPCookSearchOptions {
+  query?: string;
+  limit?: number;
+}
+
+interface MCPToolResult {
+  content?: Array<{
+    type: string;
+    text?: string;
+  }>;
+}
+
+/**
+ * Scraper for MCP-Cook server
+ * Simplified access to HowToCook recipes via MCP protocol
+ */
+export class MCPCookScraper {
+  private static instance: MCPCookScraper;
+  private client: Client | null = null;
+  private transport: StdioClientTransport | null = null;
+  private isConnected: boolean = false;
+  private dishListCache: string[] | null = null;
+
+  private constructor() {}
+
+  /**
+   * Get singleton instance
+   */
+  public static getInstance(): MCPCookScraper {
+    if (!MCPCookScraper.instance) {
+      MCPCookScraper.instance = new MCPCookScraper();
+    }
+    return MCPCookScraper.instance;
+  }
+
+  /**
+   * Connect to MCP-Cook server
+   */
+  private async connect(): Promise<void> {
+    if (this.isConnected && this.client) {
+      return;
+    }
+
+    try {
+      this.client = new Client(
+        {
+          name: 'recipe-scraper-mcpcook',
+          version: '1.0.0',
+        },
+        {
+          capabilities: {
+            tools: {},
+          },
+        }
+      );
+
+      // Use npx to run mcp-cook
+      this.transport = new StdioClientTransport({
+        command: 'npx',
+        args: ['-y', 'mcp-cook'],
+      });
+
+      await this.client.connect(this.transport);
+      this.isConnected = true;
+      console.log('🔌 Connected to MCP-Cook server');
+    } catch (error) {
+      console.error('❌ Failed to connect to MCP-Cook server:', error);
+      this.isConnected = false;
+      throw error;
+    }
+  }
+
+  /**
+   * Disconnect from MCP server
+   */
+  public async disconnect(): Promise<void> {
+    if (this.client && this.transport) {
+      await this.client.close();
+      this.client = null;
+      this.transport = null;
+      this.isConnected = false;
+      this.dishListCache = null;
+      console.log('🔌 Disconnected from MCP-Cook server');
+    }
+  }
+
+  /**
+   * Get list of all available dishes
+   */
+  public async getDishList(): Promise<string[]> {
+    if (this.dishListCache) {
+      return this.dishListCache;
+    }
+
+    try {
+      await this.connect();
+
+      if (!this.client) {
+        throw new Error('MCP client not connected');
+      }
+
+      const result = await this.client.callTool({
+        name: 'get_all_dishes',
+        arguments: {},
+      }) as MCPToolResult;
+
+      // Type guard for MCP response
+      if (!result || !result.content || !Array.isArray(result.content) || result.content.length === 0) {
+        return [];
+      }
+
+      const dishes = this.parseDishList(result.content as any[]);
+      this.dishListCache = dishes;
+      return dishes;
+    } catch (error) {
+      console.error('❌ MCP-Cook dish list error:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Search for recipes by name
+   */
+  public async searchRecipes(options: MCPCookSearchOptions): Promise<Recipe[]> {
+    try {
+      const dishList = await this.getDishList();
+
+      if (!options.query || dishList.length === 0) {
+        return [];
+      }
+
+      // Fuzzy search through dish list
+      const query = options.query.toLowerCase();
+      const matches = dishList.filter((dish) => dish.toLowerCase().includes(query));
+
+      // Limit results
+      const limit = options.limit || 5;
+      const recipesToFetch = matches.slice(0, limit);
+
+      // Fetch full recipes for matches
+      const recipes: Recipe[] = [];
+      for (const dishName of recipesToFetch) {
+        const recipe = await this.getRecipe(dishName);
+        if (recipe) {
+          recipes.push(recipe);
+        }
+      }
+
+      return recipes;
+    } catch (error) {
+      console.error('❌ MCP-Cook search error:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Get a specific recipe by dish name
+   */
+  public async getRecipe(dishName: string): Promise<Recipe | null> {
+    try {
+      await this.connect();
+
+      if (!this.client) {
+        throw new Error('MCP client not connected');
+      }
+
+      const result = await this.client.callTool({
+        name: 'get_dish_content',
+        arguments: {
+          dishName: dishName,
+        },
+      }) as MCPToolResult;
+
+      // Type guard for MCP response
+      if (!result || !result.content || !Array.isArray(result.content) || result.content.length === 0) {
+        return null;
+      }
+
+      const recipes = this.parseRecipeResults(result.content as any[]);
+      return recipes.length > 0 ? recipes[0] : null;
+    } catch (error) {
+      console.error(`❌ MCP-Cook recipe error for "${dishName}":`, error);
+      return null;
+    }
+  }
+
+  /**
+   * Get random recipes
+   */
+  public async getRandomRecipes(count: number = 5): Promise<Recipe[]> {
+    try {
+      const dishList = await this.getDishList();
+
+      if (dishList.length === 0) {
+        return [];
+      }
+
+      // Randomly select dishes
+      const shuffled = dishList.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, count);
+
+      // Fetch full recipes
+      const recipes: Recipe[] = [];
+      for (const dishName of selected) {
+        const recipe = await this.getRecipe(dishName);
+        if (recipe) {
+          recipes.push(recipe);
+        }
+      }
+
+      return recipes;
+    } catch (error) {
+      console.error('❌ MCP-Cook random recipes error:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Parse dish list from MCP response
+   */
+  private parseDishList(content: any[]): string[] {
+    const dishes: string[] = [];
+
+    for (const item of content) {
+      if (item.type === 'text' && item.text) {
+        try {
+          // Try to parse as JSON array
+          const data = JSON.parse(item.text);
+          if (Array.isArray(data)) {
+            dishes.push(...data.filter((d) => typeof d === 'string'));
+          }
+        } catch (e) {
+          // Parse as plain text list
+          const lines = item.text.split('\n');
+          for (const line of lines) {
+            const cleaned = line.trim().replace(/^[-*•]\s*/, '');
+            if (cleaned) {
+              dishes.push(cleaned);
+            }
+          }
+        }
+      }
+    }
+
+    return dishes;
+  }
+
+  /**
+   * Parse MCP tool result content into Recipe array
+   */
+  private parseRecipeResults(content: any[]): Recipe[] {
+    const recipes: Recipe[] = [];
+
+    for (const item of content) {
+      if (item.type === 'text' && item.text) {
+        try {
+          // Try to parse as JSON
+          const data = JSON.parse(item.text);
+          const recipe = this.parseRecipe(data);
+          if (recipe) {
+            recipes.push(recipe);
+          }
+        } catch (e) {
+          // Parse as plain text
+          const recipe = this.parseTextRecipe(item.text);
+          if (recipe) {
+            recipes.push(recipe);
+          }
+        }
+      }
+    }
+
+    return recipes;
+  }
+
+  /**
+   * Parse a recipe object
+   */
+  private parseRecipe(data: any): Recipe | null {
+    if (!data || typeof data !== 'object') {
+      return null;
+    }
+
+    const recipe: Recipe = {
+      title: data.name || data.title || 'Unknown Recipe',
+      description: data.description || '',
+      ingredients: this.parseIngredients(data.ingredients || data.materials || []),
+      instructions: this.parseInstructions(data.instructions || data.steps || []),
+      prep_time: this.parseTime(data.prep_time || data.prepTime),
+      cook_time: this.parseTime(data.cook_time || data.cookTime),
+      total_time: this.parseTime(data.total_time || data.totalTime),
+      servings: data.servings || data.serves || 2,
+      effort_level: data.difficulty || 'medium',
+      cuisine_type: data.cuisine || 'Chinese',
+      meal_types: data.category ? [data.category] : ['main'],
+      tags: this.parseTags(data.tags || data.keywords || []),
+      author: data.author || 'HowToCook Community',
+      source_url: data.url || data.source_url || 'https://github.com/Anduin2017/HowToCook',
+      image_url: data.image || data.image_url,
+    };
+
+    return recipe;
+  }
+
+  /**
+   * Parse plain text recipe
+   */
+  private parseTextRecipe(text: string): Recipe | null {
+    const lines = text.split('\n');
+    const titleMatch = lines[0]?.match(/^#+\s*(.+)/) || [null, lines[0]];
+    const title = titleMatch[1]?.trim() || 'Recipe from MCP-Cook';
+
+    const ingredientsSection = text.match(/(?:ingredients?|材料)[:\s]*(.+?)(?=(?:instructions?|steps?|做法|步骤)|$)/is);
+    const instructionsSection = text.match(/(?:instructions?|steps?|做法|步骤)[:\s]*(.+?)$/is);
+
+    return {
+      title,
+      description: '',
+      ingredients: this.parseTextIngredients(ingredientsSection?.[1] || ''),
+      instructions: this.parseTextInstructions(instructionsSection?.[1] || text),
+      servings: 2,
+      effort_level: 'medium',
+      cuisine_type: 'Chinese',
+      meal_types: ['main'],
+      source_url: 'https://github.com/Anduin2017/HowToCook',
+    };
+  }
+
+  /**
+   * Parse ingredients array
+   */
+  private parseIngredients(ingredients: any[]): Ingredient[] {
+    if (!Array.isArray(ingredients)) {
+      return [];
+    }
+
+    return ingredients
+      .map((ing, index) => {
+        if (typeof ing === 'string') {
+          return { name: ing, text: ing, order_index: index };
+        }
+        return {
+          name: ing.name || ing.ingredient,
+          amount: ing.amount || ing.quantity,
+          unit: ing.unit,
+          text: ing.text || `${ing.amount || ''} ${ing.unit || ''} ${ing.name || ing.ingredient || ''}`.trim(),
+          order_index: index,
+        };
+      })
+      .filter((ing) => ing.text || ing.name);
+  }
+
+  /**
+   * Parse text ingredients
+   */
+  private parseTextIngredients(text: string): Ingredient[] {
+    if (!text) return [];
+
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.match(/^#+/))
+      .map((line, index) => {
+        const cleaned = line.replace(/^[-*•]\s*/, '');
+        return {
+          name: cleaned,
+          text: cleaned,
+          order_index: index
+        };
+      });
+  }
+
+  /**
+   * Parse instructions array
+   */
+  private parseInstructions(instructions: any[]): Instruction[] {
+    if (!Array.isArray(instructions)) {
+      return [];
+    }
+
+    return instructions
+      .map((inst, index) => {
+        if (typeof inst === 'string') {
+          return {
+            step_number: index + 1,
+            text: inst,
+          };
+        }
+        return {
+          step_number: inst.step || inst.number || index + 1,
+          text: inst.text || inst.description || inst.instruction || '',
+        };
+      })
+      .filter((inst) => inst.text);
+  }
+
+  /**
+   * Parse text instructions
+   */
+  private parseTextInstructions(text: string): Instruction[] {
+    if (!text) return [];
+
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.match(/^#+/))
+      .map((line, index) => ({
+        step_number: index + 1,
+        text: line.replace(/^\d+\.\s*/, '').replace(/^[-*•]\s*/, ''),
+      }))
+      .filter((inst) => inst.text);
+  }
+
+  /**
+   * Parse time string to minutes
+   */
+  private parseTime(time: any): number | undefined {
+    if (!time) return undefined;
+    if (typeof time === 'number') return time;
+
+    const hourMatch = time.match(/(\d+)\s*(?:h|hr|hour)/i);
+    const minMatch = time.match(/(\d+)\s*(?:m|min|minute)/i);
+
+    let total = 0;
+    if (hourMatch) total += parseInt(hourMatch[1]) * 60;
+    if (minMatch) total += parseInt(minMatch[1]);
+
+    return total > 0 ? total : undefined;
+  }
+
+  /**
+   * Parse tags array
+   */
+  private parseTags(tags: any): string[] {
+    if (Array.isArray(tags)) {
+      return tags.filter((tag) => typeof tag === 'string');
+    }
+    if (typeof tags === 'string') {
+      return tags.split(',').map((t) => t.trim());
+    }
+    return [];
+  }
+}
+
+// Export singleton instance
+export const mcpCook = MCPCookScraper.getInstance();

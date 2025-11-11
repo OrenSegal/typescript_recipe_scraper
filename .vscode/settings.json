@@ -1,0 +1,14 @@
+{
+  // Enable the Deno language server for this workspace
+  "deno.enable": true,
+  // Enable Deno linting
+  "deno.lint": true,
+  // IMPORTANT: Only apply Deno's rules to the functions directory.
+  // The rest of your project (src, tests) will still use Node's TypeScript rules.
+  "deno.enablePaths": [
+    "supabase/functions",
+    "api"
+  ],
+  // This helps Deno find modules for import autocompletion
+  "deno.unstable": true
+}

@@ -1,0 +1,199 @@
+{
+  "timestamp": "2025-10-18T07:28:32.525Z",
+  "summary": {
+    "total": 23,
+    "successful": 14,
+    "failed": 9,
+    "successRate": "60.9%",
+    "totalRecipes": 304,
+    "avgDuration": "3923ms",
+    "byType": {
+      "website": "7/15",
+      "mcp": "5/5",
+      "aggregator": "2/3"
+    }
+  },
+  "results": [
+    {
+      "source": "Serious Eats",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Chocolate Chip Cookies",
+      "duration": 18606
+    },
+    {
+      "source": "Bon Appétit",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Chocolate Raspberry Brownies",
+      "duration": 375
+    },
+    {
+      "source": "Food Network",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 42225
+    },
+    {
+      "source": "AllRecipes",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 62284
+    },
+    {
+      "source": "Smitten Kitchen",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 48286
+    },
+    {
+      "source": "Minimalist Baker",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 60631
+    },
+    {
+      "source": "Budget Bytes",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 63945
+    },
+    {
+      "source": "Pinch of Yum",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "The Best Soft Chocolate Chip Cookies",
+      "duration": 5502
+    },
+    {
+      "source": "Gimme Some Oven",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 50614
+    },
+    {
+      "source": "BBC Good Food",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Lasagne",
+      "duration": 259
+    },
+    {
+      "source": "NY Times Cooking",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Chocolate Chip Cookies",
+      "duration": 5528
+    },
+    {
+      "source": "Vegan - Minimalist Baker",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 4080
+    },
+    {
+      "source": "Paleo Leap",
+      "type": "website",
+      "success": false,
+      "recipesFound": 0,
+      "error": "Website is blocked due to repeated failures",
+      "duration": 67958
+    },
+    {
+      "source": "Yummly",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Chocolate Chip Cookies",
+      "duration": 10193
+    },
+    {
+      "source": "Epicurious",
+      "type": "website",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Seafood fideuà",
+      "duration": 146
+    },
+    {
+      "source": "MCP-Cook: Get Dish List",
+      "type": "mcp",
+      "success": true,
+      "recipesFound": 294,
+      "sampleTitle": "可用菜品 (293 项):",
+      "duration": 0
+    },
+    {
+      "source": "MCP-Cook: Search \"chicken\"",
+      "type": "mcp",
+      "success": true,
+      "recipesFound": 0,
+      "duration": 0
+    },
+    {
+      "source": "MCP-Cook: Get Random Recipes",
+      "type": "mcp",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "汤面的做法",
+      "duration": 61
+    },
+    {
+      "source": "HowToCook MCP: Search \"鸡蛋\" (egg)",
+      "type": "mcp",
+      "success": true,
+      "recipesFound": 0,
+      "duration": 6074
+    },
+    {
+      "source": "HowToCook MCP: Random Recipe",
+      "type": "mcp",
+      "success": true,
+      "recipesFound": 0,
+      "duration": 3682
+    },
+    {
+      "source": "Aggregator: chocolate chip cookies",
+      "type": "aggregator",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Chocolate Chip Cookies",
+      "duration": 4269
+    },
+    {
+      "source": "Aggregator: spaghetti carbonara",
+      "type": "aggregator",
+      "success": true,
+      "recipesFound": 1,
+      "sampleTitle": "Spaghetti alla Carbonara",
+      "duration": 231
+    },
+    {
+      "source": "Aggregator: chicken tikka masala",
+      "type": "aggregator",
+      "success": false,
+      "recipesFound": 0,
+      "error": "No recipes found from any source",
+      "duration": 5022
+    }
+  ]
+}

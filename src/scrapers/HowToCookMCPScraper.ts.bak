@@ -1,0 +1,429 @@
+/**
+ * HowToCook MCP Scraper
+ *
+ * Uses the HowToCook MCP server (howtocook-mcp npm package) to fetch recipes
+ * from the Anduin2017/HowToCook repository (programmer's cooking guide).
+ *
+ * Features:
+ * - 100% FREE, unlimited access
+ * - 200+ recipes (Chinese/Asian cuisine focused)
+ * - Category-based filtering
+ * - Smart meal planning
+ * - Fuzzy recipe search
+ *
+ * MCP Package: howtocook-mcp (v0.0.7+)
+ * Repository: https://github.com/worryzyy/HowToCook-mcp
+ * Data Source: https://github.com/Anduin2017/HowToCook
+ */
+
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import type { Recipe, RecipeIngredient as Ingredient, InstructionStep as Instruction } from '../shared/types.js';
+
+interface HowToCookSearchOptions {
+  query?: string;
+  category?: string;
+  limit?: number;
+}
+
+interface MCPToolResult {
+  content?: Array<{
+    type: string;
+    text?: string;
+  }>;
+}
+
+/**
+ * Scraper for HowToCook MCP server
+ * Provides access to Chinese/Asian cooking recipes via MCP protocol
+ */
+export class HowToCookMCPScraper {
+  private static instance: HowToCookMCPScraper;
+  private client: Client | null = null;
+  private transport: StdioClientTransport | null = null;
+  private isConnected: boolean = false;
+
+  private constructor() {}
+
+  /**
+   * Get singleton instance
+   */
+  public static getInstance(): HowToCookMCPScraper {
+    if (!HowToCookMCPScraper.instance) {
+      HowToCookMCPScraper.instance = new HowToCookMCPScraper();
+    }
+    return HowToCookMCPScraper.instance;
+  }
+
+  /**
+   * Connect to HowToCook MCP server
+   */
+  private async connect(): Promise<void> {
+    if (this.isConnected && this.client) {
+      return;
+    }
+
+    try {
+      this.client = new Client(
+        {
+          name: 'recipe-scraper-howtocook',
+          version: '1.0.0',
+        },
+        {
+          capabilities: {
+            tools: {},
+          },
+        }
+      );
+
+      // Use npx to run howtocook-mcp
+      this.transport = new StdioClientTransport({
+        command: 'npx',
+        args: ['-y', 'howtocook-mcp'],
+      });
+
+      await this.client.connect(this.transport);
+      this.isConnected = true;
+      console.log('🔌 Connected to HowToCook MCP server');
+    } catch (error) {
+      console.error('❌ Failed to connect to HowToCook MCP server:', error);
+      this.isConnected = false;
+      throw error;
+    }
+  }
+
+  /**
+   * Disconnect from MCP server
+   */
+  public async disconnect(): Promise<void> {
+    if (this.client && this.transport) {
+      await this.client.close();
+      this.client = null;
+      this.transport = null;
+      this.isConnected = false;
+      console.log('🔌 Disconnected from HowToCook MCP server');
+    }
+  }
+
+  /**
+   * Search for recipes by name or category
+   */
+  public async searchRecipes(options: HowToCookSearchOptions): Promise<Recipe[]> {
+    try {
+      await this.connect();
+
+      if (!this.client) {
+        throw new Error('MCP client not connected');
+      }
+
+      let result: MCPToolResult;
+
+      // If query is provided, search for specific recipe
+      if (options.query) {
+        result = await this.client.callTool({
+          name: 'query_specific_recipe',
+          arguments: {
+            query: options.query,
+          },
+        }) as MCPToolResult;
+      }
+      // If category is provided, filter by category
+      else if (options.category) {
+        result = await this.client.callTool({
+          name: 'query_by_category',
+          arguments: {
+            category: options.category,
+          },
+        }) as MCPToolResult;
+      }
+      // Otherwise, get all recipes (large context)
+      else {
+        result = await this.client.callTool({
+          name: 'query_all_recipes',
+          arguments: {},
+        }) as MCPToolResult;
+      }
+
+      // Type guard for MCP response
+      if (!result || !result.content || !Array.isArray(result.content) || result.content.length === 0) {
+        return [];
+      }
+
+      return this.parseRecipeResults(result.content as any[]);
+    } catch (error) {
+      console.error('❌ HowToCook MCP search error:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Get a random recipe suggestion
+   */
+  public async getRandomRecipe(partySize: number = 2): Promise<Recipe | null> {
+    try {
+      await this.connect();
+
+      if (!this.client) {
+        throw new Error('MCP client not connected');
+      }
+
+      const result = await this.client.callTool({
+        name: 'random_menu_suggestion',
+        arguments: {
+          party_size: partySize,
+        },
+      }) as MCPToolResult;
+
+      // Type guard for MCP response
+      if (!result || !result.content || !Array.isArray(result.content) || result.content.length === 0) {
+        return null;
+      }
+
+      const recipes = this.parseRecipeResults(result.content as any[]);
+      return recipes.length > 0 ? recipes[0] : null;
+    } catch (error) {
+      console.error('❌ HowToCook MCP random recipe error:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get smart meal plan (weekly recommendations)
+   */
+  public async getSmartMealPlan(
+    dietaryRestrictions: string[] = [],
+    allergies: string[] = [],
+    diners: number = 2
+  ): Promise<Recipe[]> {
+    try {
+      await this.connect();
+
+      if (!this.client) {
+        throw new Error('MCP client not connected');
+      }
+
+      const result = await this.client.callTool({
+        name: 'smart_meal_recommendations',
+        arguments: {
+          dietary_restrictions: dietaryRestrictions.join(', '),
+          allergies: allergies.join(', '),
+          number_of_diners: diners,
+        },
+      }) as MCPToolResult;
+
+      // Type guard for MCP response
+      if (!result || !result.content || !Array.isArray(result.content) || result.content.length === 0) {
+        return [];
+      }
+
+      return this.parseRecipeResults(result.content as any[]);
+    } catch (error) {
+      console.error('❌ HowToCook MCP meal plan error:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Parse MCP tool result content into Recipe array
+   */
+  private parseRecipeResults(content: any[]): Recipe[] {
+    const recipes: Recipe[] = [];
+
+    for (const item of content) {
+      if (item.type === 'text' && item.text) {
+        try {
+          // Try to parse as JSON array
+          const data = JSON.parse(item.text);
+
+          if (Array.isArray(data)) {
+            for (const recipeData of data) {
+              const recipe = this.parseRecipe(recipeData);
+              if (recipe) {
+                recipes.push(recipe);
+              }
+            }
+          } else {
+            // Single recipe object
+            const recipe = this.parseRecipe(data);
+            if (recipe) {
+              recipes.push(recipe);
+            }
+          }
+        } catch (e) {
+          // If not JSON, treat as plain text recipe
+          const recipe = this.parseTextRecipe(item.text);
+          if (recipe) {
+            recipes.push(recipe);
+          }
+        }
+      }
+    }
+
+    return recipes;
+  }
+
+  /**
+   * Parse a recipe object from HowToCook data
+   */
+  private parseRecipe(data: any): Recipe | null {
+    if (!data || typeof data !== 'object') {
+      return null;
+    }
+
+    const recipe: Recipe = {
+      title: data.name || data.title || 'Unknown Recipe',
+      description: data.description || '',
+      ingredients: this.parseIngredients(data.ingredients || data.materials || []),
+      instructions: this.parseInstructions(data.instructions || data.steps || []),
+      prepTime: this.parseTime(data.prep_time || data.prepTime),
+      cookTime: this.parseTime(data.cook_time || data.cookTime),
+      totalTime: this.parseTime(data.total_time || data.totalTime),
+      servings: data.servings || data.serves || 2,
+      difficulty: data.difficulty || 'medium',
+      cuisine: data.cuisine || 'Chinese',
+      category: data.category || 'main',
+      tags: this.parseTags(data.tags || data.keywords || []),
+      author: data.author || 'HowToCook Community',
+      sourceUrl: data.url || data.source_url || 'https://github.com/Anduin2017/HowToCook',
+      imageUrl: data.image || data.image_url,
+    };
+
+    return recipe;
+  }
+
+  /**
+   * Parse plain text recipe (fallback)
+   */
+  private parseTextRecipe(text: string): Recipe | null {
+    // Extract title (usually first line or first heading)
+    const lines = text.split('\n');
+    const titleMatch = lines[0]?.match(/^#+\s*(.+)/) || [null, lines[0]];
+    const title = titleMatch[1]?.trim() || 'Recipe from HowToCook';
+
+    // Basic text parsing for ingredients and instructions
+    const ingredientsSection = text.match(/(?:ingredients?|材料)[:\s]*(.+?)(?=(?:instructions?|steps?|做法|步骤)|$)/is);
+    const instructionsSection = text.match(/(?:instructions?|steps?|做法|步骤)[:\s]*(.+?)$/is);
+
+    return {
+      title,
+      description: '',
+      ingredients: this.parseTextIngredients(ingredientsSection?.[1] || ''),
+      instructions: this.parseTextInstructions(instructionsSection?.[1] || text),
+      servings: 2,
+      difficulty: 'medium',
+      cuisine: 'Chinese',
+      category: 'main',
+      sourceUrl: 'https://github.com/Anduin2017/HowToCook',
+    };
+  }
+
+  /**
+   * Parse ingredients array
+   */
+  private parseIngredients(ingredients: any[]): Ingredient[] {
+    if (!Array.isArray(ingredients)) {
+      return [];
+    }
+
+    return ingredients
+      .map((ing) => {
+        if (typeof ing === 'string') {
+          return { text: ing };
+        }
+        return {
+          name: ing.name || ing.ingredient,
+          amount: ing.amount || ing.quantity,
+          unit: ing.unit,
+          text: ing.text || `${ing.amount || ''} ${ing.unit || ''} ${ing.name || ing.ingredient || ''}`.trim(),
+        };
+      })
+      .filter((ing) => ing.text || ing.name);
+  }
+
+  /**
+   * Parse text ingredients (fallback)
+   */
+  private parseTextIngredients(text: string): Ingredient[] {
+    if (!text) return [];
+
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.match(/^#+/))
+      .map((line) => ({ text: line.replace(/^[-*•]\s*/, '') }));
+  }
+
+  /**
+   * Parse instructions array
+   */
+  private parseInstructions(instructions: any[]): Instruction[] {
+    if (!Array.isArray(instructions)) {
+      return [];
+    }
+
+    return instructions
+      .map((inst, index) => {
+        if (typeof inst === 'string') {
+          return {
+            step: index + 1,
+            text: inst,
+          };
+        }
+        return {
+          step: inst.step || inst.number || index + 1,
+          text: inst.text || inst.description || inst.instruction || '',
+        };
+      })
+      .filter((inst) => inst.text);
+  }
+
+  /**
+   * Parse text instructions (fallback)
+   */
+  private parseTextInstructions(text: string): Instruction[] {
+    if (!text) return [];
+
+    return text
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.match(/^#+/))
+      .map((line, index) => ({
+        step: index + 1,
+        text: line.replace(/^\d+\.\s*/, '').replace(/^[-*•]\s*/, ''),
+      }))
+      .filter((inst) => inst.text);
+  }
+
+  /**
+   * Parse time string to minutes
+   */
+  private parseTime(time: any): number | undefined {
+    if (!time) return undefined;
+    if (typeof time === 'number') return time;
+
+    const hourMatch = time.match(/(\d+)\s*(?:h|hr|hour)/i);
+    const minMatch = time.match(/(\d+)\s*(?:m|min|minute)/i);
+
+    let total = 0;
+    if (hourMatch) total += parseInt(hourMatch[1]) * 60;
+    if (minMatch) total += parseInt(minMatch[1]);
+
+    return total > 0 ? total : undefined;
+  }
+
+  /**
+   * Parse tags array
+   */
+  private parseTags(tags: any): string[] {
+    if (Array.isArray(tags)) {
+      return tags.filter((tag) => typeof tag === 'string');
+    }
+    if (typeof tags === 'string') {
+      return tags.split(',').map((t) => t.trim());
+    }
+    return [];
+  }
+}
+
+// Export singleton instance
+export const howToCookMCP = HowToCookMCPScraper.getInstance();

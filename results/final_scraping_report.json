@@ -1,0 +1,1454 @@
+{
+  "summary": {
+    "totalWebsites": 195,
+    "successful": 86,
+    "failed": 109,
+    "sitemapUpdates": 0,
+    "totalRecipesFound": 15799,
+    "totalRecipesProcessed": 8023,
+    "overallSuccessRate": "44.1%",
+    "recipeProcessingRate": "50.8%"
+  },
+  "successfulWebsites": [
+    {
+      "name": "Allrecipes",
+      "category": "Major Recipe Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 73,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Pinch of Yum",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 52,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Budget Bytes",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 68,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Minimalist Baker",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Love and Lemons",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 80,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Skinnytaste",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 84,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cookie and Kate",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sally's Baking Addiction",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 87,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Preppy Kitchen",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 100,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sugar Spun Run",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cloudy Kitchen",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 99,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Always Eat Dessert",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 83,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Hummingbird High",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 67,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Woks of Life",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Omnivore's Cookbook",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 77,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Christie at Home",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 76,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Recipe Tin Eats",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Asian Cooking Mom",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 93,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Taste of Asian Food",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Ministry of Curry",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Heart Beets",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 88,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Veg Recipes of India",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cook With Manali",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 92,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Food Story",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Hebbar's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 80,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Piping Pot Curry",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tea for Turmeric",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Mediterranean Dish",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tori Avey",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 61,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Hungry Bites",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 100,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Greek Dish",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 90,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Little Spice Jar",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 83,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Half Baked Harvest",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 62,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "A Couple Cooks",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 65,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Spend With Pennies",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tastes Better From Scratch",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Recipe Critic",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Soul Food Pot",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 84,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Ethnic Spoon",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Foreign Fork",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 88,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Caroline's Cooking",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 96,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Global Cuisine",
+      "category": "Additional Popular Sites",
+      "recipesFound": 67,
+      "recipesProcessed": 56,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sweetest Menu",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 96,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Allrecipes",
+      "category": "Major Recipe Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 74,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Pinch of Yum",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 52,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Budget Bytes",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 68,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Minimalist Baker",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Love and Lemons",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 80,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Skinnytaste",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 84,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cookie and Kate",
+      "category": "Popular Food Blogs",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sally's Baking Addiction",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 87,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Preppy Kitchen",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 100,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sugar Spun Run",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cloudy Kitchen",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 99,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Always Eat Dessert",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 83,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Hummingbird High",
+      "category": "Baking & Dessert Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 67,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Woks of Life",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Omnivore's Cookbook",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 77,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Christie at Home",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 76,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Recipe Tin Eats",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Asian Cooking Mom",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 93,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Taste of Asian Food",
+      "category": "Asian & International Cuisine",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Ministry of Curry",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Heart Beets",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 88,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Veg Recipes of India",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Cook With Manali",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 92,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Food Story",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 86,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Hebbar's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 80,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Piping Pot Curry",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 95,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tea for Turmeric",
+      "category": "Indian Cuisine Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Mediterranean Dish",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tori Avey",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 61,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Hungry Bites",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 100,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Greek Dish",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 90,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Little Spice Jar",
+      "category": "Mediterranean & Middle Eastern",
+      "recipesFound": 100,
+      "recipesProcessed": 83,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Half Baked Harvest",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 62,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "A Couple Cooks",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 65,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Spend With Pennies",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 94,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Tastes Better From Scratch",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Recipe Critic",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 98,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Soul Food Pot",
+      "category": "Specialty & Diet-Focused",
+      "recipesFound": 100,
+      "recipesProcessed": 84,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Ethnic Spoon",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 97,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "The Foreign Fork",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 88,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Caroline's Cooking",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 96,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "My Global Cuisine",
+      "category": "Additional Popular Sites",
+      "recipesFound": 67,
+      "recipesProcessed": 56,
+      "sitemapUpdated": false
+    },
+    {
+      "name": "Sweetest Menu",
+      "category": "Additional Popular Sites",
+      "recipesFound": 100,
+      "recipesProcessed": 96,
+      "sitemapUpdated": false
+    }
+  ],
+  "failedWebsites": [
+    {
+      "name": "Food Network",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Simply Recipes",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "83 recipes failed processing",
+        "Low success rate: 17.0%"
+      ]
+    },
+    {
+      "name": "Epicurious",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Serious Eats",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "68 recipes failed processing",
+        "Low success rate: 32.0%"
+      ]
+    },
+    {
+      "name": "The Kitchn",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Food52",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Taste of Home",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "BBC Good Food",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "65 recipes failed processing",
+        "Low success rate: 35.0%"
+      ]
+    },
+    {
+      "name": "Smitten Kitchen",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "The Pioneer Woman",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "5 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Damn Delicious",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Gimme Some Oven",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "King Arthur Baking",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Joy the Baker",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Brown Eyed Baker",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "The Cake Blog",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Just One Cookbook",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "88 recipes failed processing",
+        "Low success rate: 12.0%"
+      ]
+    },
+    {
+      "name": "Hot Thai Kitchen",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Maangchi",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Eat Cho Food",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Archana's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Sailu's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Mediterranean Living",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "82 recipes failed processing",
+        "Low success rate: 18.0%"
+      ]
+    },
+    {
+      "name": "Olive Tomato",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Akis Petretzikis",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Downshiftology",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "92 recipes failed processing",
+        "Low success rate: 8.0%"
+      ]
+    },
+    {
+      "name": "Foolproof Living",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "How Sweet Eats",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Ambitious Kitchen",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Two Peas & Their Pod",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Once Upon a Chef",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Delish",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "5 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "EatingWell",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "63 recipes failed processing",
+        "Low success rate: 37.0%"
+      ]
+    },
+    {
+      "name": "Food & Wine",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "88 recipes failed processing",
+        "Low success rate: 12.0%"
+      ]
+    },
+    {
+      "name": "Bon Appétit",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Martha Stewart",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "91 recipes failed processing",
+        "Low success rate: 9.0%"
+      ]
+    },
+    {
+      "name": "Cooking Light",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "63 recipes failed processing",
+        "Low success rate: 37.0%"
+      ]
+    },
+    {
+      "name": "Southern Living",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "95 recipes failed processing",
+        "Low success rate: 5.0%"
+      ]
+    },
+    {
+      "name": "Real Simple",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Saveur",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "98 recipes failed processing",
+        "Low success rate: 2.0%"
+      ]
+    },
+    {
+      "name": "Cookpad",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "International Cuisine",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Global Table Adventure",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "56 recipes failed processing",
+        "Low success rate: 44.0%"
+      ]
+    },
+    {
+      "name": "Immigrant's Table",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "58 recipes failed processing",
+        "Low success rate: 42.0%"
+      ]
+    },
+    {
+      "name": "TasteAtlas",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Tyler Cowen's Ethnic Dining Guide",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "I Just Want To Eat",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Baking Bites",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Tasting Table",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "95 recipes failed processing",
+        "Low success rate: 5.0%"
+      ]
+    },
+    {
+      "name": "Grub Street",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Eater",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "11 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "My Baking Addiction",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Food.com",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "24 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "AllRecipes UK",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Recipeland",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Food Network",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Simply Recipes",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "84 recipes failed processing",
+        "Low success rate: 16.0%"
+      ]
+    },
+    {
+      "name": "Epicurious",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Serious Eats",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "67 recipes failed processing",
+        "Low success rate: 33.0%"
+      ]
+    },
+    {
+      "name": "The Kitchn",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Food52",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "NYT Cooking",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Taste of Home",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "BBC Good Food",
+      "category": "Major Recipe Sites",
+      "errors": [
+        "65 recipes failed processing",
+        "Low success rate: 35.0%"
+      ]
+    },
+    {
+      "name": "Smitten Kitchen",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "The Pioneer Woman",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "5 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Damn Delicious",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Gimme Some Oven",
+      "category": "Popular Food Blogs",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "King Arthur Baking",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Joy the Baker",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Brown Eyed Baker",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "The Cake Blog",
+      "category": "Baking & Dessert Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Just One Cookbook",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "88 recipes failed processing",
+        "Low success rate: 12.0%"
+      ]
+    },
+    {
+      "name": "Hot Thai Kitchen",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Maangchi",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Eat Cho Food",
+      "category": "Asian & International Cuisine",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Archana's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Sailu's Kitchen",
+      "category": "Indian Cuisine Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "Mediterranean Living",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "82 recipes failed processing",
+        "Low success rate: 18.0%"
+      ]
+    },
+    {
+      "name": "Olive Tomato",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Akis Petretzikis",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Downshiftology",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "92 recipes failed processing",
+        "Low success rate: 8.0%"
+      ]
+    },
+    {
+      "name": "Foolproof Living",
+      "category": "Mediterranean & Middle Eastern",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "How Sweet Eats",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Ambitious Kitchen",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Two Peas & Their Pod",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Once Upon a Chef",
+      "category": "Specialty & Diet-Focused",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Delish",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "5 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "EatingWell",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "64 recipes failed processing",
+        "Low success rate: 36.0%"
+      ]
+    },
+    {
+      "name": "Food & Wine",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "88 recipes failed processing",
+        "Low success rate: 12.0%"
+      ]
+    },
+    {
+      "name": "Bon Appétit",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    },
+    {
+      "name": "Martha Stewart",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "91 recipes failed processing",
+        "Low success rate: 9.0%"
+      ]
+    },
+    {
+      "name": "Cooking Light",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "64 recipes failed processing",
+        "Low success rate: 36.0%"
+      ]
+    },
+    {
+      "name": "Southern Living",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "95 recipes failed processing",
+        "Low success rate: 5.0%"
+      ]
+    },
+    {
+      "name": "Real Simple",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "97 recipes failed processing",
+        "Low success rate: 3.0%"
+      ]
+    },
+    {
+      "name": "Saveur",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "98 recipes failed processing",
+        "Low success rate: 2.0%"
+      ]
+    },
+    {
+      "name": "Cookpad",
+      "category": "International & Magazine Sites",
+      "errors": [
+        "Sitemap validation failed: No working sitemap found on domain"
+      ]
+    },
+    {
+      "name": "International Cuisine",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Global Table Adventure",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "56 recipes failed processing",
+        "Low success rate: 44.0%"
+      ]
+    },
+    {
+      "name": "Immigrant's Table",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "58 recipes failed processing",
+        "Low success rate: 42.0%"
+      ]
+    },
+    {
+      "name": "TasteAtlas",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Tyler Cowen's Ethnic Dining Guide",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "I Just Want To Eat",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Baking Bites",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Tasting Table",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "95 recipes failed processing",
+        "Low success rate: 5.0%"
+      ]
+    },
+    {
+      "name": "Grub Street",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "100 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "Eater",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "10 recipes failed processing",
+        "Low success rate: 0.0%"
+      ]
+    },
+    {
+      "name": "My Baking Addiction",
+      "category": "Additional Popular Sites",
+      "errors": [
+        "No recipe URLs found in sitemap"
+      ]
+    }
+  ],
+  "timestamp": "2025-08-07T01:53:04.282Z"
+}

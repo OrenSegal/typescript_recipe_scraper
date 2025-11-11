@@ -1,0 +1,23 @@
+# Recipe URLs for Universal Scraper
+# Supports: Regular websites, TikTok, Instagram, YouTube, images, text
+
+# Regular Recipe Websites
+https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524
+https://www.bonappetit.com/recipe/chocolate-chip-cookies
+https://www.seriouseats.com/the-food-lab-best-chocolate-chip-cookie-recipe
+https://www.epicurious.com/recipes/food/views/perfect-chocolate-cake
+
+# Add your TikTok recipe videos here
+# https://www.tiktok.com/@user/video/123456789
+
+# Add your Instagram recipe posts here
+# https://www.instagram.com/p/ABC123XYZ/
+
+# Add your YouTube recipe videos here
+# https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+# Add image URLs here
+# https://example.com/recipe-card.jpg
+
+# You can add plain text recipes too (they will be parsed with NLP)

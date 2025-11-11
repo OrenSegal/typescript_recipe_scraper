@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-08-07T04:49:30.674Z",
+  "config": {
+    "csvFiles": [
+      "data/Data.csv"
+    ],
+    "maxTimePerSite": 600000,
+    "maxRetries": 2,
+    "shouldUpsert": false,
+    "maxRecipesPerSite": 5
+  },
+  "progress": [
+    {
+      "status": "failed",
+      "recipesProcessed": 96,
+      "successRate": 96,
+      "retryCount": 2,
+      "startTime": 1754542169037,
+      "endTime": 1754541804717,
+      "error": "No recipes successfully processed"
+    }
+  ]
+}

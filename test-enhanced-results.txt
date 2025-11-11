@@ -1,0 +1,392 @@
+
+🚀 TESTING MULTI-SOURCE RECIPE AGGREGATOR
+
+================================================================================
+📋 Testing 9 URLs:
+
+
+================================================================================
+🔗 Testing: https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Bas Best Chocolate Chip Cookies"
+   URL: https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Bas Best Chocolate Chip Cookies"
+   Trying 4 variations: [Bas Best Chocolate Chip Cookies, bas chocolate chip cookies, bas best chocolate chip cooky, bas best chocolate chip cookie]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Bas%20Best%20Chocolate%20Chip%20Cookies
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=bas%20chocolate%20chip%20cookies
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=bas%20best%20chocolate%20chip%20cooky
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=bas%20best%20chocolate%20chip%20cookie
+⚠️  No recipes found in TheMealDB
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: bas chocolate chip cookies
+⚠️  No recipes found in RecipePuppy
+
+📍 PHASE 2: Web Scraping
+ℹ️ Redis disabled - using memory cache only
+❌ Cache MISS: https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies
+🔍 Starting robust scraping for: https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies
+  🔄 Attempting method: json-ld
+📋 Loaded 1 blocked sites from registry
+✅ Successfully fetched https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies (attempt 1)
+  ✅ Success with json-ld (confidence: 95%)
+   ✅ Web Scraping: 80% complete (json-ld)
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 95% confidence
+   📚 Sources used: web-scraping
+
+✅ SUCCESS!
+   Recipe: BA's Best Chocolate Chip Cookies
+   Sources: web-scraping
+   Completeness: 80%
+   Confidence: 95%
+   Processing time: 1679ms
+   Ingredients: 10
+   Instructions: 4
+
+================================================================================
+🔗 Testing: https://www.bonappetit.com/recipe/pad-thai
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Pad Thai"
+   URL: https://www.bonappetit.com/recipe/pad-thai
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Pad Thai"
+   Trying 4 variations: [Pad Thai, pad thai, thai noodles, phat thai]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Pad%20Thai
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=pad%20thai
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=thai%20noodles
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=phat%20thai
+⚠️  No recipes found in TheMealDB
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: pad thai
+⚠️  No recipes found in RecipePuppy
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://www.bonappetit.com/recipe/pad-thai
+🔍 Starting robust scraping for: https://www.bonappetit.com/recipe/pad-thai
+  🔄 Attempting method: json-ld
+⏳ Rate limiting for www.bonappetit.com: waiting 2192ms
+✅ Successfully fetched https://www.bonappetit.com/recipe/pad-thai (attempt 1)
+  ✅ Success with json-ld (confidence: 93%)
+   ✅ Web Scraping: 75% complete (json-ld)
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 75% complete, 93% confidence
+   📚 Sources used: web-scraping
+
+✅ SUCCESS!
+   Recipe: Pad Thai
+   Sources: web-scraping
+   Completeness: 75%
+   Confidence: 93%
+   Processing time: 2832ms
+   Ingredients: 14
+   Instructions: 3
+
+================================================================================
+🔗 Testing: https://www.bonappetit.com/recipe/classic-lasagne
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Classic Lasagne"
+   URL: https://www.bonappetit.com/recipe/classic-lasagne
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Classic Lasagne"
+   Trying 2 variations: [Classic Lasagne, lasagne]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Classic%20Lasagne
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=lasagne
+✅ Found 1 recipes from TheMealDB
+   ✅ Found match with query "lasagne": Lasagne
+   ✅ TheMealDB: 80% complete
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 95% confidence
+   📚 Sources used: themealdb
+
+✅ SUCCESS!
+   Recipe: Lasagne
+   Sources: themealdb
+   Completeness: 80%
+   Confidence: 95%
+   Processing time: 221ms
+   Ingredients: 15
+   Instructions: 5
+
+================================================================================
+🔗 Testing: https://www.bonappetit.com/recipe/chicken-tikka-masala
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Chicken Tikka Masala"
+   URL: https://www.bonappetit.com/recipe/chicken-tikka-masala
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Chicken Tikka Masala"
+   Trying 7 variations: [Chicken Tikka Masala, chicken tikka masala, tikka masala, butter chicken, poultry tikka masala, hen tikka masala, fowl tikka masala]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Chicken%20Tikka%20Masala
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=chicken%20tikka%20masala
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=tikka%20masala
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=butter%20chicken
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=poultry%20tikka%20masala
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=hen%20tikka%20masala
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=fowl%20tikka%20masala
+⚠️  No recipes found in TheMealDB
+   🔍 Trying category search: chicken
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken
+📥 Fetching full details for 36 recipes...
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: chicken tikka masala
+⚠️  No recipes found in RecipePuppy
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://www.bonappetit.com/recipe/chicken-tikka-masala
+🔍 Starting robust scraping for: https://www.bonappetit.com/recipe/chicken-tikka-masala
+  🔄 Attempting method: json-ld
+⏳ Rate limiting for www.bonappetit.com: waiting 1293ms
+✅ Successfully fetched https://www.bonappetit.com/recipe/chicken-tikka-masala (attempt 1)
+  ✅ Success with json-ld (confidence: 96%)
+   ✅ Web Scraping: 75% complete (json-ld)
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 75% complete, 96% confidence
+   📚 Sources used: web-scraping
+
+✅ SUCCESS!
+   Recipe: Chicken Tikka Masala
+   Sources: web-scraping
+   Completeness: 75%
+   Confidence: 96%
+   Processing time: 2762ms
+   Ingredients: 18
+   Instructions: 7
+
+================================================================================
+🔗 Testing: https://www.bbcgoodfood.com/recipes/beef-wellington
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Beef Wellington"
+   URL: https://www.bbcgoodfood.com/recipes/beef-wellington
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Beef Wellington"
+   Trying 5 variations: [Beef Wellington, steak wellington, ground beef wellington, minced beef wellington, hamburger wellington]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Beef%20Wellington
+✅ Found 1 recipes from TheMealDB
+   ✅ Found match with query "Beef Wellington": Beef Wellington
+   ✅ TheMealDB: 80% complete
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 95% confidence
+   📚 Sources used: themealdb
+
+✅ SUCCESS!
+   Recipe: Beef Wellington
+   Sources: themealdb
+   Completeness: 80%
+   Confidence: 95%
+   Processing time: 116ms
+   Ingredients: 8
+   Instructions: 6
+
+================================================================================
+🔗 Testing: https://www.bbcgoodfood.com/recipes/spaghetti-carbonara
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Spaghetti Carbonara"
+   URL: https://www.bbcgoodfood.com/recipes/spaghetti-carbonara
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Spaghetti Carbonara"
+   Trying 4 variations: [Spaghetti Carbonara, spaghetti carbonara, carbonara, pasta carbonara]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Spaghetti%20Carbonara
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=spaghetti%20carbonara
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=carbonara
+✅ Found 1 recipes from TheMealDB
+   ✅ Found match with query "carbonara": Spaghetti alla Carbonara
+   ✅ TheMealDB: 80% complete
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 95% confidence
+   📚 Sources used: themealdb
+
+✅ SUCCESS!
+   Recipe: Spaghetti alla Carbonara
+   Sources: themealdb
+   Completeness: 80%
+   Confidence: 95%
+   Processing time: 354ms
+   Ingredients: 6
+   Instructions: 24
+
+================================================================================
+🔗 Testing: https://www.simplyrecipes.com/recipes/banana_bread/
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "Banana"
+   URL: https://www.simplyrecipes.com/recipes/banana_bread/
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "Banana"
+   Trying 1 variations: [Banana]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=Banana
+✅ Found 1 recipes from TheMealDB
+   ✅ Found match with query "Banana": Banana Pancakes
+   ✅ TheMealDB: 80% complete
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 95% confidence
+   📚 Sources used: themealdb
+
+✅ SUCCESS!
+   Recipe: Banana Pancakes
+   Sources: themealdb
+   Completeness: 80%
+   Confidence: 95%
+   Processing time: 117ms
+   Ingredients: 7
+   Instructions: 2
+
+================================================================================
+🔗 Testing: https://tasty.co/recipe/the-best-fudgy-brownies
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "The Best Fudgy Brownies"
+   URL: https://tasty.co/recipe/the-best-fudgy-brownies
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "The Best Fudgy Brownies"
+   Trying 4 variations: [The Best Fudgy Brownies, the fudgy brownies, the best fudgy browny, the best fudgy brownie]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=The%20Best%20Fudgy%20Brownies
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=the%20fudgy%20brownies
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=the%20best%20fudgy%20browny
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=the%20best%20fudgy%20brownie
+⚠️  No recipes found in TheMealDB
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: the fudgy brownies
+⚠️  No recipes found in RecipePuppy
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://tasty.co/recipe/the-best-fudgy-brownies
+🔍 Starting robust scraping for: https://tasty.co/recipe/the-best-fudgy-brownies
+  🔄 Attempting method: json-ld
+✅ Successfully fetched https://tasty.co/recipe/the-best-fudgy-brownies (attempt 1)
+  ✅ Success with json-ld (confidence: 100%)
+   ✅ Web Scraping: 80% complete (json-ld)
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 100% confidence
+   📚 Sources used: web-scraping
+
+✅ SUCCESS!
+   Recipe: The Best Fudgy Brownies Recipe by Tasty
+   Sources: web-scraping
+   Completeness: 80%
+   Confidence: 100%
+   Processing time: 700ms
+   Ingredients: 8
+   Instructions: 8
+
+================================================================================
+🔗 Testing: https://tasty.co/recipe/one-pot-garlic-parmesan-pasta
+================================================================================
+
+🎯 MULTI-SOURCE AGGREGATION for: "One Pot Garlic Parmesan Pasta"
+   URL: https://tasty.co/recipe/one-pot-garlic-parmesan-pasta
+
+📍 PHASE 1: Multi-API Search
+🔍 Enhanced search for "One Pot Garlic Parmesan Pasta"
+   Trying 7 variations: [One Pot Garlic Parmesan Pasta, one pot garlic parmesan noodles, one pot garlic parmesan spaghetti, one pot garlic parmesan penne, one pot garlic parmesan macaroni, one pot garlic parmesan linguine, one pot garlic parmesan fettuccine]
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=One%20Pot%20Garlic%20Parmesan%20Pasta
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20noodles
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20spaghetti
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20penne
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20macaroni
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20linguine
+⚠️  No recipes found in TheMealDB
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/search.php?s=one%20pot%20garlic%20parmesan%20fettuccine
+⚠️  No recipes found in TheMealDB
+   🔍 Trying category search: pasta
+🌐 TheMealDB API request: https://www.themealdb.com/api/json/v1/1/filter.php?c=pasta
+📥 Fetching full details for 10 recipes...
+   ❌ No matches found in TheMealDB
+🌐 RecipePuppy API request: one pot garlic parmesan pasta
+⚠️  No recipes found in RecipePuppy
+
+📍 PHASE 2: Web Scraping
+❌ Cache MISS: https://tasty.co/recipe/one-pot-garlic-parmesan-pasta
+🔍 Starting robust scraping for: https://tasty.co/recipe/one-pot-garlic-parmesan-pasta
+  🔄 Attempting method: json-ld
+✅ Successfully fetched https://tasty.co/recipe/one-pot-garlic-parmesan-pasta (attempt 1)
+  ✅ Success with json-ld (confidence: 100%)
+   ✅ Web Scraping: 80% complete (json-ld)
+
+📊 COMBINING 1 SOURCES
+   ✅ Final recipe: 80% complete, 100% confidence
+   📚 Sources used: web-scraping
+
+✅ SUCCESS!
+   Recipe: One-Pot Garlic Parmesan Pasta Recipe by Tasty
+   Sources: web-scraping
+   Completeness: 80%
+   Confidence: 100%
+   Processing time: 1202ms
+   Ingredients: 9
+   Instructions: 6
+
+
+================================================================================
+📊 SUMMARY
+================================================================================
+
+✅ Successful: 9/9 (100.0%)
+❌ Failed: 0/9
+
+📈 Average completeness: 78.9%
+⏱️  Average processing time: 1109ms
+
+📚 Sources used:
+   web-scraping: 5 times
+   themealdb: 4 times
+
+================================================================================
+
+📝 DETAILED RESULTS:
+
+✅ https://www.bonappetit.com/recipe/bas-best-chocolate-chip-cookies (80%) [web-scraping]
+✅ https://www.bonappetit.com/recipe/pad-thai (75%) [web-scraping]
+✅ https://www.bonappetit.com/recipe/classic-lasagne (80%) [themealdb]
+✅ https://www.bonappetit.com/recipe/chicken-tikka-masala (75%) [web-scraping]
+✅ https://www.bbcgoodfood.com/recipes/beef-wellington (80%) [themealdb]
+✅ https://www.bbcgoodfood.com/recipes/spaghetti-carbonara (80%) [themealdb]
+✅ https://www.simplyrecipes.com/recipes/banana_bread/ (80%) [themealdb]
+✅ https://tasty.co/recipe/the-best-fudgy-brownies (80%) [web-scraping]
+✅ https://tasty.co/recipe/one-pot-garlic-parmesan-pasta (80%) [web-scraping]
+
+

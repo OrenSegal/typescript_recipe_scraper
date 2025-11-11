@@ -1,0 +1,252 @@
+{
+  "title": "The Food Lab&#39;s Chocolate Chip Cookies",
+  "description": "Learn the secrets and science behind the best browned butter chocolate chip cookies in this classic recipe from The Food Lab.",
+  "source_url": "https://www.seriouseats.com/the-food-lab-best-chocolate-chip-cookie-recipe",
+  "image_url": "https://www.seriouseats.com/thmb/FczZZZ5SRlgoTKm1A9nB54LTPTc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__12__20131213-chocolate-chip-cookies-food-lab-55-edit-04edd98fcca7457281abbf6eac559bfc.jpg",
+  "servings": 28,
+  "prep_time_minutes": 20,
+  "cook_time_minutes": 30,
+  "total_time_minutes": 75,
+  "effort_level": 5,
+  "ingredients": [
+    {
+      "text": "8 ounces unsalted butter (2 sticks; 225g)",
+      "name": "butter",
+      "quantity": 8,
+      "unit": "ounces",
+      "notes": "unsalted",
+      "category": "Dairy",
+      "grams": 227,
+      "order_index": 0,
+      "id": "d74fdde2944f"
+    },
+    {
+      "text": "1 standard ice cube (about 2 tablespoons; 30mL frozen water)",
+      "name": "standard ice cube",
+      "quantity": 1,
+      "unit": "tablespoons",
+      "notes": "about 2 tablespoons, 30mL frozen water, frozen",
+      "category": "Other",
+      "grams": 15,
+      "order_index": 0,
+      "id": "6497621ee6f8"
+    },
+    {
+      "text": "10 ounces all-purpose flour (about 2 cups; 280g)",
+      "name": "all-purpose flour",
+      "quantity": 10,
+      "unit": "ounces",
+      "notes": "about 2 cups, 280g",
+      "category": "Baking Essentials",
+      "grams": 283,
+      "order_index": 0,
+      "id": "5b61645a7264"
+    },
+    {
+      "text": "3/4 teaspoon (3g) baking soda",
+      "name": "baking soda",
+      "quantity": 3,
+      "unit": "grams",
+      "category": "Baking Essentials",
+      "grams": 3,
+      "order_index": 0,
+      "id": "1fa0ddeead3c"
+    },
+    {
+      "text": "2 teaspoons Diamond Crystal kosher salt or 1 teaspoon table salt (4g)",
+      "name": "kosher salt",
+      "quantity": 4,
+      "unit": "grams",
+      "notes": "2 teaspoons diamond crystal kosher salt or 1 teaspoon table salt",
+      "category": "Pantry Staples",
+      "grams": 4,
+      "order_index": 0,
+      "id": "ceb20772e0c9"
+    },
+    {
+      "text": "5 ounces granulated sugar (about 3/4 cup; 140g)",
+      "name": "sugar",
+      "quantity": 5,
+      "unit": "ounces",
+      "notes": "about 3/4 cup, 140g",
+      "category": "Pantry Staples",
+      "grams": 142,
+      "order_index": 0,
+      "id": "390eb59842e7"
+    },
+    {
+      "text": "2 large eggs (100g)",
+      "name": "egg",
+      "quantity": 100,
+      "unit": "grams",
+      "notes": "large",
+      "category": "Other",
+      "grams": 100,
+      "order_index": 0,
+      "id": "295657b3c2aa"
+    },
+    {
+      "text": "2 teaspoons (10mL) vanilla extract",
+      "name": "vanilla extract",
+      "quantity": 2,
+      "unit": "teaspoons",
+      "category": "Baking Essentials",
+      "grams": 10,
+      "order_index": 0,
+      "id": "0662bcc66118"
+    },
+    {
+      "text": "5 ounces dark brown sugar (about 1/2 tightly packed cup plus 2 tablespoons; 140g)",
+      "name": "brown sugar",
+      "quantity": 5,
+      "unit": "ounces",
+      "notes": "about 1/2 tightly packed cup plus 2 tablespoons, 140g",
+      "category": "Pantry Staples",
+      "grams": 142,
+      "order_index": 0,
+      "id": "2f0ec172b719"
+    },
+    {
+      "text": "8 ounces (225g) semisweet chocolate, roughly chopped with a knife into 1/2- to 1/4-inch chunks",
+      "name": "semisweet chocolate",
+      "quantity": 225,
+      "unit": "grams",
+      "notes": "roughly chopped with a knife into 1/2- to 1/4-inch chunks, roughly chopped",
+      "category": "Other",
+      "grams": 225,
+      "order_index": 0,
+      "id": "e4d6e1a470dc"
+    },
+    {
+      "text": "Coarse sea salt, for garnish",
+      "name": "sea salt",
+      "unit": "grams",
+      "notes": "for garnish",
+      "category": "Pantry Staples",
+      "order_index": 0,
+      "id": "ceb20772e0c9"
+    }
+  ],
+  "instructions": [
+    {
+      "step_number": 1,
+      "text": "Melt butter in a medium saucepan over medium-high heat. Cook, gently swirling pan constantly, until particles begin to turn golden brown and butter smells nutty, about 5 minutes. Remove from heat and continue swirling the pan until the butter is a rich brown, about 15 seconds longer. Transfer to a medium bowl, whisk in ice cube, transfer to refrigerator, and allow to cool completely, about 20 minutes, whisking occasionally. (Alternatively, whisk over an ice bath to hasten the process. )",
+      "action": "remove",
+      "timer_min": [
+        5,
+        20
+      ],
+      "equipment": [
+        "a medium saucepan over medium-high heat.",
+        "pan",
+        "the pan",
+        "a medium bowl,"
+      ],
+      "mentioned_ingredients": [
+        "butter",
+        "the butter"
+      ]
+    },
+    {
+      "step_number": 2,
+      "text": "Meanwhile, whisk together flour, baking soda, and salt in a large bowl. Place granulated sugar, eggs, and vanilla extract in the bowl of a stand mixer fitted with the whisk attachment. Whisk on medium-high speed until mixture is pale brownish-yellow and falls off the whisk in thick ribbons when lifted, about 5 minutes.",
+      "action": "whisk",
+      "timer_min": [
+        5
+      ],
+      "equipment": [
+        "a large bowl.",
+        "vanilla extract in the bowl of a stand mixer",
+        "the whisk attachment.",
+        "the whisk"
+      ],
+      "mentioned_ingredients": [
+        "together flour,",
+        "and salt",
+        "sugar,",
+        "eggs,"
+      ]
+    },
+    {
+      "step_number": 3,
+      "text": "Fit paddle attachment onto mixer. When brown butter mixture has cooled (it should be just starting to turn opaque again and firm around the edges), add brown sugar and cooled brown butter to egg mixture in stand mixer. Mix on medium speed to combine, about 15 seconds. Add flour mixture and mix on low speed until just barely combined, with some dry flour still remaining, about 15 seconds. Add chocolate and mix on low speed until dough comes together, about 15 seconds longer. Transfer to an airtight container and refrigerate dough at least overnight and up to 3 days.",
+      "action": null,
+      "timer_min": [],
+      "equipment": [
+        "mixer.",
+        "egg mixture in stand mixer."
+      ],
+      "mentioned_ingredients": [
+        "brown butter mixture",
+        "brown sugar",
+        "brown butter",
+        "flour mixture",
+        "some dry flour"
+      ]
+    },
+    {
+      "step_number": 4,
+      "text": "When ready to bake, adjust oven racks to upper- and lower-middle positions and preheat oven to 325°F (160°C). Using a 1-ounce portion scoop or a spoon, place scoops of cookie dough onto a nonstick or parchment-lined baking sheet. Each ball should measure approximately 3 tablespoons in volume, and you should be able to fit 6 to 8 balls on each sheet. Tear each ball in half to reveal a rougher surface, then stick them back together with the rough sides facing outward. Transfer to oven and bake until golden brown around edges but still soft, 13 to 16 minutes, rotating pans back to front and top to bottom halfway through baking.",
+      "action": null,
+      "timer_min": [
+        13,
+        16
+      ],
+      "equipment": [
+        "oven racks",
+        "preheat oven",
+        "a spoon,",
+        "3 tablespoons",
+        "oven",
+        "pans"
+      ],
+      "mentioned_ingredients": []
+    },
+    {
+      "step_number": 5,
+      "text": "Remove baking sheets from oven. While cookies are still hot, sprinkle very lightly with coarse salt and gently press salt down to embed. Let cool for 2 minutes, then transfer cookies to a wire rack to cool completely.",
+      "action": null,
+      "timer_min": [
+        2
+      ],
+      "equipment": [
+        "oven."
+      ],
+      "mentioned_ingredients": [
+        "coarse salt",
+        "salt"
+      ]
+    },
+    {
+      "step_number": 6,
+      "text": "Repeat steps 4 and 5 for remaining cookie dough. Allow cookies to cool completely before storing in an airtight container, plastic bag, or cookie jar at room temperature for up to 5 days.",
+      "action": null,
+      "timer_min": [],
+      "equipment": [],
+      "mentioned_ingredients": []
+    }
+  ],
+  "cuisines": [],
+  "tags": [],
+  "meal_types": [],
+  "cooking_method": [
+    "Baking",
+    "Frying"
+  ],
+  "dietary_restrictions": null,
+  "suitable_for_diet": [],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "J. Kenji López-Alt",
+      "url": "https://www.seriouseats.com/j-kenji-lopez-alt-5118720"
+    }
+  ],
+  "created_by": null,
+  "is_public": true,
+  "created_at": "2025-10-13T06:35:40.075Z",
+  "updated_at": "2025-10-13T06:35:40.075Z",
+  "completeness_score": 0,
+  "parsing_confidence": 0,
+  "health_score": null
+}

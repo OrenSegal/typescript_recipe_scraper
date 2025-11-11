@@ -1,0 +1,7 @@
+packages:
+  - supabase/functions
+ignoredBuiltDependencies:
+  - esbuild
+  - protobufjs
+  - sharp
+  - supabase

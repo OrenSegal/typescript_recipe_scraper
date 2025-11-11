@@ -1,0 +1,32 @@
+{
+  "title": "Easy 3-Ingredient Cookies",
+  "description": "Super simple cookies made with just 3 ingredients! No mixer needed.",
+  "ingredients": [
+    "1 cup peanut butter",
+    "1 cup sugar",
+    "1 egg"
+  ],
+  "instructions": [
+    "Preheat oven to 350°F (175°C).",
+    "Mix all ingredients in a bowl until well combined.",
+    "Form into 1-inch balls and place on baking sheet.",
+    "Press down with a fork to create criss-cross pattern.",
+    "Bake for 10-12 minutes until edges are slightly brown.",
+    "Let cool on baking sheet for 5 minutes before transferring to cooling rack."
+  ],
+  "image_url": "https://example.com/cookies-image.jpg",
+  "source_url": "https://www.tiktok.com/@user/video/sample-id",
+  "prep_time_minutes": 15,
+  "cook_time_minutes": 25,
+  "servings": 4,
+  "cuisine_type": [
+    "American"
+  ],
+  "tags": [
+    "easy",
+    "quick",
+    "family-friendly"
+  ],
+  "effort_level": "easy",
+  "dietary_restrictions": []
+}

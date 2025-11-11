@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "cheerio": "https://esm.sh/cheerio@1.0.0-rc.12",
+    "@google/generative-ai": "https://esm.sh/@google/generative-ai@0.24.1",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.42.0",
+    "std/": "https://deno.land/std@0.224.0/",
+    "recipe-scraper-js": "https://esm.sh/recipe-scraper-js@1.0.1",
+    "play-dl": "https://esm.sh/play-dl@1.9.7",
+    "youtube-transcript": "https://esm.sh/youtube-transcript@1.2.1"
+  }
+}

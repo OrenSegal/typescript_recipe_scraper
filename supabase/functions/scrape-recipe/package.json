@@ -1,0 +1,15 @@
+{
+  "name": "supabase-functions-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.42.0",
+    "cheerio": "^1.0.0-rc.12",
+    "play-dl": "^1.9.7",
+    "recipe-scraper-js": "^1.0.1",
+    "youtube-transcript": "^1.2.1",
+    "recipe-schema": "^2.0.1"
+  }
+}

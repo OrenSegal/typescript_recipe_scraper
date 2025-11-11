@@ -1,0 +1,169 @@
+{
+  "title": "Chocolate Chip Cookies",
+  "description": "Looking for a go-to recipe for chocolate chip cookies? Try this one on for size.",
+  "source_url": "https://www.bonappetit.com/recipe/chocolate-chip-cookies",
+  "image_url": "https://assets.bonappetit.com/photos/57af70d31b33404414975db4/master/w_940,h_600,c_limit/chocolate-chip-cookies.jpg",
+  "servings": 20,
+  "prep_time_minutes": 18,
+  "cook_time_minutes": 20,
+  "total_time_minutes": 20,
+  "effort_level": 3,
+  "ingredients": [
+    {
+      "text": "1 cup plus 2 tablespoons all-purpose flour",
+      "name": "all-purpose flour",
+      "quantity": 1,
+      "unit": "cup",
+      "category": "Baking Essentials",
+      "grams": 140,
+      "order_index": 0,
+      "id": "5b61645a7264"
+    },
+    {
+      "text": "3/4 teaspoon kosher salt",
+      "name": "kosher salt",
+      "quantity": 0.75,
+      "unit": "teaspoon",
+      "category": "Pantry Staples",
+      "grams": 4,
+      "order_index": 0,
+      "id": "ceb20772e0c9"
+    },
+    {
+      "text": "1/2 teaspoon baking powder",
+      "name": "baking powder",
+      "quantity": 0.5,
+      "unit": "teaspoon",
+      "category": "Baking Essentials",
+      "grams": 2,
+      "order_index": 0,
+      "id": "1fa0ddeead3c"
+    },
+    {
+      "text": "3/4 cup (1 1/2 sticks) unsalted butter, room temperature",
+      "name": "butter",
+      "quantity": 0.75,
+      "unit": "cup",
+      "notes": "room temperature, unsalted",
+      "category": "Dairy",
+      "grams": 162,
+      "order_index": 0,
+      "id": "d74fdde2944f"
+    },
+    {
+      "text": "3/4 cup (packed) light brown sugar",
+      "name": "brown sugar",
+      "quantity": 0.75,
+      "unit": "cup",
+      "category": "Pantry Staples",
+      "grams": 150,
+      "order_index": 0,
+      "id": "2f0ec172b719"
+    },
+    {
+      "text": "1/4 cup sugar",
+      "name": "sugar",
+      "quantity": 0.25,
+      "unit": "cup",
+      "category": "Pantry Staples",
+      "grams": 50,
+      "order_index": 0,
+      "id": "390eb59842e7"
+    },
+    {
+      "text": "1 large egg, room temperature",
+      "name": "egg",
+      "quantity": 1,
+      "notes": "room temperature, large",
+      "category": "Other",
+      "order_index": 0,
+      "id": "295657b3c2aa"
+    },
+    {
+      "text": "1/2 teaspoon vanilla extract",
+      "name": "vanilla extract",
+      "quantity": 0.5,
+      "unit": "teaspoon",
+      "category": "Baking Essentials",
+      "grams": 2,
+      "order_index": 0,
+      "id": "0662bcc66118"
+    },
+    {
+      "text": "1 cup semisweet or bittersweet chocolate chips",
+      "name": "bittersweet chocolate chips",
+      "quantity": 1,
+      "unit": "cup",
+      "notes": "1 cup semisweet or bittersweet chocolate chips",
+      "category": "Other",
+      "grams": 237,
+      "order_index": 0,
+      "id": "615a37efb41f"
+    }
+  ],
+  "instructions": [
+    {
+      "step_number": 1,
+      "text": "Arrange racks in upper and lower thirds of oven; preheat to 425°. Line 2 baking sheets with parchment paper. Whisk flour, salt, and baking powder in a small bowl. Using an electric mixer on medium-high speed, beat butter and both sugars in a large bowl until well combined, 2–3 minutes. Add egg and vanilla; beat on medium-high speed until mixture is light and fluffy, 2–3 minutes. Add dry ingredients, reduce speed to low, and mix just to blend. Fold in chocolate chips.",
+      "action": "arrange",
+      "timer_min": [
+        3
+      ],
+      "equipment": [
+        "oven;",
+        "whisk flour,",
+        "a small bowl.",
+        "an electric mixer",
+        "a large bowl"
+      ],
+      "mentioned_ingredients": [
+        "whisk flour,",
+        "salt,",
+        "beat butter and both sugars",
+        "egg"
+      ]
+    },
+    {
+      "step_number": 2,
+      "text": "Spoon heaping tablespoonfuls of dough onto prepared baking sheets, spacing 1 ½\" apart. Bake, rotating pans halfway through, until edges are golden brown, 6–8 minutes. Transfer to wire racks and let cool. DO AHEAD: Can be made 1 day ahead. Store airtight at room temperature, or freeze cookies for up to 2 months.",
+      "action": null,
+      "timer_min": [
+        8
+      ],
+      "equipment": [
+        "spoon",
+        "tablespoonfuls of dough",
+        "pans halfway"
+      ],
+      "mentioned_ingredients": []
+    }
+  ],
+  "cuisines": [],
+  "tags": [],
+  "meal_types": [],
+  "cooking_method": [
+    "Baking",
+    "Frying"
+  ],
+  "dietary_restrictions": null,
+  "suitable_for_diet": [],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Jim Lahey",
+      "sameAs": "https://www.bonappetit.com/contributor/jim-lahey"
+    },
+    {
+      "@type": "Person",
+      "name": "Tara Donne",
+      "sameAs": "https://www.bonappetit.com/contributor/tara-donne"
+    }
+  ],
+  "created_by": null,
+  "is_public": true,
+  "created_at": "2025-10-13T06:35:40.242Z",
+  "updated_at": "2025-10-13T06:35:40.242Z",
+  "completeness_score": 0,
+  "parsing_confidence": 0,
+  "health_score": null
+}

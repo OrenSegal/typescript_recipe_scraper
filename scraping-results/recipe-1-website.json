@@ -1,0 +1,260 @@
+{
+  "title": "Baked Macaroni and Cheese",
+  "description": "Get Alton Brown's Baked Macaroni and Cheese from Good Eats on Food Network, a classic recipe made with cheddar cheese and topped with buttery breadcrumbs.",
+  "source_url": "https://www.foodnetwork.com/recipes/alton-brown/baked-macaroni-and-cheese-recipe-1939524",
+  "image_url": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/6/6/0/EA1E10_Baked-Macaraoni-and-Cheese_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1382540004120.webp",
+  "servings": 6,
+  "prep_time_minutes": 28,
+  "cook_time_minutes": 30,
+  "total_time_minutes": null,
+  "effort_level": 5,
+  "ingredients": [
+    {
+      "text": "1/2 pound elbow macaroni",
+      "name": "elbow macaroni",
+      "quantity": 0.5,
+      "unit": "pound",
+      "category": "Grains",
+      "grams": 227,
+      "order_index": 0,
+      "id": "61fa6a2b7d95"
+    },
+    {
+      "text": "3 tablespoons butter",
+      "name": "butter",
+      "quantity": 3,
+      "unit": "tablespoons",
+      "category": "Dairy",
+      "grams": 40,
+      "order_index": 0,
+      "id": "d74fdde2944f"
+    },
+    {
+      "text": "3 tablespoons flour",
+      "name": "flour",
+      "quantity": 3,
+      "unit": "tablespoons",
+      "category": "Pantry Staples",
+      "grams": 26,
+      "order_index": 0,
+      "id": "5b61645a7264"
+    },
+    {
+      "text": "1 tablespoon powdered mustard",
+      "name": "mustard",
+      "quantity": 1,
+      "unit": "tablespoon",
+      "notes": "powdered",
+      "category": "Other",
+      "grams": 15,
+      "order_index": 0,
+      "id": "466775dc9f99"
+    },
+    {
+      "text": "3 cups milk",
+      "name": "milk",
+      "quantity": 3,
+      "unit": "cups",
+      "category": "Dairy",
+      "grams": 731,
+      "order_index": 0,
+      "id": "ecbdb882ae86"
+    },
+    {
+      "text": "1/2 cup yellow onion, finely diced",
+      "name": "yellow onion",
+      "quantity": 0.5,
+      "unit": "cup",
+      "notes": "finely diced",
+      "category": "Vegetables",
+      "grams": 76,
+      "order_index": 0,
+      "id": "cf4c22323549"
+    },
+    {
+      "text": "1 bay leaf",
+      "name": "bay leaf",
+      "quantity": 1,
+      "unit": "leaves",
+      "category": "Other",
+      "grams": 1,
+      "order_index": 0,
+      "id": "2b7f89361957"
+    },
+    {
+      "text": "1/2 teaspoon paprika",
+      "name": "paprika",
+      "quantity": 0.5,
+      "unit": "teaspoon",
+      "category": "Vegetables",
+      "grams": 2,
+      "order_index": 0,
+      "id": "4b029df58728"
+    },
+    {
+      "text": "1 large egg",
+      "name": "egg",
+      "quantity": 1,
+      "notes": "large",
+      "category": "Other",
+      "order_index": 0,
+      "id": "295657b3c2aa"
+    },
+    {
+      "text": "12 ounces sharp cheddar, shredded",
+      "name": "sharp cheddar",
+      "quantity": 12,
+      "unit": "ounces",
+      "notes": "shredded",
+      "category": "Dairy",
+      "grams": 340,
+      "order_index": 0,
+      "id": "7f8394771065"
+    },
+    {
+      "text": "1 teaspoon kosher salt",
+      "name": "kosher salt",
+      "quantity": 1,
+      "unit": "teaspoon",
+      "category": "Pantry Staples",
+      "grams": 6,
+      "order_index": 0,
+      "id": "ceb20772e0c9"
+    },
+    {
+      "text": "Fresh black pepper",
+      "name": "black pepper",
+      "notes": "fresh",
+      "category": "Herbs & Spices",
+      "order_index": 0,
+      "id": "c097a39d0925"
+    },
+    {
+      "text": "3 tablespoons butter",
+      "name": "butter",
+      "quantity": 3,
+      "unit": "tablespoons",
+      "category": "Dairy",
+      "grams": 40,
+      "order_index": 0,
+      "id": "d74fdde2944f"
+    },
+    {
+      "text": "1 cup panko bread crumbs",
+      "name": "panko bread crumbs",
+      "quantity": 1,
+      "unit": "cup",
+      "category": "Other",
+      "grams": 237,
+      "order_index": 0,
+      "id": "f3018d620bec"
+    }
+  ],
+  "instructions": [
+    {
+      "step_number": 1,
+      "text": "Preheat oven to 350°F.",
+      "action": "preheat",
+      "timer_min": [],
+      "equipment": [
+        "preheat oven"
+      ],
+      "mentioned_ingredients": []
+    },
+    {
+      "step_number": 2,
+      "text": "In a large pot of boiling, salted water cook the pasta to al dente.",
+      "action": "cook",
+      "timer_min": [],
+      "equipment": [
+        "a large pot"
+      ],
+      "mentioned_ingredients": [
+        "water",
+        "the pasta"
+      ]
+    },
+    {
+      "step_number": 3,
+      "text": "While the pasta is cooking, in a separate pot, melt the butter. Whisk in the flour and mustard and keep it moving for about five minutes. Make sure it's free of lumps. Stir in the milk, onion, bay leaf, and paprika. Simmer for ten minutes and remove the bay leaf.",
+      "action": null,
+      "timer_min": [],
+      "equipment": [
+        "a separate pot,"
+      ],
+      "mentioned_ingredients": [
+        "the pasta",
+        "the butter.",
+        "the flour and mustard",
+        "it",
+        "the milk,",
+        "onion,"
+      ]
+    },
+    {
+      "step_number": 4,
+      "text": "Temper in the egg. Stir in ¾ of the cheese. Season with salt and pepper. Fold the macaroni into the mix and pour into a 2-quart casserole dish. Top with remaining cheese.",
+      "action": "stir",
+      "timer_min": [],
+      "equipment": [
+        "a 2-quart casserole dish."
+      ],
+      "mentioned_ingredients": [
+        "¾ of the cheese.",
+        "salt and pepper.",
+        "remaining cheese."
+      ]
+    },
+    {
+      "step_number": 5,
+      "text": "Melt the butter in a saute pan and toss the bread crumbs to coat. Top the macaroni with the bread crumbs. Bake for 30 minutes. Remove from oven and rest for five minutes before serving.",
+      "action": "toss",
+      "timer_min": [
+        30
+      ],
+      "equipment": [
+        "a saute pan",
+        "oven"
+      ],
+      "mentioned_ingredients": [
+        "the butter",
+        "the bread crumbs",
+        "the bread crumbs."
+      ]
+    },
+    {
+      "step_number": 6,
+      "text": "Remember to save leftovers for fried Macaroni and Cheese.",
+      "action": "cook",
+      "timer_min": [],
+      "equipment": [],
+      "mentioned_ingredients": [
+        "fried macaroni and cheese."
+      ]
+    }
+  ],
+  "cuisines": [],
+  "tags": [],
+  "meal_types": [],
+  "cooking_method": [
+    "Baking",
+    "Frying",
+    "Boiling"
+  ],
+  "dietary_restrictions": null,
+  "suitable_for_diet": [],
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Alton Brown",
+      "url": "https://www.foodnetwork.com/profiles/talent/alton-brown"
+    }
+  ],
+  "created_by": null,
+  "is_public": true,
+  "created_at": "2025-10-13T06:35:40.075Z",
+  "updated_at": "2025-10-13T06:35:40.075Z",
+  "completeness_score": 0,
+  "parsing_confidence": 0,
+  "health_score": null
+}

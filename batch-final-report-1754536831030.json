@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-08-07T03:20:31.024Z",
+  "config": {
+    "csvFiles": [
+      "data/Data.csv"
+    ],
+    "maxTimePerSite": 3600000,
+    "maxRetries": 3,
+    "shouldUpsert": false
+  },
+  "summary": {
+    "totalSites": 0,
+    "successfulSites": 0,
+    "failedSites": 0,
+    "overallSuccessRate": "0%"
+  },
+  "siteDetails": [],
+  "stuckSites": [],
+  "recommendations": [
+    "Use --skip or --resume-from flags to handle problematic sites in future runs"
+  ]
+}

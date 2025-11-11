@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["./deno.d.ts"],
+    "typeRoots": ["./node_modules/@types", "."],
+    "baseUrl": ".",
+    "paths": {
+      "https://deno.land/std@0.192.0/http/server.ts": ["./deno.d.ts"],
+      "https://esm.sh/@supabase/supabase-js@2.39.0": ["./deno.d.ts"]
+    }
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

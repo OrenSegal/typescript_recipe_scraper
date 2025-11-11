@@ -1,0 +1,133 @@
+name: Test Multi-Source Recipe Scraper
+
+on:
+  push:
+    branches: [ main, feature/* ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
+  schedule:
+    # Run daily at 9 AM UTC to catch any regressions
+    - cron: '0 9 * * *'
+
+jobs:
+  test-scraper:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+
+    - name: 🔧 Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+
+    - name: 🟢 Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+
+    - name: 📦 Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: 🔨 Build TypeScript
+      run: pnpm run build
+
+    - name: 🧪 Run Multi-Source Aggregator Tests
+      env:
+        # Optional: Add API keys as GitHub secrets
+        SPOONACULAR_API_KEY: ${{ secrets.SPOONACULAR_API_KEY }}
+        EDAMAM_APP_ID: ${{ secrets.EDAMAM_APP_ID }}
+        EDAMAM_APP_KEY: ${{ secrets.EDAMAM_APP_KEY }}
+      run: |
+        npx tsx src/test-multi-source-aggregator.ts > test-results.txt
+        cat test-results.txt
+
+    - name: 📊 Extract Success Rate
+      id: extract_metrics
+      run: |
+        SUCCESS_RATE=$(grep -oP 'Successful: \d+/\d+ \(\K[\d.]+' test-results.txt || echo "0")
+        echo "success_rate=$SUCCESS_RATE" >> $GITHUB_OUTPUT
+        echo "Success Rate: $SUCCESS_RATE%"
+
+    - name: ✅ Check Success Rate Threshold
+      run: |
+        SUCCESS_RATE=${{ steps.extract_metrics.outputs.success_rate }}
+        THRESHOLD=85
+
+        echo "Success Rate: $SUCCESS_RATE%"
+        echo "Threshold: $THRESHOLD%"
+
+        if (( $(echo "$SUCCESS_RATE < $THRESHOLD" | bc -l) )); then
+          echo "❌ Success rate ($SUCCESS_RATE%) is below threshold ($THRESHOLD%)"
+          exit 1
+        else
+          echo "✅ Success rate ($SUCCESS_RATE%) meets or exceeds threshold ($THRESHOLD%)"
+        fi
+
+    - name: 📤 Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-node-${{ matrix.node-version }}
+        path: test-results.txt
+        retention-days: 30
+
+    - name: 💬 Comment PR with results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const results = fs.readFileSync('test-results.txt', 'utf8');
+
+          // Extract key metrics
+          const successRate = results.match(/Successful: (\d+\/\d+) \(([\d.]+)%\)/);
+          const avgCompleteness = results.match(/Average completeness: ([\d.]+)%/);
+          const avgTime = results.match(/Average processing time: ([\d]+)ms/);
+
+          let comment = '## 🧪 Multi-Source Scraper Test Results\n\n';
+          comment += '| Metric | Value |\n';
+          comment += '|--------|-------|\n';
+
+          if (successRate) {
+            comment += `| Success Rate | ${successRate[1]} (${successRate[2]}%) |\n`;
+          }
+          if (avgCompleteness) {
+            comment += `| Avg Completeness | ${avgCompleteness[1]}% |\n`;
+          }
+          if (avgTime) {
+            comment += `| Avg Processing Time | ${avgTime[1]}ms |\n`;
+          }
+
+          comment += '\n<details>\n<summary>📝 Full Results</summary>\n\n```\n';
+          comment += results;
+          comment += '\n```\n</details>';
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+  notify:
+    needs: test-scraper
+    runs-on: ubuntu-latest
+    if: always() && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: 📢 Send notification
+      run: |
+        if [ "${{ needs.test-scraper.result }}" == "success" ]; then
+          echo "✅ All tests passed!"
+        else
+          echo "❌ Tests failed!"
+          exit 1
+        fi

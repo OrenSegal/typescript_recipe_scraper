@@ -1,0 +1,16 @@
+{
+  "name": "embed-function",
+  "version": "0.0.1",
+  "description": "Edge Function for generating text embeddings",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

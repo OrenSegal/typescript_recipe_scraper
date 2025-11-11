@@ -1,0 +1,172 @@
+# GitHub Actions Workflow for Scheduled Recipe Scraping
+# Runs daily and can be triggered manually
+# FREE tier: 2,000 minutes/month (plenty for daily scraping)
+
+name: Scheduled Recipe Scraping
+
+on:
+  # Run daily at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Scraping mode'
+        required: false
+        default: 'sample'
+        type: choice
+        options:
+          - test      # Quick test (5 sites)
+          - sample    # Sample scraping (100 recipes)
+          - full      # Full scraping (all sites)
+      max_recipes:
+        description: 'Maximum recipes to scrape'
+        required: false
+        default: '100'
+
+jobs:
+  scrape-recipes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@latest
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg poppler-utils tesseract-ocr
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Build TypeScript
+        run: pnpm run build
+
+      - name: Run Universal Recipe Scraper
+        env:
+          # Supabase (FREE tier)
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+          # Upstash Redis (FREE tier: 10k commands/day)
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+
+          # Google APIs (FREE tier with limits)
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_VISION_API_KEY: ${{ secrets.GOOGLE_VISION_API_KEY }}
+
+          # USDA API (FREE tier)
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+
+          # Configuration
+          NODE_ENV: production
+          LOG_LEVEL: info
+          MODE: ${{ github.event.inputs.mode || 'sample' }}
+          MAX_RECIPES: ${{ github.event.inputs.max_recipes || '100' }}
+          OUTPUT_DIR: ./scraping-results
+
+          # Feature toggles (optimized for FREE tier)
+          ENABLE_ENRICHMENT: true
+          ENABLE_NUTRITION: true
+          ENABLE_EMBEDDING: false          # Disabled for speed
+          ENABLE_AI_ENRICHMENT: false      # Disabled for cost
+          ENABLE_AUDIO_TRANSCRIPTION: false # Disabled for cost
+
+          # Caching
+          ENABLE_MEMORY_CACHE: true
+          ENABLE_REDIS_CACHE: true
+          CACHE_TTL: 3600
+
+          # Performance
+          MAX_CONCURRENT_REQUESTS: 5
+          TIMEOUT_MS: 30000
+        run: |
+          echo "🚀 Starting Universal Recipe Scraper"
+          echo "   Mode: $MODE"
+          echo "   Max Recipes: $MAX_RECIPES"
+          echo ""
+
+          # Run the universal scraper
+          npx tsx run-universal-scraper.ts
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraping-results-${{ github.run_number }}
+          path: |
+            scraping-results/*.json
+            scraping-results/*.txt
+            blocked-websites.json
+          retention-days: 30
+
+      - name: Generate report
+        if: always()
+        run: |
+          echo "## Scraping Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**Mode:** ${{ github.event.inputs.mode || 'sample' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Add blocked websites report if exists
+          if [ -f blocked-websites.json ]; then
+            echo "### Blocked Websites" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat blocked-websites.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "❌ Recipe Scraping Failed - ${{ github.run_number }}"
+          body: |
+            Recipe scraping workflow failed.
+
+            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Please check the logs for details.
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Recipe Scraper Bot
+
+  # Optional: Deploy updated data to CDN/storage
+  deploy-results:
+    needs: scrape-recipes
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+      - name: Download results
+        uses: actions/download-artifact@v4
+        with:
+          name: scraping-results-${{ github.run_number }}
+          path: results/
+
+      - name: Deploy to Vercel/Railway
+        run: |
+          echo "📦 Deploying results to storage..."
+          # Add deployment logic here if needed

@@ -1,0 +1,43 @@
+
+================================================================================
+📊 SCRAPING REPORT
+================================================================================
+
+Summary:
+  Total URLs: 5
+  ✅ Successful: 3 (60.0%)
+  ❌ Failed: 2 (40.0%)
+
+Performance:
+  Total Time: 21.59s
+  Avg Time per Recipe: 1523ms
+  Avg Confidence: 97%
+
+Content Types:
+  website: 3
+
+
+Failed URLs:
+  - https://www.epicurious.com/recipes/food/views/perfect-chocolate-cake
+    Error: All scraping methods failed. Last error: browserType.launch: Executable doesn't exist at /Users/orensegal/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+  - https://www.allrecipes.com/recipe/12151/banana-banana-bread/
+    Error: All scraping methods failed. Last error: browserType.launch: Executable doesn't exist at /Users/orensegal/Library/Caches/ms-playwright/chromium_headless_shell-1181/chrome-mac/headless_shell
+╔═════════════════════════════════════════════════════════════════════════╗
+║ Looks like Playwright Test or Playwright was just installed or updated. ║
+║ Please run the following command to download new browsers:              ║
+║                                                                         ║
+║     npx playwright install                                              ║
+║                                                                         ║
+║ <3 Playwright Team                                                      ║
+╚═════════════════════════════════════════════════════════════════════════╝
+
+
+================================================================================
