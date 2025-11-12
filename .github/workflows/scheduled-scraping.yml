@@ -136,7 +136,7 @@ jobs:
           fi
 
       - name: Notify on failure
-        if: failure()
+        if: failure() && vars.ENABLE_EMAIL_NOTIFICATIONS == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -152,6 +152,7 @@ jobs:
             Please check the logs for details.
           to: ${{ secrets.NOTIFICATION_EMAIL }}
           from: Recipe Scraper Bot
+        continue-on-error: true
 
   # Optional: Deploy updated data to CDN/storage
   deploy-results:
