@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { SCRAPING_CONFIG, FILE_PATHS, SUCCESS_MESSAGES, ERROR_MESSAGES, DATABASE_CONSTANTS } from '../shared/constants.js';
-import { StringUtils, ValidationUtils, FileUtils, AsyncUtils, LoggingUtils, PerformanceUtils } from '../shared/utils.js';
+import { StringUtils, ValidationUtils, FileUtils, AsyncUtils, LoggingUtils, PerformanceUtils } from '../core/utils.js';
 import { Website, BatchResult, ScrapeResult, Recipe } from '../shared/types.js';
 import { RecipeService, ServiceResult } from '../core/RecipeService.js';
 import { scrapeWebsite } from '../scrapers/websiteScraper.js';

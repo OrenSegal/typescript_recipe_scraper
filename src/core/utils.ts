@@ -269,14 +269,14 @@ export class TimeUtils {
     if (minutes < 60) {
       return `${minutes}m`;
     }
-    
+
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
-    
+
     if (remainingMinutes === 0) {
       return `${hours}h`;
     }
-    
+
     return `${hours}h ${remainingMinutes}m`;
   }
 
@@ -287,12 +287,12 @@ export class TimeUtils {
       const minutes = timeMatch[2] ? parseInt(timeMatch[2]) : 0;
       return hours * 60 + minutes;
     }
-    
+
     const minuteMatch = str.match(/(\d+)\s*(?:minutes?|mins?|m)/i);
     if (minuteMatch) {
       return parseInt(minuteMatch[1]);
     }
-    
+
     return null;
   }
 
@@ -302,6 +302,20 @@ export class TimeUtils {
 
   static isValidDate(dateStr: string): boolean {
     return !isNaN(Date.parse(dateStr));
+  }
+
+  /**
+   * Parse temperature from text (e.g., "350°F" -> { value: 350, unit: 'F' })
+   */
+  static parseTemperature(text: string): { value: number; unit: 'F' | 'C' } | null {
+    const match = text.match(/(\d+)\s*°?\s*([CFcf])/);
+    if (!match) return null;
+
+    const [, value, unit] = match;
+    return {
+      value: parseInt(value),
+      unit: unit.toUpperCase() as 'F' | 'C'
+    };
   }
 }
 
@@ -411,3 +425,156 @@ export class FileUtils {
     return `${baseName}_${timestamp}_${random}.${extension}`;
   }
 }
+
+// ===== PARSING UTILITIES =====
+
+export class ParsingUtils {
+  /**
+   * Parse quantity from ingredient text (e.g., "2 cups" -> { amount: 2, unit: "cups" })
+   */
+  static parseQuantity(text: string): { amount: number | null; unit: string | null } {
+    const match = text.match(/^(\d+(?:\.\d+)?)\s*([a-zA-Z]+)?/);
+    if (!match) return { amount: null, unit: null };
+
+    const [, amount, unit] = match;
+    return {
+      amount: amount ? parseFloat(amount) : null,
+      unit: unit || null
+    };
+  }
+
+  /**
+   * Parse fractions and convert to decimal (e.g., "1/2" -> 0.5, "1 1/2" -> 1.5)
+   */
+  static parseFraction(text: string): number {
+    // Handle common fractions like 1/2, 3/4, 1/3, etc.
+    const fractionMatch = text.match(/(\d+)\/(\d+)/);
+    if (fractionMatch) {
+      const [, numerator, denominator] = fractionMatch;
+      return parseInt(numerator) / parseInt(denominator);
+    }
+
+    // Handle mixed numbers like 1 1/2
+    const mixedMatch = text.match(/(\d+)\s+(\d+)\/(\d+)/);
+    if (mixedMatch) {
+      const [, whole, numerator, denominator] = mixedMatch;
+      return parseInt(whole) + (parseInt(numerator) / parseInt(denominator));
+    }
+
+    return parseFloat(text) || 0;
+  }
+}
+
+// ===== LOGGING UTILITIES =====
+
+export class LoggingUtils {
+  private static formatTimestamp(): string {
+    return new Date().toISOString();
+  }
+
+  /**
+   * Log with timestamp and level
+   */
+  static log(level: 'info' | 'warn' | 'error', message: string, data?: any): void {
+    const timestamp = this.formatTimestamp();
+    const logEntry = `[${timestamp}] ${level.toUpperCase()}: ${message}`;
+
+    if (level === 'error') {
+      console.error(logEntry, data || '');
+    } else if (level === 'warn') {
+      console.warn(logEntry, data || '');
+    } else {
+      console.log(logEntry, data || '');
+    }
+  }
+
+  /**
+   * Create progress logger for batch operations
+   */
+  static createProgressLogger(total: number, description: string) {
+    let completed = 0;
+    let lastReported = 0;
+
+    return {
+      increment(): void {
+        completed++;
+        const percentage = Math.floor((completed / total) * 100);
+
+        if (percentage >= lastReported + 10) {
+          console.log(`${description}: ${percentage}% (${completed}/${total})`);
+          lastReported = percentage;
+        }
+      },
+
+      finish(): void {
+        console.log(`${description}: Complete! (${completed}/${total})`);
+      }
+    };
+  }
+}
+
+// ===== PERFORMANCE UTILITIES =====
+
+export class PerformanceUtils {
+  private static timers = new Map<string, number>();
+
+  /**
+   * Start performance timer
+   */
+  static startTimer(name: string): void {
+    this.timers.set(name, Date.now());
+  }
+
+  /**
+   * End performance timer and return duration in ms
+   */
+  static endTimer(name: string): number {
+    const startTime = this.timers.get(name);
+    if (!startTime) return 0;
+
+    const duration = Date.now() - startTime;
+    this.timers.delete(name);
+    return duration;
+  }
+
+  /**
+   * Measure async function execution time
+   */
+  static async measureAsync<T>(fn: () => Promise<T>, name?: string): Promise<{ result: T; duration: number }> {
+    const startTime = Date.now();
+    const result = await fn();
+    const duration = Date.now() - startTime;
+
+    if (name) {
+      console.log(`${name} completed in ${duration}ms`);
+    }
+
+    return { result, duration };
+  }
+
+  /**
+   * Format bytes to human readable format
+   */
+  static formatBytes(bytes: number): string {
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    if (bytes === 0) return '0 Bytes';
+
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return Math.round(bytes / Math.pow(1024, i) * 100) / 100 + ' ' + sizes[i];
+  }
+}
+
+// ===== UNIFIED EXPORT =====
+export const Utils = {
+  Validation: ValidationUtils,
+  String: StringUtils,
+  Array: ArrayUtils,
+  Async: AsyncUtils,
+  Time: TimeUtils,
+  Number: NumberUtils,
+  Error: ErrorUtils,
+  File: FileUtils,
+  Parsing: ParsingUtils,
+  Logging: LoggingUtils,
+  Performance: PerformanceUtils
+};
