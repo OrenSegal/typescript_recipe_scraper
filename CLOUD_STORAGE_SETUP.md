@@ -2,14 +2,20 @@
 
 Complete guide to setting up photo storage for the Recipe Scraper Service.
 
+> **📢 FINAL ARCHITECTURE DECISION:**
+> After analyzing scaling requirements for 10k-100k DAU, we've finalized on:
+> **Cloudflare R2 + Supabase PostgreSQL**
+>
+> **Firebase Storage has been removed** due to high egress costs ($900+/month at scale).
+> See [INFRASTRUCTURE_DECISION.md](./INFRASTRUCTURE_DECISION.md) for full analysis.
+
 ## 📋 Table of Contents
 
 1. [Quick Start](#quick-start)
-2. [Cloudflare R2 Setup](#cloudflare-r2-setup) (Recommended)
-3. [Supabase Storage Setup](#supabase-storage-setup)
-4. [Firebase Storage Setup](#firebase-storage-setup)
-5. [Testing the Integration](#testing)
-6. [Troubleshooting](#troubleshooting)
+2. [Cloudflare R2 Setup](#cloudflare-r2-setup) ⭐ **Recommended**
+3. [Supabase Storage Setup](#supabase-storage-setup) (Fallback)
+4. [Testing the Integration](#testing)
+5. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -28,13 +34,12 @@ This will install:
 
 ### Step 2: Choose Your Provider
 
-We recommend **Cloudflare R2** for the best free tier:
+**Final Architecture: Cloudflare R2 + Supabase PostgreSQL**
 
-| Provider | Free Storage | Free Bandwidth | Egress Fees | Best For |
-|----------|--------------|----------------|-------------|----------|
-| **Cloudflare R2** ⭐ | 10 GB | **UNLIMITED** | **$0** | Production (most cost-effective) |
-| Supabase | 1 GB | 2 GB/month | $0.09/GB | Small projects, existing Supabase users |
-| Firebase | 5 GB | 30 GB/month | $0.12/GB | Firebase ecosystem |
+| Provider | Free Storage | Free Bandwidth | Egress Fees | Cost at 100k DAU |
+|----------|--------------|----------------|-------------|------------------|
+| **Cloudflare R2** ⭐ | 10 GB | **UNLIMITED** | **$0** | **$40/month** |
+| Supabase | 1 GB | 2 GB/month | $0.09/GB | $900+/month |
 
 ### Step 3: Configure Environment
 

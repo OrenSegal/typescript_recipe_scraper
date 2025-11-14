@@ -1,8 +1,11 @@
 /**
  * Cloud Storage Service
- * Primary: Cloudflare R2 (S3-compatible)
- * Fallback: Supabase Storage
- * Optional: Firebase Storage
+ * Optimized for Cloudflare R2 (Primary) + Supabase Storage (Fallback)
+ *
+ * Architecture Decision: Cloudflare R2 + Supabase PostgreSQL
+ * - R2: Zero egress fees, unlimited bandwidth, S3-compatible
+ * - Supabase: Managed PostgreSQL, connection pooling, RLS
+ * - Scales to 100k+ DAU at $40-100/month vs $900+ with alternatives
  */
 
 import {
@@ -27,7 +30,6 @@ import path from 'path';
 export class CloudStorageService {
   private r2Client?: S3Client;
   private supabaseClient?: any;
-  private firebaseStorage?: any;
   private imageOptimizer: ImageOptimizationService;
   private config: CloudStorageConfig;
 
@@ -47,9 +49,8 @@ export class CloudStorageService {
       case 'supabase':
         this.initializeSupabase();
         break;
-      case 'firebase':
-        this.initializeFirebase();
-        break;
+      default:
+        throw new Error(`Unsupported provider: ${this.config.provider}. Use 'cloudflare-r2' or 'supabase'.`);
     }
   }
 
@@ -87,14 +88,6 @@ export class CloudStorageService {
 
     this.supabaseClient = createClient(url, serviceKey);
     console.log('✅ Supabase Storage initialized');
-  }
-
-  /**
-   * Initialize Firebase Storage
-   */
-  private initializeFirebase(): void {
-    // Placeholder for Firebase implementation
-    console.log('⚠️ Firebase Storage not implemented yet');
   }
 
   /**
@@ -239,10 +232,8 @@ export class CloudStorageService {
         return this.uploadToR2(buffer, key, contentType, metadata);
       case 'supabase':
         return this.uploadToSupabase(buffer, key, contentType);
-      case 'firebase':
-        return this.uploadToFirebase(buffer, key, contentType);
       default:
-        throw new Error(`Unsupported provider: ${this.config.provider}`);
+        throw new Error(`Unsupported provider: ${this.config.provider}. Use 'cloudflare-r2' or 'supabase'.`);
     }
   }
 
@@ -312,17 +303,6 @@ export class CloudStorageService {
   }
 
   /**
-   * Upload to Firebase Storage (placeholder)
-   */
-  private async uploadToFirebase(
-    buffer: Buffer,
-    key: string,
-    contentType: string
-  ): Promise<string> {
-    throw new Error('Firebase Storage not implemented yet');
-  }
-
-  /**
    * Generate base path for organization
    */
   private generateBasePath(recipeId?: string, userId?: string): string {
@@ -368,8 +348,6 @@ export class CloudStorageService {
         return this.config.cloudflare?.bucket || '';
       case 'supabase':
         return this.config.supabase?.bucket || '';
-      case 'firebase':
-        return this.config.firebase?.storageBucket || '';
       default:
         return '';
     }

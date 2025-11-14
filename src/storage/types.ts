@@ -86,10 +86,10 @@ export interface ImageMetadata {
 }
 
 export interface CloudStorageConfig {
-  /** Provider selection */
-  provider: 'cloudflare-r2' | 'supabase' | 'firebase';
+  /** Provider selection: Cloudflare R2 (recommended) or Supabase */
+  provider: 'cloudflare-r2' | 'supabase';
 
-  /** Cloudflare R2 Config */
+  /** Cloudflare R2 Config (Recommended for production) */
   cloudflare?: {
     accountId: string;
     accessKeyId: string;
@@ -99,18 +99,11 @@ export interface CloudStorageConfig {
     region?: string; // default: 'auto'
   };
 
-  /** Supabase Config */
+  /** Supabase Config (Fallback or small-scale deployments) */
   supabase?: {
     url: string;
     serviceKey: string;
     bucket: string;
-  };
-
-  /** Firebase Config */
-  firebase?: {
-    projectId: string;
-    storageBucket: string;
-    credentials: any;
   };
 
   /** Global settings */
