@@ -7,7 +7,7 @@
  */
 
 import { CLIService, CLICommand, CLIOptions } from '../services/CLIService.js';
-import { LoggingUtils, StringUtils } from '../shared/utils.js';
+import { LoggingUtils, StringUtils } from '../core/utils.js';
 import { SUCCESS_MESSAGES, ERROR_MESSAGES } from '../shared/constants.js';
 
 /**

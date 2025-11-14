@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { DEPLOYMENT_CONFIG, DATABASE_CONFIG, SUCCESS_MESSAGES, ERROR_MESSAGES } from '../shared/constants.js';
-import { StringUtils, ValidationUtils, AsyncUtils, LoggingUtils, FileUtils } from '../shared/utils.js';
+import { StringUtils, ValidationUtils, AsyncUtils, LoggingUtils, FileUtils } from '../core/utils.js';
 import { existsSync, statSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { DatabaseService } from '../core/DatabaseService.js';

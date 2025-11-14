@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { CLI_CONFIG, SUCCESS_MESSAGES, ERROR_MESSAGES } from '../shared/constants.js';
-import { StringUtils, ValidationUtils, FileUtils, LoggingUtils, PerformanceUtils } from '../shared/utils.js';
+import { StringUtils, ValidationUtils, FileUtils, LoggingUtils, PerformanceUtils } from '../core/utils.js';
 import { BatchScrapingService } from './BatchScrapingService.js';
 import { MediaScrapingService } from './MediaScrapingService.js';
 import { DeploymentService } from './DeploymentService.js';

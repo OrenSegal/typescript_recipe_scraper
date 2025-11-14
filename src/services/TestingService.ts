@@ -7,7 +7,7 @@
 
 import * as path from 'path';
 import { TESTING_CONFIG, VALIDATION_CONFIG, SUCCESS_MESSAGES, ERROR_MESSAGES } from '../shared/constants.js';
-import { StringUtils, ValidationUtils, FileUtils, LoggingUtils, PerformanceUtils } from '../shared/utils.js';
+import { StringUtils, ValidationUtils, FileUtils, LoggingUtils, PerformanceUtils } from '../core/utils.js';
 import { RecipeService } from '../core/RecipeService.js';
 import { VideoOCRProcessor } from '../enrichment/videoOCRProcessor.js';
 import { DatabaseService } from '../core/DatabaseService.js';

@@ -6,7 +6,7 @@
  */
 
 import { SOCIAL_MEDIA_CONFIG, OCR_CONFIG, SUCCESS_MESSAGES, ERROR_MESSAGES, MediaPlatform, MediaContent, MEDIA_PLATFORMS } from '../shared/constants.js';
-import { StringUtils, ValidationUtils, AsyncUtils, LoggingUtils, PerformanceUtils } from '../shared/utils.js';
+import { StringUtils, ValidationUtils, AsyncUtils, LoggingUtils, PerformanceUtils } from '../core/utils.js';
 import { ScrapeResult, VideoOCROutput } from '../shared/types.js';
 import { RecipeService, ServiceResult } from '../core/RecipeService.js';
 import { SocialMediaScraper } from '../scrapers/SocialMediaScraper.js';

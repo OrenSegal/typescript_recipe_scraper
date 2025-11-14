@@ -6,10 +6,13 @@
  * Great for fallback when other APIs fail
  *
  * Docs: http://www.recipepuppy.com/about/api/
+ *
+ * Refactored to use BaseScraper - eliminates singleton boilerplate
  */
 
 import axios from 'axios';
 import type { Recipe, RecipeIngredient, InstructionStep } from '../shared/types.js';
+import { BaseScraper, ScraperConfig, ScraperMetadata, ScraperResult } from '../core/BaseScraper.js';
 
 const BASE_URL = 'http://www.recipepuppy.com/api/';
 
@@ -33,23 +36,96 @@ interface RecipePuppyResponse {
   results: RecipePuppyResult[];
 }
 
-export class RecipePuppyScraper {
-  private static instance: RecipePuppyScraper;
-  private requestCount = 0;
-
-  private constructor() {}
-
-  static getInstance(): RecipePuppyScraper {
-    if (!RecipePuppyScraper.instance) {
-      RecipePuppyScraper.instance = new RecipePuppyScraper();
-    }
-    return RecipePuppyScraper.instance;
+export class RecipePuppyScraper extends BaseScraper {
+  constructor(scraperConfig?: ScraperConfig) {
+    super({
+      maxRetries: 3,
+      timeoutMs: 10000,
+      rateLimit: {
+        requestsPerMinute: 60, // No official limit, being conservative
+        requestsPerDay: 5000,
+      },
+      ...scraperConfig,
+    });
   }
 
   /**
-   * Search for recipes (completely free, no API key needed)
+   * Get scraper metadata
    */
-  async searchRecipes(options: RecipePuppySearchOptions): Promise<Recipe[]> {
+  getMetadata(): ScraperMetadata {
+    return {
+      id: 'recipe-puppy',
+      name: 'RecipePuppy',
+      version: '1.0.0',
+      description: '100% FREE recipe API - no key needed, great fallback',
+      requiresAuth: false,
+      rateLimits: {
+        requestsPerMinute: 60,
+        requestsPerDay: 5000,
+      },
+    };
+  }
+
+  /**
+   * Health check - verify API is accessible
+   */
+  async healthCheck(): Promise<boolean> {
+    try {
+      const url = `${BASE_URL}?q=chicken`;
+      const response = await axios.get(url, { timeout: 5000 });
+      return response.status === 200 && !!response.data?.results;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Scrape a single recipe (implements IScraper)
+   */
+  async scrape(query: string, options?: RecipePuppySearchOptions): Promise<ScraperResult<Recipe>> {
+    const startTime = Date.now();
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'recipe-puppy');
+      }
+
+      const duration = Date.now() - startTime;
+      return this.createSuccessResult(recipes[0], 'recipe-puppy', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'recipe-puppy');
+    }
+  }
+
+  /**
+   * Search for recipes (implements IScraper.search)
+   */
+  async search(query: string, options?: RecipePuppySearchOptions): Promise<ScraperResult<Recipe[]>> {
+    const startTime = Date.now();
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      const duration = Date.now() - startTime;
+
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'recipe-puppy');
+      }
+
+      return this.createSuccessResult(recipes, 'recipe-puppy', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'recipe-puppy');
+    }
+  }
+
+  /**
+   * Search for recipes (internal method)
+   */
+  private async searchRecipes(options: RecipePuppySearchOptions): Promise<Recipe[]> {
     try {
       const params = new URLSearchParams();
 
@@ -67,7 +143,7 @@ export class RecipePuppyScraper {
       console.log(`🌐 RecipePuppy API request: ${options.query || options.ingredients || 'all'}`);
 
       const response = await axios.get<RecipePuppyResponse>(url, {
-        timeout: 10000,
+        timeout: this.config.timeoutMs,
         headers: {
           'User-Agent': 'Mozilla/5.0 (compatible; RecipeScraperBot/1.0)'
         }
@@ -165,6 +241,3 @@ export class RecipePuppyScraper {
     console.log('🔄 RecipePuppy counter reset');
   }
 }
-
-// Export singleton instance
-export const recipepuppy = RecipePuppyScraper.getInstance();
