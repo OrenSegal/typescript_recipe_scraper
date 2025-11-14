@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  recipe-scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recipe-scraper-prod
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+      # Database (Supabase)
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+
+      # Cloud Storage (Cloudflare R2)
+      - CLOUD_STORAGE_PROVIDER=cloudflare-r2
+      - CLOUDFLARE_ACCOUNT_ID=${CLOUDFLARE_ACCOUNT_ID}
+      - CLOUDFLARE_ACCESS_KEY_ID=${CLOUDFLARE_ACCESS_KEY_ID}
+      - CLOUDFLARE_SECRET_ACCESS_KEY=${CLOUDFLARE_SECRET_ACCESS_KEY}
+      - CLOUDFLARE_BUCKET=${CLOUDFLARE_BUCKET:-recipe-images-production}
+      - CLOUDFLARE_PUBLIC_DOMAIN=${CLOUDFLARE_PUBLIC_DOMAIN}
+
+      # Image Processing
+      - STORAGE_MAX_FILE_SIZE=10485760
+      - STORAGE_DEFAULT_QUALITY=80
+      - STORAGE_CONVERT_TO_WEBP=true
+      - STORAGE_GENERATE_THUMBNAILS=true
+      - STORAGE_CDN_ENABLED=true
+
+      # API Keys
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GOOGLE_VISION_API_KEY=${GOOGLE_VISION_API_KEY}
+      - USDA_API_KEY=${USDA_API_KEY}
+
+      # Caching (Upstash Redis)
+      - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
+      - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
+
+      # Performance
+      - MAX_RETRIES=3
+      - TIMEOUT_MS=30000
+      - CACHE_ENABLED=true
+      - ENABLE_NUTRITION=true
+      - ENABLE_AI_ENRICHMENT=false
+
+      # Monitoring (Optional)
+      - SENTRY_DSN=${SENTRY_DSN}
+      - LOG_LEVEL=info
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    networks:
+      - recipe-network
+
+networks:
+  recipe-network:
+    driver: bridge
