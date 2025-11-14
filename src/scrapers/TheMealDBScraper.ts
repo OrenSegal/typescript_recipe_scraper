@@ -1,11 +1,14 @@
 /**
- * TheMealDB MCP Client
+ * TheMealDB API Scraper
  * Free, unlimited recipe API access to 2.3M+ recipes
  * Documentation: https://www.themealdb.com/api.php
+ *
+ * Refactored to use BaseScraper - eliminates singleton boilerplate
  */
 
 import axios from 'axios';
 import type { Recipe, RecipeIngredient, InstructionStep } from '../shared/types.js';
+import { BaseScraper, ScraperConfig, ScraperMetadata, ScraperResult } from '../core/BaseScraper.js';
 
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 
@@ -31,22 +34,96 @@ export interface TheMealDBSearchOptions {
   letter?: string;      // Search by first letter
 }
 
-export class TheMealDBScraper {
-  private static instance: TheMealDBScraper;
-
-  private constructor() {}
-
-  static getInstance(): TheMealDBScraper {
-    if (!TheMealDBScraper.instance) {
-      TheMealDBScraper.instance = new TheMealDBScraper();
-    }
-    return TheMealDBScraper.instance;
+export class TheMealDBScraper extends BaseScraper {
+  constructor(scraperConfig?: ScraperConfig) {
+    super({
+      maxRetries: 3,
+      timeoutMs: 10000,
+      rateLimit: {
+        requestsPerMinute: 60, // No official limit, being conservative
+        requestsPerDay: 10000,
+      },
+      ...scraperConfig,
+    });
   }
 
   /**
-   * Search recipes using TheMealDB API
+   * Get scraper metadata
    */
-  async searchRecipes(options: TheMealDBSearchOptions): Promise<Recipe[]> {
+  getMetadata(): ScraperMetadata {
+    return {
+      id: 'themealdb',
+      name: 'TheMealDB',
+      version: '1.0.0',
+      description: 'Free unlimited recipe API with 2.3M+ recipes',
+      requiresAuth: false,
+      rateLimits: {
+        requestsPerMinute: 60,
+        requestsPerDay: 10000,
+      },
+    };
+  }
+
+  /**
+   * Health check - verify API is accessible
+   */
+  async healthCheck(): Promise<boolean> {
+    try {
+      const url = `${BASE_URL}/random.php`;
+      const response = await axios.get(url, { timeout: 5000 });
+      return response.status === 200 && !!response.data?.meals;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Scrape a single recipe (implements IScraper)
+   */
+  async scrape(query: string, options?: TheMealDBSearchOptions): Promise<ScraperResult<Recipe>> {
+    const startTime = Date.now();
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'themealdb');
+      }
+
+      const duration = Date.now() - startTime;
+      return this.createSuccessResult(recipes[0], 'themealdb', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'themealdb');
+    }
+  }
+
+  /**
+   * Search for recipes (implements IScraper.search)
+   */
+  async search(query: string, options?: TheMealDBSearchOptions): Promise<ScraperResult<Recipe[]>> {
+    const startTime = Date.now();
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      const duration = Date.now() - startTime;
+
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'themealdb');
+      }
+
+      return this.createSuccessResult(recipes, 'themealdb', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'themealdb');
+    }
+  }
+
+  /**
+   * Search recipes using TheMealDB API (internal method)
+   */
+  private async searchRecipes(options: TheMealDBSearchOptions): Promise<Recipe[]> {
     try {
       let url = '';
 
@@ -69,7 +146,7 @@ export class TheMealDBScraper {
       console.log(`🌐 TheMealDB API request: ${url}`);
 
       const response = await axios.get(url, {
-        timeout: 10000,
+        timeout: this.config.timeoutMs,
         headers: {
           'User-Agent': 'Universal-Recipe-Scraper/1.0'
         }
@@ -106,10 +183,12 @@ export class TheMealDBScraper {
   /**
    * Get a specific recipe by ID
    */
-  async getRecipeById(id: string): Promise<Recipe | null> {
+  private async getRecipeById(id: string): Promise<Recipe | null> {
     try {
+      await this.enforceRateLimit();
+
       const url = `${BASE_URL}/lookup.php?i=${id}`;
-      const response = await axios.get(url, { timeout: 10000 });
+      const response = await axios.get(url, { timeout: this.config.timeoutMs });
 
       if (!response.data?.meals?.[0]) {
         return null;
@@ -229,20 +308,6 @@ export class TheMealDBScraper {
   }
 
   /**
-   * Check if TheMealDB API is available
-   */
-  async healthCheck(): Promise<boolean> {
-    try {
-      const response = await axios.get(`${BASE_URL}/random.php`, {
-        timeout: 5000
-      });
-      return !!response.data?.meals;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  /**
    * Get statistics about TheMealDB
    */
   async getStats(): Promise<{
@@ -271,6 +336,3 @@ export class TheMealDBScraper {
     }
   }
 }
-
-// Export singleton instance
-export const themealdb = TheMealDBScraper.getInstance();
