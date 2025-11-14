@@ -1,0 +1,56 @@
+# Cloudflare Workers Configuration
+# Deploy with: wrangler deploy
+
+name = "recipe-scraper-api"
+main = "src/workers/index.ts"
+compatibility_date = "2024-01-01"
+
+# Account ID - Get from Cloudflare dashboard
+# account_id = "your-account-id-here"
+
+# R2 Bucket Bindings (zero egress fees!)
+[[r2_buckets]]
+binding = "RECIPE_IMAGES"
+bucket_name = "recipe-images"
+preview_bucket_name = "recipe-images-dev"
+
+# Environment Variables
+[vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "info"
+
+# Secrets (set with: wrangler secret put SECRET_NAME)
+# wrangler secret put SUPABASE_URL
+# wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# wrangler secret put SUPABASE_ANON_KEY
+
+# Routes - Connect to your domain
+# [[routes]]
+# pattern = "api.yourdomain.com/*"
+# zone_name = "yourdomain.com"
+
+# Or use workers.dev subdomain
+# workers_dev = true
+
+# Resource limits (generous free tier)
+[limits]
+# Free tier: 100k requests/day, 10ms CPU time
+cpu_ms = 50  # milliseconds per request
+
+# Development environment
+[env.development]
+name = "recipe-scraper-api-dev"
+vars = { ENVIRONMENT = "development", LOG_LEVEL = "debug" }
+
+# Staging environment
+[env.staging]
+name = "recipe-scraper-api-staging"
+vars = { ENVIRONMENT = "staging", LOG_LEVEL = "info" }
+
+# Build configuration
+[build]
+command = "pnpm run build:worker"
+
+# Compatibility flags for modern features
+[compatibility_flags]
+nodejs_compat = true  # Enable Node.js compatibility

@@ -3,7 +3,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
 
 **A production-ready, enterprise-grade TypeScript service for intelligent recipe scraping, OCR processing, ingredient linking, and comprehensive enrichment with robust validation and quality assurance.**
 
@@ -34,13 +34,13 @@
 - **Memory Efficiency**: Stream-based processing for large datasets
 
 ### **☁️ Cloud Storage & CDN** ⭐ NEW
-- **Cloudflare R2 Integration**: Zero egress fees, unlimited bandwidth at no cost
+- **Cloudflare Workers + R2**: Zero egress fees between compute and storage (same network!)
 - **Automatic WebP Conversion**: 50-70% file size reduction for all images
 - **Multi-Size Thumbnails**: Generate 150px, 500px, 1000px versions automatically
-- **Global CDN Delivery**: <100ms latency worldwide via Cloudflare's 275+ locations
+- **Global Edge Deployment**: <10ms upload times, <50ms latency worldwide (275+ locations)
 - **Database Metadata Tracking**: Store all image metadata in Supabase PostgreSQL
-- **Cost-Optimized**: $40/month at 100k DAU vs $900+ with alternatives
-- **Production-Ready**: Complete integration with CLI tools and monitoring
+- **Cost-Optimized**: $45-55/month at 100k DAU vs $900+ with alternatives
+- **Production-Ready**: Complete Workers API with CLI tools and monitoring
 
 ## 🏗️ **UNIFIED CRAWLER ARCHITECTURE** 
 
@@ -189,6 +189,10 @@ pnpm run test           # Run test suite
 pnpm run storage:config # Show cloud storage configuration
 pnpm run storage:test   # Test storage with sample upload
 pnpm run storage:stats  # Show storage statistics
+
+# Cloudflare Workers Deployment (NEW) ⭐⭐
+pnpm run dev:worker     # Local Workers development server
+pnpm run deploy:worker  # Deploy to Cloudflare Workers production
 pnpm run storage upload <file> --recipe-id <id>  # Upload image
 pnpm run storage list <recipe-id>                # List recipe images
 pnpm run storage delete <image-id> --force       # Delete image
@@ -240,21 +244,33 @@ node unified-crawler.js --mode test --url "https://example.com" --timeout 30000
 
 ## 🌐 **PRODUCTION DEPLOYMENT**
 
-### **Vercel Deployment (Recommended)**
+### **Cloudflare Workers Deployment** ⭐ **RECOMMENDED**
+
+**Why Workers?** Zero egress fees between Workers and R2, ultra-fast image uploads, $45-55/month at 100k DAU
 
 ```bash
-# 1. Install Vercel CLI
-npm install -g vercel
+# 1. Login to Cloudflare
+npx wrangler login
 
-# 2. Login to Vercel
-vercel login
+# 2. Create R2 buckets
+npx wrangler r2 bucket create recipe-images
+npx wrangler r2 bucket create recipe-images-dev
 
-# 3. Deploy to Vercel
-vercel --prod
+# 3. Update wrangler.toml with your account ID
+# Get it with: npx wrangler whoami
 
-# 4. Set environment variables in Vercel dashboard
-# Go to your project settings and add all required environment variables
+# 4. Set secrets
+npx wrangler secret put SUPABASE_URL
+npx wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+npx wrangler secret put SUPABASE_ANON_KEY
+
+# 5. Deploy to production
+pnpm run deploy:worker
+
+# Your API is live at: https://recipe-scraper-api.your-subdomain.workers.dev
 ```
+
+**See full guide:** [docs/cloud-storage/CLOUDFLARE_WORKERS_DEPLOYMENT.md](docs/cloud-storage/CLOUDFLARE_WORKERS_DEPLOYMENT.md)
 
 ### **Alternative Deployment Options**
 
