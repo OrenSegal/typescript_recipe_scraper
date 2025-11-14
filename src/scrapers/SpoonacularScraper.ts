@@ -4,15 +4,16 @@
  * Features: Recipe search, nutrition data, ingredient substitutions, meal planning
  *
  * Docs: https://spoonacular.com/food-api/docs
+ *
+ * Refactored to use BaseScraper - eliminates singleton boilerplate
  */
 
 import axios from 'axios';
 import type { Recipe, RecipeIngredient, InstructionStep, NutritionInfo } from '../shared/types.js';
+import { BaseScraper, ScraperConfig, ScraperMetadata, ScraperResult } from '../core/BaseScraper.js';
+import { config } from '../config.js';
 
 const BASE_URL = 'https://api.spoonacular.com';
-
-// API Key should be set in environment variable SPOONACULAR_API_KEY
-const API_KEY = process.env.SPOONACULAR_API_KEY || '';
 
 export interface SpoonacularSearchOptions {
   query?: string;
@@ -68,25 +69,46 @@ interface SpoonacularRecipe {
   };
 }
 
-export class SpoonacularScraper {
-  private static instance: SpoonacularScraper;
-  private requestCount = 0;
-  private dailyLimit = 150;
+export class SpoonacularScraper extends BaseScraper {
+  private readonly apiKey: string;
+  private readonly dailyLimit = 150;
 
-  private constructor() {}
+  constructor(scraperConfig?: ScraperConfig) {
+    super({
+      maxRetries: 3,
+      timeoutMs: 10000,
+      rateLimit: {
+        requestsPerMinute: 10,
+        requestsPerDay: 150,
+      },
+      ...scraperConfig,
+    });
 
-  static getInstance(): SpoonacularScraper {
-    if (!SpoonacularScraper.instance) {
-      SpoonacularScraper.instance = new SpoonacularScraper();
-    }
-    return SpoonacularScraper.instance;
+    this.apiKey = config.recipeApis.spoonacularApiKey || '';
+  }
+
+  /**
+   * Get scraper metadata
+   */
+  getMetadata(): ScraperMetadata {
+    return {
+      id: 'spoonacular',
+      name: 'Spoonacular API',
+      version: '1.0.0',
+      description: 'Recipe API with nutrition data and meal planning (150 req/day free tier)',
+      requiresAuth: true,
+      rateLimits: {
+        requestsPerMinute: 10,
+        requestsPerDay: 150,
+      },
+    };
   }
 
   /**
    * Check if API key is configured
    */
   isConfigured(): boolean {
-    return !!API_KEY && API_KEY.length > 0;
+    return !!this.apiKey && this.apiKey.length > 0;
   }
 
   /**
@@ -97,22 +119,86 @@ export class SpoonacularScraper {
   }
 
   /**
-   * Search for recipes
+   * Health check - verify API is accessible
    */
-  async searchRecipes(options: SpoonacularSearchOptions): Promise<Recipe[]> {
-    if (!this.isConfigured()) {
-      console.warn('⚠️  Spoonacular API key not configured, skipping');
-      return [];
-    }
-
-    if (this.hasReachedLimit()) {
-      console.warn(`⚠️  Spoonacular daily limit reached (${this.dailyLimit} requests)`);
-      return [];
-    }
+  async healthCheck(): Promise<boolean> {
+    if (!this.isConfigured()) return false;
 
     try {
       const params = new URLSearchParams({
-        apiKey: API_KEY,
+        apiKey: this.apiKey,
+        number: '1',
+      });
+      const url = `${BASE_URL}/recipes/random?${params}`;
+      const response = await axios.get(url, { timeout: 5000 });
+      return response.status === 200;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Scrape a single recipe (implements IScraper)
+   */
+  async scrape(query: string, options?: SpoonacularSearchOptions): Promise<ScraperResult<Recipe>> {
+    const startTime = Date.now();
+
+    if (!this.isConfigured()) {
+      return this.createErrorResult('API key not configured', 'spoonacular');
+    }
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'spoonacular');
+      }
+
+      const duration = Date.now() - startTime;
+      return this.createSuccessResult(recipes[0], 'spoonacular', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'spoonacular');
+    }
+  }
+
+  /**
+   * Search for recipes (implements IScraper.search)
+   */
+  async search(query: string, options?: SpoonacularSearchOptions): Promise<ScraperResult<Recipe[]>> {
+    const startTime = Date.now();
+
+    if (!this.isConfigured()) {
+      return this.createErrorResult('API key not configured', 'spoonacular');
+    }
+
+    if (this.hasReachedLimit()) {
+      return this.createErrorResult('Daily limit reached', 'spoonacular');
+    }
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      const duration = Date.now() - startTime;
+
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'spoonacular');
+      }
+
+      return this.createSuccessResult(recipes, 'spoonacular', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'spoonacular');
+    }
+  }
+
+  /**
+   * Search for recipes (internal method)
+   */
+  private async searchRecipes(options: SpoonacularSearchOptions): Promise<Recipe[]> {
+    try {
+      const params = new URLSearchParams({
+        apiKey: this.apiKey,
         query: options.query || '',
         number: String(options.number || 5),
         addRecipeInformation: 'true',
@@ -127,7 +213,7 @@ export class SpoonacularScraper {
       const url = `${BASE_URL}/recipes/complexSearch?${params}`;
       console.log(`🌐 Spoonacular API request: ${options.query}`);
 
-      const response = await axios.get(url, { timeout: 10000 });
+      const response = await axios.get(url, { timeout: this.config.timeoutMs });
       this.requestCount++;
 
       if (!response.data?.results || response.data.results.length === 0) {
@@ -165,18 +251,20 @@ export class SpoonacularScraper {
   /**
    * Get full recipe details by ID
    */
-  async getRecipeById(id: number): Promise<Recipe | null> {
+  private async getRecipeById(id: number): Promise<Recipe | null> {
     if (!this.isConfigured()) return null;
     if (this.hasReachedLimit()) return null;
 
     try {
+      await this.enforceRateLimit();
+
       const params = new URLSearchParams({
-        apiKey: API_KEY,
+        apiKey: this.apiKey,
         includeNutrition: 'true'
       });
 
       const url = `${BASE_URL}/recipes/${id}/information?${params}`;
-      const response = await axios.get(url, { timeout: 10000 });
+      const response = await axios.get(url, { timeout: this.config.timeoutMs });
       this.requestCount++;
 
       return this.convertToRecipe(response.data);
@@ -276,6 +364,3 @@ export class SpoonacularScraper {
     console.log('🔄 Spoonacular daily counter reset');
   }
 }
-
-// Export singleton instance
-export const spoonacular = SpoonacularScraper.getInstance();

@@ -4,16 +4,16 @@
  * Features: Recipe search, nutrition analysis, dietary filters
  *
  * Docs: https://developer.edamam.com/edamam-recipe-api
+ *
+ * Refactored to use BaseScraper - eliminates singleton boilerplate
  */
 
 import axios from 'axios';
 import type { Recipe, RecipeIngredient, InstructionStep, NutritionInfo } from '../shared/types.js';
+import { BaseScraper, ScraperConfig, ScraperMetadata, ScraperResult } from '../core/BaseScraper.js';
+import { config } from '../config.js';
 
 const BASE_URL = 'https://api.edamam.com/api/recipes/v2';
-
-// API credentials should be set in environment variables
-const APP_ID = process.env.EDAMAM_APP_ID || '';
-const APP_KEY = process.env.EDAMAM_APP_KEY || '';
 
 export interface EdamamSearchOptions {
   query?: string;
@@ -65,25 +65,48 @@ interface EdamamRecipe {
   };
 }
 
-export class EdamamScraper {
-  private static instance: EdamamScraper;
-  private requestCount = 0;
-  private monthlyLimit = 10000;
+export class EdamamScraper extends BaseScraper {
+  private readonly appId: string;
+  private readonly appKey: string;
+  private readonly monthlyLimit = 10000;
 
-  private constructor() {}
+  constructor(scraperConfig?: ScraperConfig) {
+    super({
+      maxRetries: 3,
+      timeoutMs: 10000,
+      rateLimit: {
+        requestsPerMinute: 10,
+        requestsPerDay: 333, // ~10k per month / 30 days
+      },
+      ...scraperConfig,
+    });
 
-  static getInstance(): EdamamScraper {
-    if (!EdamamScraper.instance) {
-      EdamamScraper.instance = new EdamamScraper();
-    }
-    return EdamamScraper.instance;
+    this.appId = config.recipeApis.edamamAppId || '';
+    this.appKey = config.recipeApis.edamamAppKey || '';
+  }
+
+  /**
+   * Get scraper metadata
+   */
+  getMetadata(): ScraperMetadata {
+    return {
+      id: 'edamam',
+      name: 'Edamam Recipe API',
+      version: '1.0.0',
+      description: 'Recipe API with excellent nutrition data (10k req/month free tier)',
+      requiresAuth: true,
+      rateLimits: {
+        requestsPerMinute: 10,
+        requestsPerDay: 333,
+      },
+    };
   }
 
   /**
    * Check if API credentials are configured
    */
   isConfigured(): boolean {
-    return !!APP_ID && !!APP_KEY && APP_ID.length > 0 && APP_KEY.length > 0;
+    return !!this.appId && !!this.appKey && this.appId.length > 0 && this.appKey.length > 0;
   }
 
   /**
@@ -94,24 +117,91 @@ export class EdamamScraper {
   }
 
   /**
-   * Search for recipes
+   * Health check - verify API is accessible
    */
-  async searchRecipes(options: EdamamSearchOptions): Promise<Recipe[]> {
-    if (!this.isConfigured()) {
-      console.warn('⚠️  Edamam API credentials not configured, skipping');
-      return [];
-    }
-
-    if (this.hasReachedLimit()) {
-      console.warn(`⚠️  Edamam monthly limit reached (${this.monthlyLimit} requests)`);
-      return [];
-    }
+  async healthCheck(): Promise<boolean> {
+    if (!this.isConfigured()) return false;
 
     try {
       const params = new URLSearchParams({
         type: 'public',
-        app_id: APP_ID,
-        app_key: APP_KEY,
+        app_id: this.appId,
+        app_key: this.appKey,
+        q: 'chicken',
+        to: '1',
+      });
+      const url = `${BASE_URL}?${params}`;
+      const response = await axios.get(url, { timeout: 5000 });
+      return response.status === 200;
+    } catch {
+      return false;
+    }
+  }
+
+  /**
+   * Scrape a single recipe (implements IScraper)
+   */
+  async scrape(query: string, options?: EdamamSearchOptions): Promise<ScraperResult<Recipe>> {
+    const startTime = Date.now();
+
+    if (!this.isConfigured()) {
+      return this.createErrorResult('API credentials not configured', 'edamam');
+    }
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'edamam');
+      }
+
+      const duration = Date.now() - startTime;
+      return this.createSuccessResult(recipes[0], 'edamam', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'edamam');
+    }
+  }
+
+  /**
+   * Search for recipes (implements IScraper.search)
+   */
+  async search(query: string, options?: EdamamSearchOptions): Promise<ScraperResult<Recipe[]>> {
+    const startTime = Date.now();
+
+    if (!this.isConfigured()) {
+      return this.createErrorResult('API credentials not configured', 'edamam');
+    }
+
+    if (this.hasReachedLimit()) {
+      return this.createErrorResult('Monthly limit reached', 'edamam');
+    }
+
+    try {
+      await this.enforceRateLimit();
+
+      const recipes = await this.searchRecipes({ query, ...options });
+      const duration = Date.now() - startTime;
+
+      if (recipes.length === 0) {
+        return this.createErrorResult('No recipes found', 'edamam');
+      }
+
+      return this.createSuccessResult(recipes, 'edamam', duration);
+    } catch (error: any) {
+      return this.createErrorResult(error.message, 'edamam');
+    }
+  }
+
+  /**
+   * Search for recipes (internal method)
+   */
+  private async searchRecipes(options: EdamamSearchOptions): Promise<Recipe[]> {
+    try {
+      const params = new URLSearchParams({
+        type: 'public',
+        app_id: this.appId,
+        app_key: this.appKey,
         q: options.query || '',
         from: String(options.from || 0),
         to: String(options.to || 5)
@@ -126,7 +216,7 @@ export class EdamamScraper {
       const url = `${BASE_URL}?${params}`;
       console.log(`🌐 Edamam API request: ${options.query}`);
 
-      const response = await axios.get(url, { timeout: 10000 });
+      const response = await axios.get(url, { timeout: this.config.timeoutMs });
       this.requestCount++;
 
       if (!response.data?.hits || response.data.hits.length === 0) {
@@ -242,6 +332,3 @@ export class EdamamScraper {
     console.log('🔄 Edamam monthly counter reset');
   }
 }
-
-// Export singleton instance
-export const edamam = EdamamScraper.getInstance();
