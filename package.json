@@ -28,7 +28,11 @@
     "discover:all": "pnpm run enterprise:scrape",
     "discover:quick": "pnpm run enterprise:quick",
     "consolidate": "npx tsx src/utils/run-codebaseConsolidator.ts --root .",
-    "consolidate:report": "pnpm run consolidate -- --report consolidator-report.json"
+    "consolidate:report": "pnpm run consolidate -- --report consolidator-report.json",
+    "storage": "npx tsx src/storage/cli.ts",
+    "storage:config": "npx tsx src/storage/cli.ts config",
+    "storage:test": "npx tsx src/storage/cli.ts test",
+    "storage:stats": "npx tsx src/storage/cli.ts stats"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.645.0",
