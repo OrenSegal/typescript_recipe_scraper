@@ -1,7 +1,13 @@
 packages:
   - supabase/functions
+
 ignoredBuiltDependencies:
   - esbuild
+  - ffmpeg-static
+  - msgpackr-extract
+  - onnxruntime-node
   - protobufjs
+  - puppeteer
   - sharp
   - supabase
+  - tesseract.js

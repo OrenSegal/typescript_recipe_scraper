@@ -7,10 +7,13 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && tsc",
+    "build:worker": "pnpm run clean && tsc",
     "test": "npx --yes vitest run",
     "start:api": "node dist/api/scrape.js",
     "start:crawl": "node dist/src/standalone-crawler.js",
     "dev:api": "pnpm run build && pnpm run start:api",
+    "dev:worker": "wrangler dev",
+    "deploy:worker": "wrangler deploy",
     "crawl": "pnpm run build && pnpm run start:crawl",
     "scalable-crawler": "pnpm run build && node dist/src/ScalableCrawler.js",
     "enterprise:scrape": "npx tsx src/simplified-enterprise-scraper.ts",
@@ -28,9 +31,17 @@
     "discover:all": "pnpm run enterprise:scrape",
     "discover:quick": "pnpm run enterprise:quick",
     "consolidate": "npx tsx src/utils/run-codebaseConsolidator.ts --root .",
-    "consolidate:report": "pnpm run consolidate -- --report consolidator-report.json"
+    "consolidate:report": "pnpm run consolidate -- --report consolidator-report.json",
+    "storage": "npx tsx src/storage/cli.ts",
+    "storage:config": "npx tsx src/storage/cli.ts config",
+    "storage:test": "npx tsx src/storage/cli.ts test",
+    "storage:stats": "npx tsx src/storage/cli.ts stats",
+    "worker:dev": "pnpm run dev:worker",
+    "worker:deploy": "pnpm run deploy:worker"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.645.0",
+    "@aws-sdk/s3-request-presigner": "^3.645.0",
     "@google-cloud/speech": "^7.2.0",
     "@google-cloud/vision": "^5.3.3",
     "@google/generative-ai": "^0.14.1",
@@ -96,6 +107,7 @@
     "supabase": "^1.226.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wrangler": "^4.48.0"
   }
 }
