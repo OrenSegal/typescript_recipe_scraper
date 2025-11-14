@@ -148,7 +148,7 @@ export class RecipeValidator {
         fixMethod: 'Added from function parameter'
       });
     }
-    
+
     if (!recipe.source_url) {
       result.errors.push({
         field: 'source_url',
@@ -156,6 +156,33 @@ export class RecipeValidator {
         severity: 'critical'
       });
       result.missingRequiredFields.push('source_url');
+    } else {
+      // Validate URL format
+      try {
+        new URL(recipe.source_url);
+      } catch (error) {
+        result.errors.push({
+          field: 'source_url',
+          message: 'Invalid URL format',
+          severity: 'high',
+          originalValue: recipe.source_url,
+          suggestedFix: 'Provide a valid HTTP/HTTPS URL'
+        });
+      }
+    }
+
+    // Image URL validation
+    if (recipe.image_url) {
+      try {
+        new URL(recipe.image_url);
+      } catch (error) {
+        result.warnings.push({
+          field: 'image_url',
+          message: 'Invalid image URL format, removing',
+          originalValue: recipe.image_url
+        });
+        recipe.image_url = undefined;
+      }
     }
     
     // Author validation and fixing
@@ -430,25 +457,109 @@ export class RecipeValidator {
    */
   private static async validateMetadata(recipe: Partial<Recipe>, result: ValidationResult): Promise<void> {
     // Servings validation
-    if (!recipe.servings) {
+    if (!recipe.servings || recipe.servings <= 0) {
+      const originalServings = recipe.servings;
       recipe.servings = 4; // Default servings
       result.fixedFields.push({
         field: 'servings',
-        originalValue: undefined,
+        originalValue: originalServings,
         fixedValue: 4,
         fixMethod: 'Default fallback'
       });
+    } else if (recipe.servings > 100) {
+      result.warnings.push({
+        field: 'servings',
+        message: 'Servings exceeds 100, capping at 100',
+        originalValue: recipe.servings,
+        suggestedValue: 100
+      });
+      recipe.servings = 100;
     }
-    
+
     // Initialize arrays if missing
     if (!recipe.cuisines) recipe.cuisines = [];
     if (!recipe.meal_types) recipe.meal_types = [];
     if (!recipe.tags) recipe.tags = [];
     if (!recipe.cooking_method) recipe.cooking_method = [];
     if (!recipe.suitable_for_diet) recipe.suitable_for_diet = [];
-    
+
+    // Validate and clean cuisine array
+    if (recipe.cuisines && Array.isArray(recipe.cuisines)) {
+      recipe.cuisines = recipe.cuisines
+        .filter((c: any) => typeof c === 'string' && c.trim().length > 0)
+        .map((c: string) => c.trim());
+    }
+
+    // Validate and clean meal_types array
+    if (recipe.meal_types && Array.isArray(recipe.meal_types)) {
+      recipe.meal_types = recipe.meal_types
+        .filter((m: any) => typeof m === 'string' && m.trim().length > 0)
+        .map((m: string) => m.trim());
+    }
+
+    // Validate and clean tags array
+    if (recipe.tags && Array.isArray(recipe.tags)) {
+      recipe.tags = recipe.tags
+        .filter((t: any) => typeof t === 'string' && t.trim().length > 0)
+        .map((t: string) => t.trim());
+
+      // Remove duplicates
+      recipe.tags = [...new Set(recipe.tags)];
+    }
+
+    // Validate nutrition data if present
+    if (recipe.nutrition) {
+      this.validateNutrition(recipe.nutrition, result);
+    }
+
     // Default boolean fields
     if (recipe.is_public === undefined) recipe.is_public = true;
+  }
+
+  /*
+   * Validate nutrition data
+   */
+  private static validateNutrition(nutrition: any, result: ValidationResult): void {
+    const nutritionFields = ['calories', 'protein_g', 'carbs_g', 'fat_g', 'fiber_g', 'sugar_g', 'sodium_mg'];
+
+    nutritionFields.forEach(field => {
+      if (nutrition[field] !== undefined && nutrition[field] !== null) {
+        // Ensure it's a number
+        const value = Number(nutrition[field]);
+
+        if (isNaN(value) || value < 0) {
+          result.warnings.push({
+            field: `nutrition.${field}`,
+            message: `Invalid ${field} value, removing`,
+            originalValue: nutrition[field]
+          });
+          nutrition[field] = null;
+        } else if (value > 10000) {
+          result.warnings.push({
+            field: `nutrition.${field}`,
+            message: `${field} seems unreasonably high (>${10000}), please verify`,
+            originalValue: value
+          });
+        }
+      }
+    });
+
+    // Validate calories are reasonable
+    if (nutrition.calories) {
+      if (nutrition.calories < 10) {
+        result.warnings.push({
+          field: 'nutrition.calories',
+          message: 'Calories seem unreasonably low (<10), please verify',
+          originalValue: nutrition.calories
+        });
+      } else if (nutrition.calories > 5000) {
+        result.warnings.push({
+          field: 'nutrition.calories',
+          message: 'Calories seem unreasonably high (>5000), please verify',
+          originalValue: nutrition.calories
+        });
+      }
+    }
   }
   
   /*

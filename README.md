@@ -7,6 +7,28 @@
 
 **A production-ready, enterprise-grade TypeScript service for intelligent recipe scraping, OCR processing, ingredient linking, and comprehensive enrichment with robust validation and quality assurance.**
 
+## 🆓 **NEW: $0/Month Operating Costs!**
+
+This project now includes **completely free** alternatives for all paid services:
+
+### Free LLM Enhancement (4 providers)
+- **Groq** ⭐ - Fastest (6000 tokens/min free)
+- **Together AI** - $25 free credits
+- **Hugging Face** - 30k chars/month free
+- **Ollama** ⭐ - Unlimited local usage
+
+### Free Nutrition & Recipe APIs (6 services)
+- **OpenFoodFacts** ⭐ - 2.8M+ products, no API key
+- **USDA FoodData** - 3600/hour free
+- **Edamam** - 10k/month free
+- **TheMealDB** - Free recipe search
+- **Recipe Puppy** - 1M+ free recipes
+- **Spoonacular** - 150/day free
+
+**💰 Cost Savings**: **$250-400/month → $0/month**
+
+👉 **[Quick Setup Guide](FREE_APIS_SETUP.md)** | 📚 **[Integration Examples](examples/enhanced-scraping-example.ts)**
+
 ## 🚀 **PRODUCTION-READY FEATURES**
 
 ### **🔍 Multi-Platform Recipe Scraping**
@@ -142,13 +164,64 @@ CACHE_ENABLED=true
 # 3. Copy Client ID
 ```
 
+## 🆓 **FREE SERVICES INTEGRATION**
+
+### **Quick Start (2 minutes)**
+
+1. **Get Groq API Key** (fastest free LLM)
+   ```bash
+   # Visit: https://console.groq.com
+   # Sign up → API Keys → Create
+   # Add to .env: GROQ_API_KEY=gsk_xxx
+   ```
+
+2. **Test Integration**
+   ```bash
+   npx tsx test-free-services.ts
+   ```
+
+3. **Use Enhanced Scraping**
+   ```typescript
+   import { EnhancedRecipeEnrichment } from './src/services/EnhancedRecipeEnrichment';
+
+   const result = await EnhancedRecipeEnrichment.enhanceRecipe(rawRecipe, {
+     useLLM: true,                // Free LLM enhancement
+     useFreeNutritionAPIs: true,  // Free nutrition data
+     llmFields: ['description', 'tags', 'cuisines']
+   });
+   ```
+
+### **What You Get for Free**
+
+✅ **Recipe Enhancement**
+- AI-generated descriptions
+- Smart tag generation
+- Cuisine classification
+- Meal type detection
+- Cooking tips
+
+✅ **Nutrition Data**
+- Calories, protein, carbs, fat
+- Fiber, sugar, sodium
+- Per-ingredient breakdown
+- Automatic fallback chain
+
+✅ **140 Recipe Websites**
+- 41 new sites added (Vegan, Keto, Paleo, BBQ, etc.)
+- Enhanced validation
+- Better error recovery
+
+See **[FREE_APIS_SETUP.md](FREE_APIS_SETUP.md)** for detailed setup and **[examples/enhanced-scraping-example.ts](examples/enhanced-scraping-example.ts)** for code examples.
+
+---
+
 ## 🚀 **LOCAL DEVELOPMENT**
 
 ### **Prerequisites**
 - Node.js 18+ and pnpm
 - TypeScript 5.0+
 - Git
-- Required API keys (see Environment Setup)
+- Optional: Free API keys (see FREE_APIS_SETUP.md)
 
 ### **Quick Start**
 
